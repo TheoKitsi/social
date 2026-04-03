@@ -50,6 +50,7 @@ const withPWA = withPWAInit({
 });
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
   turbopack: {
     root: __dirname,
   },

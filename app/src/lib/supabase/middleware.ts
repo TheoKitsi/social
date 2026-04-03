@@ -70,5 +70,27 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // Gate: require onboarding completion before accessing app routes
+  const isOnboardingRoute = request.nextUrl.pathname.match(
+    new RegExp(`^/(${localePattern})/onboarding`)
+  );
+  const isAppRoute = user && !isPublicRoute && !isOnboardingRoute;
+
+  if (isAppRoute) {
+    // Check if user completed mandatory onboarding (active_funnel_level >= 3)
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("active_funnel_level")
+      .eq("id", user.id)
+      .single();
+
+    const funnelLevel = profile?.active_funnel_level ?? 0;
+    if (funnelLevel < 3) {
+      const url = request.nextUrl.clone();
+      url.pathname = `/${locale}/onboarding`;
+      return NextResponse.redirect(url);
+    }
+  }
+
   return supabaseResponse;
 }
