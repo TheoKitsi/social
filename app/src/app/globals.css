@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+/* ── PRAGMA Design Tokens ── */
+@theme inline {
+  /* Primary: vibrant pink */
+  --color-primary: #FF4081;
+  --color-primary-light: #FF79A8;
+  --color-primary-dark: #C60055;
+
+  /* Secondary: deep navy */
+  --color-secondary: #1A1A2E;
+  --color-secondary-light: #25253D;
+  --color-secondary-dark: #0F0F1A;
+
+  /* Surfaces */
+  --color-surface: #16162A;
+  --color-surface-alt: #1E1E36;
+  --color-surface-elevated: #252542;
+
+  /* Text */
+  --color-on-primary: #FFFFFF;
+  --color-on-secondary: #E0E0F0;
+  --color-on-surface: #E8E8F4;
+  --color-on-surface-muted: #9999B8;
+
+  /* Semantic */
+  --color-success: #4CAF50;
+  --color-warning: #FFC107;
+  --color-error: #F44336;
+  --color-info: #29B6F6;
+
+  /* Border */
+  --color-border: #2A2A48;
+  --color-border-focus: #FF4081;
+
+  /* Fonts */
+  --font-sans: var(--font-poppins);
+  --font-mono: var(--font-fira-code);
+
+  /* ── Shape Scale (M3) ── */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-card: 12px;
+  --radius-button: 8px;
+  --radius-input: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ── Spacing Scale (8pt grid) ── */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+
+  /* ── Elevation Shadows ── */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.15);
+  --shadow-md: 0 4px 8px -1px rgba(0,0,0,0.2), 0 2px 4px -2px rgba(0,0,0,0.15);
+  --shadow-lg: 0 10px 20px -4px rgba(0,0,0,0.25), 0 4px 8px -4px rgba(0,0,0,0.15);
+  --shadow-xl: 0 20px 40px -8px rgba(0,0,0,0.3), 0 8px 16px -6px rgba(0,0,0,0.2);
+
+  /* ── Accent Shadows (pink glow) ── */
+  --shadow-accent-sm: 0 2px 8px rgba(255,64,129,0.15);
+  --shadow-accent-md: 0 4px 16px rgba(255,64,129,0.2);
+  --shadow-accent-lg: 0 8px 32px rgba(255,64,129,0.3);
+
+  /* ── Focus Ring ── */
+  --shadow-focus: 0 0 0 3px rgba(255,64,129,0.25);
+
+  /* ── Motion ── */
+  --duration-fast: 100ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --duration-slower: 500ms;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0, 1);
+  --ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* ── Letter Spacing ── */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+}
+
+/* ── Base styles ── */
+body {
+  background: var(--color-secondary);
+  color: var(--color-on-surface);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* ── Light theme override ── */
+.light {
+  --color-surface: #FAFAFA;
+  --color-surface-alt: #F0F0F5;
+  --color-surface-elevated: #FFFFFF;
+  --color-on-surface: #1A1A2E;
+  --color-on-surface-muted: #5C5C78;
+  --color-border: #D8D8E4;
+}
+
+.light body {
+  background: #F5F5FA;
+  color: var(--color-on-surface);
+}
+
+/* ── Focus ring (WCAG) ── */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-focus);
+}
+
+/* ── Utility: Accent glow on hover ── */
+.hover-lift {
+  transition: transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-standard);
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Utility: Stagger entrance ── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up var(--duration-slow) var(--ease-decelerate) both;
+}
+
+/* ── Utility: Skeleton pulse ── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.06; }
+  50%      { opacity: 0.12; }
+}
+.skeleton {
+  background: var(--color-on-surface);
+  animation: skeleton-pulse 1.5s var(--ease-standard) infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Measurement Grid Background (brand DNA) ── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,64,129,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,64,129,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ── Scrollbar (dark theme) ── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-secondary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-on-surface-muted);
+}
+
+/* ── Safe area insets for PWA standalone mode ── */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.safe-x {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1A1A2E" />
+  <title>PRAGMA — Offline</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      background: #1A1A2E;
+      color: #E8E8F4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+      padding: 1.5rem;
+    }
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,64,129,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,64,129,.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    .container {
+      text-align: center;
+      max-width: 24rem;
+      position: relative;
+      z-index: 1;
+    }
+    .logo { margin-bottom: 2rem; }
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      margin-bottom: 2rem;
+      color: #E8E8F4;
+    }
+    .icon-offline {
+      width: 4rem;
+      height: 4rem;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      background: rgba(255,64,129,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    h1 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+    p { font-size: 0.875rem; color: #9999B8; margin-bottom: 2rem; line-height: 1.6; }
+    button {
+      background: #FF4081;
+      color: #fff;
+      border: none;
+      padding: 0.625rem 2rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    button:hover { background: #C60055; }
+    button:active { transform: scale(0.97); }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="container">
+    <div class="logo">
+      <svg width="80" height="80" viewBox="0 0 512 512">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FF79A8" />
+            <stop offset="100%" stop-color="#FF4081" />
+          </linearGradient>
+        </defs>
+        <path d="M 136,136 L 216,136 L 296,256 L 216,376 L 136,376 L 216,256 Z" fill="none" stroke="url(#g)" stroke-width="28" stroke-linejoin="round" stroke-linecap="round" />
+        <path d="M 376,136 L 296,136 L 216,256 L 296,376 L 376,376 L 296,256 Z" fill="none" stroke="url(#g)" stroke-width="28" stroke-linejoin="round" stroke-linecap="round" />
+        <rect x="242" y="242" width="28" height="28" rx="4" transform="rotate(45 256 256)" fill="url(#g)" />
+      </svg>
+    </div>
+    <p class="brand">PRAGMA</p>
+    <div class="icon-offline">
+      <svg width="24" height="24" fill="none" stroke="#FF4081" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0119 12.55"/><path d="M5 12.55a10.94 10.94 0 015.17-2.39"/><path d="M10.71 5.05A16 16 0 0122.56 9"/><path d="M1.42 9a15.91 15.91 0 014.7-2.88"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+    </div>
+    <h1>You're offline</h1>
+    <p>Check your connection and try again.</p>
+    <button onclick="location.reload()">Retry</button>
+  </div>
+</body>
+</html>
