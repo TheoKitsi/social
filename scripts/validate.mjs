@@ -1,5 +1,5 @@
 // ============================================================================
-// ARQITEKT — Requirements Validator
+// ARQITEKT / PRAGMA — Requirements Validator
 // ============================================================================
 // Prüft alle Requirement-Dateien gegen das Metamodel:
 // - Frontmatter-Pflichtfelder

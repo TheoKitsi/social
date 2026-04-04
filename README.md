@@ -1,9 +1,11 @@
-# Social
+# PRAGMA
 
 > A serious dating platform for people seeking lasting partnerships.
 
 Built on a **5-level funnel model** that guides users from core values to micro-preferences.
 Verified identities, transparent matching, mutual consent, and privacy by design.
+
+**Tech Stack:** Next.js 16, Supabase, Gemini AI, Tailwind CSS, PWA
 
 ---
 
@@ -52,7 +54,8 @@ npm run export:jira # Jira JSON
 ## Directory Structure
 
 ```
-SOCIAL/
+PRAGMA/
++-- app/              (Next.js 16 application)
 +-- config/           (metamodel.yaml, project.yaml)
 +-- requirements/     (BC, solutions/, user-stories/, components/, functions/, ...)
 +-- scripts/          (validate.mjs, tree.mjs, export-jira.mjs)

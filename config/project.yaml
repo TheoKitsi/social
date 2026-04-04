@@ -5,8 +5,8 @@
 # ============================================================================
 
 project:
-  name: "Social"
-  codename: "SOCIAL"
+  name: "PRAGMA"
+  codename: "PRAGMA"
   description: "Long-Term Relationship Dating Platform. A serious dating platform for people seeking lasting partnerships, built on a 5-level funnel model that guides users from core values to micro-preferences."
   version: "1.0"
   date: "2026-03-10"

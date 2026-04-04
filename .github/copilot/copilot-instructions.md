@@ -1,4 +1,4 @@
-# ARQITEKT — Globale Copilot-Anweisungen
+# ARQITEKT / PRAGMA — Globale Copilot-Anweisungen
 
 Du arbeitest in einem **ARQITEKT Requirements-Engineering Workspace**. Dieses Framework generiert und verwaltet Software-Requirements in einer strengen Hierarchie:
 

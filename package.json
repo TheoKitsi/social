@@ -1,7 +1,7 @@
 {
   "name": "arqitekt-social",
   "version": "1.0.0",
-  "description": "ARQITEKT Projekt — SOCIAL Dating Platform",
+  "description": "ARQITEKT Projekt — PRAGMA Dating Platform",
   "private": true,
   "type": "module",
   "scripts": {
