@@ -20,78 +20,86 @@
   },
   "landing": {
     "hero": "Partnership, methodically.",
-    "subtitle": "A science-based matching process rooted in self-knowledge, psychological compatibility, and mutual intent.",
+    "subtitle": "What if you approached the most consequential decision of your life with the same rigor you apply to everything else?",
     "cta": "Get Started",
     "login": "Sign In",
     "features": {
       "funnel": {
         "title": "Structured Self-Discovery",
-        "description": "Five progressive levels — from core values to behavioral preferences."
+        "description": "Five progressive levels. Because understanding yourself is a prerequisite for understanding someone else."
       },
       "matching": {
         "title": "Bidirectional Scoring",
-        "description": "Compatibility measured from both perspectives. No hidden asymmetry."
+        "description": "Compatibility measured from both perspectives simultaneously. If it's not mutual, it's not a match."
       },
       "consent": {
         "title": "Mutual Consent First",
-        "description": "Communication requires expressed interest from both sides."
+        "description": "No one sees your profile without your knowledge. Communication requires intent from both sides."
       },
       "verified": {
         "title": "Identity Verified",
-        "description": "Multi-factor verification. Real people, serious intent."
+        "description": "Every person here chose to prove they're real. That alone changes everything."
       }
     },
     "question": {
       "label": "The Question",
-      "title": "You compare everything. Except the one thing that matters most.",
-      "p1": "We research cars for months. Compare phones feature by feature. Inspect apartments down to the water pressure. Read reviews, analyze specs, calculate total cost of ownership.",
-      "quote": "But when it comes to choosing the person we share our life with — we swipe. We hope. We gamble.",
-      "p2": "The platforms built for this market are not designed to help you find a partner. Their revenue depends on you staying single. Every successful relationship is a lost subscriber."
+      "title": "You wouldn't buy a car without a test drive. Why would you build a life without one?",
+      "p1": "We spend months researching cars. We compare phones spec by spec. We inspect apartments down to the water pressure and read every last review before committing. We calculate, analyze, deliberate.",
+      "quote": "Yet the person we'll wake up next to for the next forty years — that we decide with a photo and a gut feeling.",
+      "p2": "This isn't a flaw in human nature. It's a flaw in the tools we've been given. The platforms designed for this purpose profit from your search, not from its end. Every lasting relationship is a cancelled subscription."
     },
     "industry": {
       "label": "The Reality",
-      "title": "Every major dating platform. The same verdict.",
-      "subtitle": "Trustpilot ratings across the industry paint a consistent picture. These are not outliers.",
-      "source": "Source: Trustpilot, April 2026"
+      "title": "An entire industry. One verdict.",
+      "subtitle": "Across every category — swipe-based, algorithm-driven, premium-priced — the same pattern emerges. These aren't isolated complaints. They're features.",
+      "source": "Source: Trustpilot aggregate ratings, April 2026. Based on six leading platforms across all major categories.",
+      "categories": {
+        "swipe": "Swipe-Based",
+        "social": "Social-First",
+        "algorithm": "Algorithm-Driven",
+        "legacy": "Legacy Platforms",
+        "premium": "Premium Segment",
+        "exclusive": "Exclusive Clubs"
+      }
     },
     "process": {
       "label": "How It Works",
-      "title": "A process, not a game."
+      "title": "A process. Not a lottery."
     },
     "different": {
       "label": "The Difference",
-      "title": "What PRAGMA does differently.",
+      "title": "Six principles. Zero compromises.",
       "items": {
         "verification": {
-          "title": "Multi-Step Verification",
-          "description": "Every profile verified through SMS, email, and photo analysis. No bots. No fakes."
+          "title": "Real Humans Only",
+          "description": "SMS, email, and photo verification. If someone is here, they chose to prove it. The barrier is the feature."
         },
         "depth": {
-          "title": "Structured Self-Discovery",
-          "description": "Five levels of self-description. Scientifically grounded personality assessment, not a photo contest."
+          "title": "Know Yourself First",
+          "description": "Five levels of structured self-reflection — from values to behavioral nuances. You can't find what fits if you don't know your own shape."
         },
         "transparency": {
-          "title": "Transparent Matching",
-          "description": "See exactly why someone was suggested and how your score was calculated. No black boxes."
+          "title": "No Black Boxes",
+          "description": "Every match comes with an explanation. You see the reasoning, the score, the logic. Because trust begins with transparency."
         },
         "fairness": {
-          "title": "Fair Pricing",
-          "description": "Monthly billing. One-click cancellation. No auto-renewal traps. No pay-to-see-likes."
+          "title": "Honest Pricing",
+          "description": "Monthly billing. Cancel in one click. No renewal traps, no hidden fees, no features locked behind frustration."
         },
         "privacy": {
-          "title": "Privacy by Design",
-          "description": "GDPR-first. Minimal data collection. Full transparency on what is stored and why."
+          "title": "Your Data, Your Rules",
+          "description": "GDPR-first architecture. We collect the minimum, explain the purpose, and delete on request. Your data is not our product."
         },
         "success": {
-          "title": "Designed for Deletion",
-          "description": "Our success metric: people leaving in a happy relationship. When PRAGMA works, you don't need PRAGMA."
+          "title": "Built to Be Deleted",
+          "description": "Our north star: you leave in a happy relationship. We designed the only platform that succeeds by making itself unnecessary."
         }
       }
     },
     "finalCta": {
-      "title": "Ready for something real?",
-      "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself.",
-      "learnMore": "Read our story"
+      "title": "Ready to be PRAGMAtic about love?",
+      "subtitle": "The most important partnership of your life deserves more than chance. It deserves method.",
+      "learnMore": "Our story"
     }
   },
   "auth": {

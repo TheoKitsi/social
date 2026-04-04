@@ -2,17 +2,18 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui";
 import { HeroVisual } from "@/components/hero-visual";
+import { ScrollSection } from "@/components/scroll-section";
 
 export default function LandingPage() {
   const t = useTranslations();
 
-  const platforms = [
-    { name: "Tinder", score: "1.2" },
-    { name: "Bumble", score: "1.3" },
-    { name: "Hinge", score: "1.2" },
-    { name: "OkCupid", score: "1.2" },
-    { name: "Parship", score: "2.1" },
-    { name: "ElitePartner", score: "2.0" },
+  const industryCategories = [
+    { key: "swipe", score: "1.2" },
+    { key: "social", score: "1.3" },
+    { key: "algorithm", score: "1.2" },
+    { key: "legacy", score: "1.2" },
+    { key: "premium", score: "2.1" },
+    { key: "exclusive", score: "2.0" },
   ] as const;
 
   const differentiators = [
@@ -25,9 +26,9 @@ export default function LandingPage() {
   ] as const;
 
   return (
-    <div className="min-h-dvh flex flex-col bg-secondary">
+    <div className="h-dvh flex flex-col bg-secondary overflow-y-auto snap-y snap-mandatory scroll-smooth">
       {/* ── Header ── */}
-      <header className="sticky top-0 z-50 flex items-center justify-between px-6 py-3 border-b border-border bg-secondary/80 backdrop-blur-md">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 border-b border-border bg-secondary/80 backdrop-blur-md">
         <div className="flex items-center gap-2">
           <svg width="24" height="24" viewBox="0 0 512 512" className="text-primary shrink-0">
             <g fill="none" stroke="currentColor" strokeWidth="32" strokeLinejoin="round">
@@ -41,7 +42,7 @@ export default function LandingPage() {
           </span>
         </div>
         <nav className="flex items-center gap-3">
-          <Link href="/about" className="text-sm text-on-surface-muted hover:text-primary transition-colors">
+          <Link href="/about" className="text-sm text-on-surface-muted hover:text-primary transition-colors hidden sm:inline-flex">
             {t("about.link")}
           </Link>
           <Link href="/login">
@@ -55,173 +56,178 @@ export default function LandingPage() {
         </nav>
       </header>
 
-      <main className="flex-1">
-        {/* ── Hero ── */}
-        <section className="relative min-h-[85vh] flex flex-col items-center justify-center px-6 bg-grid overflow-hidden">
-          <HeroVisual />
-          <div className="relative z-10 flex flex-col items-center justify-center max-w-3xl text-center">
-            <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-3 animate-fade-in-up" style={{ animationDelay: "0ms" }}>
-              {t("common.tagline")}
-            </p>
+      {/* ── Section 1: Hero ── */}
+      <section className="relative min-h-dvh flex flex-col items-center justify-center px-6 bg-grid overflow-hidden snap-start snap-always pt-14">
+        <HeroVisual />
+        <ScrollSection className="relative z-10 flex flex-col items-center justify-center max-w-3xl text-center">
+          <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-3">
+            {t("common.tagline")}
+          </p>
 
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)] animate-fade-in-up" style={{ animationDelay: "50ms" }}>
-              {t("landing.hero")}
-            </h1>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)]">
+            {t("landing.hero")}
+          </h1>
 
-            <p className="mt-4 text-base md:text-lg text-on-surface-muted leading-relaxed max-w-xl animate-fade-in-up" style={{ animationDelay: "100ms" }}>
-              {t("landing.subtitle")}
-            </p>
+          <p className="mt-4 text-base md:text-lg text-on-surface-muted leading-relaxed max-w-xl">
+            {t("landing.subtitle")}
+          </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 animate-fade-in-up" style={{ animationDelay: "150ms" }}>
-              <Link href="/plans">
-                <Button size="lg">{t("landing.cta")}</Button>
-              </Link>
-              <Link href="/login">
-                <Button variant="outline" size="lg">{t("landing.login")}</Button>
-              </Link>
-            </div>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <Link href="/plans">
+              <Button size="lg">{t("landing.cta")}</Button>
+            </Link>
+            <Link href="/login">
+              <Button variant="outline" size="lg">{t("landing.login")}</Button>
+            </Link>
           </div>
-        </section>
+        </ScrollSection>
 
-        {/* ── The Question ── */}
-        <section className="py-20 md:py-28 px-6 border-t border-border">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4">
-              {t("landing.question.label")}
-            </p>
-            <h2 className="text-2xl md:text-4xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)]">
-              {t("landing.question.title")}
-            </h2>
-            <p className="mt-6 text-base md:text-lg text-on-surface-muted leading-relaxed max-w-2xl mx-auto">
-              {t("landing.question.p1")}
-            </p>
-            <blockquote className="mt-8 text-lg md:text-xl font-semibold text-primary leading-relaxed italic max-w-2xl mx-auto border-l-2 border-primary pl-6 text-left">
-              {t("landing.question.quote")}
-            </blockquote>
-            <p className="mt-8 text-base text-on-surface-muted leading-relaxed max-w-2xl mx-auto">
-              {t("landing.question.p2")}
-            </p>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce opacity-40">
+          <svg className="w-5 h-5 text-on-surface-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+      </section>
+
+      {/* ── Section 2: The Question ── */}
+      <section className="min-h-dvh flex items-center justify-center px-6 snap-start snap-always">
+        <ScrollSection className="max-w-3xl mx-auto text-center py-20">
+          <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4">
+            {t("landing.question.label")}
+          </p>
+          <h2 className="text-2xl md:text-4xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)]">
+            {t("landing.question.title")}
+          </h2>
+          <p className="mt-6 text-base md:text-lg text-on-surface-muted leading-relaxed max-w-2xl mx-auto">
+            {t("landing.question.p1")}
+          </p>
+          <blockquote className="mt-8 text-lg md:text-xl font-semibold text-primary leading-relaxed italic max-w-2xl mx-auto border-l-2 border-primary pl-6 text-left">
+            {t("landing.question.quote")}
+          </blockquote>
+          <p className="mt-8 text-base text-on-surface-muted leading-relaxed max-w-2xl mx-auto">
+            {t("landing.question.p2")}
+          </p>
+        </ScrollSection>
+      </section>
+
+      {/* ── Section 3: Industry Reality ── */}
+      <section className="min-h-dvh flex items-center justify-center px-6 snap-start snap-always bg-surface/30">
+        <ScrollSection className="max-w-4xl mx-auto py-20">
+          <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4 text-center">
+            {t("landing.industry.label")}
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)] text-center">
+            {t("landing.industry.title")}
+          </h2>
+          <p className="mt-3 text-sm text-on-surface-muted text-center max-w-xl mx-auto">
+            {t("landing.industry.subtitle")}
+          </p>
+
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {industryCategories.map((cat) => (
+              <div
+                key={cat.key}
+                className="rounded-[var(--radius-card)] border border-border bg-surface/50 p-4 text-center"
+              >
+                <p className="text-sm font-medium text-on-surface-muted">{t(`landing.industry.categories.${cat.key}`)}</p>
+                <p className="mt-1 text-2xl font-bold text-red-400">{cat.score}<span className="text-sm font-normal text-on-surface-muted">/5</span></p>
+              </div>
+            ))}
           </div>
-        </section>
 
-        {/* ── Industry Ratings ── */}
-        <section className="py-16 md:py-20 px-6 border-t border-border bg-surface/30">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4 text-center">
-              {t("landing.industry.label")}
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)] text-center">
-              {t("landing.industry.title")}
-            </h2>
-            <p className="mt-3 text-sm text-on-surface-muted text-center max-w-xl mx-auto">
-              {t("landing.industry.subtitle")}
-            </p>
+          <p className="mt-4 text-xs text-on-surface-muted/60 text-center">
+            {t("landing.industry.source")}
+          </p>
+        </ScrollSection>
+      </section>
 
-            <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              {platforms.map((p) => (
+      {/* ── Section 4: How It Works ── */}
+      <section className="min-h-dvh flex items-center justify-center px-6 snap-start snap-always">
+        <ScrollSection className="max-w-4xl mx-auto py-20">
+          <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4 text-center">
+            {t("landing.process.label")}
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)] text-center">
+            {t("landing.process.title")}
+          </h2>
+
+          <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {(["funnel", "matching", "consent", "verified"] as const).map(
+              (feature) => (
                 <div
-                  key={p.name}
-                  className="rounded-[var(--radius-card)] border border-border bg-surface/50 p-4 text-center"
+                  key={feature}
+                  className="hover-lift rounded-[var(--radius-card)] border border-border bg-surface/50 p-4 md:p-5 flex flex-col items-center text-center space-y-2"
                 >
-                  <p className="text-sm font-medium text-on-surface-muted">{p.name}</p>
-                  <p className="mt-1 text-2xl font-bold text-red-400">{p.score}<span className="text-sm font-normal text-on-surface-muted">/5</span></p>
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-4 text-xs text-on-surface-muted/60 text-center">
-              {t("landing.industry.source")}
-            </p>
-          </div>
-        </section>
-
-        {/* ── Features ── */}
-        <section className="py-16 md:py-20 px-6 border-t border-border">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4 text-center">
-              {t("landing.process.label")}
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)] text-center">
-              {t("landing.process.title")}
-            </h2>
-
-            <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {(["funnel", "matching", "consent", "verified"] as const).map(
-                (feature) => (
-                  <div
-                    key={feature}
-                    className="hover-lift rounded-[var(--radius-card)] border border-border bg-surface/50 p-4 md:p-5 flex flex-col items-center text-center space-y-2"
-                  >
-                    <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/15 flex items-center justify-center mb-1">
-                      <FeatureIcon feature={feature} />
-                    </div>
-                    <h3 className="text-sm font-semibold text-on-surface">
-                      {t(`landing.features.${feature}.title`)}
-                    </h3>
-                    <p className="text-xs text-on-surface-muted leading-relaxed">
-                      {t(`landing.features.${feature}.description`)}
-                    </p>
+                  <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/15 flex items-center justify-center mb-1">
+                    <FeatureIcon feature={feature} />
                   </div>
-                )
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* ── What Makes PRAGMA Different ── */}
-        <section className="py-16 md:py-20 px-6 border-t border-border bg-surface/30">
-          <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4 text-center">
-              {t("landing.different.label")}
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)] text-center">
-              {t("landing.different.title")}
-            </h2>
-
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {differentiators.map((key) => (
-                <div
-                  key={key}
-                  className="rounded-[var(--radius-card)] border border-border bg-secondary p-5 md:p-6"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/15 flex items-center justify-center mb-3">
-                    <DifferentiatorIcon id={key} />
-                  </div>
-                  <h3 className="text-sm font-semibold text-on-surface mb-1">
-                    {t(`landing.different.items.${key}.title`)}
+                  <h3 className="text-sm font-semibold text-on-surface">
+                    {t(`landing.features.${feature}.title`)}
                   </h3>
                   <p className="text-xs text-on-surface-muted leading-relaxed">
-                    {t(`landing.different.items.${key}.description`)}
+                    {t(`landing.features.${feature}.description`)}
                   </p>
                 </div>
-              ))}
-            </div>
+              )
+            )}
           </div>
-        </section>
+        </ScrollSection>
+      </section>
 
-        {/* ── Final CTA ── */}
-        <section className="py-20 md:py-28 px-6 border-t border-border">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl md:text-4xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)]">
-              {t("landing.finalCta.title")}
-            </h2>
-            <p className="mt-4 text-base text-on-surface-muted leading-relaxed">
-              {t("landing.finalCta.subtitle")}
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/plans">
-                <Button size="lg">{t("landing.cta")}</Button>
-              </Link>
-              <Link href="/about">
-                <Button variant="outline" size="lg">{t("landing.finalCta.learnMore")}</Button>
-              </Link>
-            </div>
+      {/* ── Section 5: The Difference ── */}
+      <section className="min-h-dvh flex items-center justify-center px-6 snap-start snap-always bg-surface/30">
+        <ScrollSection className="max-w-5xl mx-auto py-20">
+          <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4 text-center">
+            {t("landing.different.label")}
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)] text-center">
+            {t("landing.different.title")}
+          </h2>
+
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {differentiators.map((key) => (
+              <div
+                key={key}
+                className="rounded-[var(--radius-card)] border border-border bg-secondary p-5 md:p-6"
+              >
+                <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/15 flex items-center justify-center mb-3">
+                  <DifferentiatorIcon id={key} />
+                </div>
+                <h3 className="text-sm font-semibold text-on-surface mb-1">
+                  {t(`landing.different.items.${key}.title`)}
+                </h3>
+                <p className="text-xs text-on-surface-muted leading-relaxed">
+                  {t(`landing.different.items.${key}.description`)}
+                </p>
+              </div>
+            ))}
           </div>
-        </section>
-      </main>
+        </ScrollSection>
+      </section>
 
-      {/* ── Footer ── */}
-      <footer className="border-t border-border bg-secondary/80 backdrop-blur-md px-6 py-3 text-xs text-on-surface-muted">
+      {/* ── Section 6: Final CTA ── */}
+      <section className="min-h-dvh flex items-center justify-center px-6 snap-start snap-always">
+        <ScrollSection className="max-w-2xl mx-auto text-center py-20">
+          <h2 className="text-2xl md:text-4xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)]">
+            {t("landing.finalCta.title")}
+          </h2>
+          <p className="mt-4 text-base text-on-surface-muted leading-relaxed">
+            {t("landing.finalCta.subtitle")}
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <Link href="/plans">
+              <Button size="lg">{t("landing.cta")}</Button>
+            </Link>
+            <Link href="/about">
+              <Button variant="outline" size="lg">{t("landing.finalCta.learnMore")}</Button>
+            </Link>
+          </div>
+        </ScrollSection>
+      </section>
+
+      {/* ── Footer (within last snap section) ── */}
+      <footer className="border-t border-border bg-secondary/80 backdrop-blur-md px-6 py-3 text-xs text-on-surface-muted snap-end">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="tracking-[var(--tracking-wide)]">
             &copy; {new Date().getFullYear()} PRAGMA &mdash; {t("common.tagline")}

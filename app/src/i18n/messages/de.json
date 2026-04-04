@@ -20,78 +20,86 @@
   },
   "landing": {
     "hero": "Partnerschaft, methodisch.",
-    "subtitle": "Ein wissenschaftlich fundierter Matching-Prozess basierend auf Selbsterkenntnis, psychologischer Kompatibilität und beidseitiger Absicht.",
+    "subtitle": "Was wäre, wenn Sie die folgenreichste Entscheidung Ihres Lebens mit derselben Sorgfalt träfen wie jede andere?",
     "cta": "Jetzt starten",
     "login": "Anmelden",
     "features": {
       "funnel": {
         "title": "Strukturierte Selbsterkenntnis",
-        "description": "Fünf progressive Ebenen — von Kernwerten bis zu Verhaltenspräferenzen."
+        "description": "Fünf progressive Ebenen. Denn wer sich selbst nicht kennt, kann den anderen nicht erkennen."
       },
       "matching": {
         "title": "Bidirektionales Scoring",
-        "description": "Kompatibilität aus beiden Perspektiven gemessen. Keine versteckte Asymmetrie."
+        "description": "Kompatibilität aus beiden Perspektiven gleichzeitig gemessen. Wenn es nicht gegenseitig ist, ist es kein Match."
       },
       "consent": {
         "title": "Gegenseitige Freigabe",
-        "description": "Kommunikation erfordert beidseitig bekundetes Interesse."
+        "description": "Niemand sieht Ihr Profil ohne Ihr Wissen. Kommunikation erfordert Absicht von beiden Seiten."
       },
       "verified": {
         "title": "Identität verifiziert",
-        "description": "Mehrstufige Verifizierung. Echte Menschen, ernsthafte Absichten."
+        "description": "Jede Person hier hat sich entschieden, ihre Echtheit zu beweisen. Allein das verändert alles."
       }
     },
     "question": {
       "label": "Die Frage",
-      "title": "Wir vergleichen alles. Ausser das Wichtigste.",
-      "p1": "Wir recherchieren monatelang Autos. Vergleichen Handys Eigenschaft fuer Eigenschaft. Pruefen Wohnungen bis zum Wasserdruck. Lesen Bewertungen, analysieren Spezifikationen, kalkulieren Gesamtkosten.",
-      "quote": "Aber wenn es darum geht, den Menschen zu waehlen, mit dem wir unser Leben teilen — swipen wir. Hoffen wir. Spielen wir Gluecksspiel.",
-      "p2": "Die Plattformen, die fuer diesen Markt gebaut wurden, sind nicht darauf ausgelegt, Ihnen beim Finden eines Partners zu helfen. Ihr Umsatz haengt davon ab, dass Sie Single bleiben. Jede erfolgreiche Beziehung ist ein verlorener Abonnent."
+      "title": "Sie würden kein Auto kaufen ohne Probefahrt. Warum planen Sie ein Leben ohne eine?",
+      "p1": "Wir recherchieren monatelang Autos. Vergleichen Handys Spezifikation für Spezifikation. Prüfen Wohnungen bis zum Wasserdruck und lesen jede einzelne Bewertung, bevor wir uns festlegen. Wir kalkulieren, analysieren, abwägen.",
+      "quote": "Doch den Menschen, neben dem wir die nächsten vierzig Jahre aufwachen — den entscheiden wir mit einem Foto und einem Bauchgefühl.",
+      "p2": "Das ist kein Fehler der menschlichen Natur. Es ist ein Fehler der Werkzeuge, die uns gegeben wurden. Die Plattformen, die dafür gebaut wurden, verdienen an Ihrer Suche — nicht an deren Ende. Jede glückliche Beziehung ist ein gekündigtes Abonnement."
     },
     "industry": {
-      "label": "Die Realitaet",
-      "title": "Jede grosse Dating-Plattform. Dasselbe Urteil.",
-      "subtitle": "Trustpilot-Bewertungen quer durch die Branche zeichnen ein einheitliches Bild. Das sind keine Ausreisser.",
-      "source": "Quelle: Trustpilot, April 2026"
+      "label": "Die Realität",
+      "title": "Eine ganze Branche. Ein Urteil.",
+      "subtitle": "Über alle Kategorien hinweg — swipe-basiert, algorithmus-getrieben, premium-bepreist — dasselbe Muster. Das sind keine Einzelfälle. Das sind Features.",
+      "source": "Quelle: Trustpilot Gesamtbewertungen, April 2026. Basierend auf sechs führenden Plattformen aller großen Kategorien.",
+      "categories": {
+        "swipe": "Swipe-basiert",
+        "social": "Social-First",
+        "algorithm": "Algorithmus-getrieben",
+        "legacy": "Etablierte Plattformen",
+        "premium": "Premium-Segment",
+        "exclusive": "Exklusive Clubs"
+      }
     },
     "process": {
       "label": "So funktioniert es",
-      "title": "Ein Prozess, kein Spiel."
+      "title": "Ein Prozess. Keine Lotterie."
     },
     "different": {
       "label": "Der Unterschied",
-      "title": "Was PRAGMA anders macht.",
+      "title": "Sechs Prinzipien. Null Kompromisse.",
       "items": {
         "verification": {
-          "title": "Mehrstufige Verifizierung",
-          "description": "Jedes Profil verifiziert durch SMS, E-Mail und Fotoanalyse. Keine Bots. Keine Fakes."
+          "title": "Nur echte Menschen",
+          "description": "SMS-, E-Mail- und Foto-Verifizierung. Wer hier ist, hat sich entschieden, es zu beweisen. Die Hürde ist das Feature."
         },
         "depth": {
-          "title": "Strukturierte Selbstentdeckung",
-          "description": "Fuenf Ebenen der Selbstbeschreibung. Wissenschaftlich fundiert, kein Fotowettbewerb."
+          "title": "Erst sich selbst verstehen",
+          "description": "Fünf Ebenen strukturierter Selbstreflexion — von Werten bis zu Verhaltensmustern. Wer seine eigene Form nicht kennt, kann nicht finden, was passt."
         },
         "transparency": {
-          "title": "Transparentes Matching",
-          "description": "Sehen Sie genau, warum jemand vorgeschlagen wurde und wie Ihr Score berechnet wurde. Keine Black Boxes."
+          "title": "Keine Black Boxes",
+          "description": "Jedes Match kommt mit einer Erklärung. Sie sehen die Logik, den Score, die Begründung. Denn Vertrauen beginnt mit Transparenz."
         },
         "fairness": {
-          "title": "Faire Preise",
-          "description": "Monatliche Abrechnung. Ein-Klick-Kuendigung. Keine Auto-Renewal-Fallen. Kein Pay-to-See-Likes."
+          "title": "Ehrliche Preise",
+          "description": "Monatliche Abrechnung. Kündigung per Klick. Keine Verlängerungsfallen, keine versteckten Kosten, keine Features hinter Frustration."
         },
         "privacy": {
-          "title": "Privacy by Design",
-          "description": "DSGVO-first. Minimale Datenerhebung. Volle Transparenz ueber gespeicherte Daten und deren Zweck."
+          "title": "Ihre Daten, Ihre Regeln",
+          "description": "DSGVO-first Architektur. Wir erheben das Minimum, erklären den Zweck und löschen auf Anfrage. Ihre Daten sind nicht unser Produkt."
         },
         "success": {
-          "title": "Gebaut zum Geloeschtwerden",
-          "description": "Unsere Erfolgskennzahl: Menschen verlassen die Plattform in einer gluecklichen Beziehung. Wenn PRAGMA funktioniert, brauchen Sie PRAGMA nicht mehr."
+          "title": "Gebaut, um gelöscht zu werden",
+          "description": "Unser Nordstern: Sie gehen in einer glücklichen Beziehung. Wir haben die einzige Plattform entworfen, die Erfolg hat, indem sie sich selbst überflüssig macht."
         }
       }
     },
     "finalCta": {
-      "title": "Bereit fuer etwas Echtes?",
-      "subtitle": "Partnerschaft ist zu wichtig, um sie dem Zufall zu ueberlassen. Beginnen Sie mit Selbsterkenntnis.",
-      "learnMore": "Unsere Geschichte lesen"
+      "title": "Bereit, PRAGMAtisch an die Liebe heranzugehen?",
+      "subtitle": "Die wichtigste Partnerschaft Ihres Lebens verdient mehr als Zufall. Sie verdient Methode.",
+      "learnMore": "Unsere Geschichte"
     }
   },
   "auth": {
@@ -589,8 +597,8 @@
   },
   "connectors": {
     "title": "Adaptive Konnektoren",
-    "subtitle": "Verbinden Sie externe Accounts, um Ihr Matching mit Persoenlichkeits-Insights aus Ihrem digitalen Fussabdruck zu verbessern.",
-    "settingsDescription": "Externe Accounts verbinden fuer adaptives Matching mit Persoenlichkeits-Insights.",
+    "subtitle": "Verbinden Sie externe Accounts, um Ihr Matching mit Persönlichkeits-Insights aus Ihrem digitalen Fußabdruck zu verbessern.",
+    "settingsDescription": "Externe Accounts verbinden für adaptives Matching mit Persönlichkeits-Insights.",
     "manage": "Konnektoren verwalten",
     "connect": "Verbinden",
     "disconnect": "Trennen",
@@ -601,8 +609,8 @@
     "lastAnalyzed": "Zuletzt analysiert",
     "showPrivacy": "Wie werden meine Daten verwendet?",
     "hidePrivacy": "Details ausblenden",
-    "fileTooLarge": "Datei ist zu gross. Maximal 50 MB.",
-    "gdprNotice": "Ihre Rohdaten werden nie gespeichert. Sie werden im Arbeitsspeicher von KI verarbeitet, um abstrakte Persoenlichkeitssignale zu extrahieren, und dann sofort verworfen. Nur abgeleitete Insights werden gespeichert. Sie koennen jede Verbindung jederzeit widerrufen, wobei alle zugehoerigen Daten dauerhaft geloescht werden. DSGVO Art. 6(1)(a), 7, 17, 25 konform.",
+    "fileTooLarge": "Datei ist zu groß. Maximal 50 MB.",
+    "gdprNotice": "Ihre Rohdaten werden nie gespeichert. Sie werden im Arbeitsspeicher von KI verarbeitet, um abstrakte Persönlichkeitssignale zu extrahieren, und dann sofort verworfen. Nur abgeleitete Insights werden gespeichert. Sie können jede Verbindung jederzeit widerrufen, wobei alle zugehörigen Daten dauerhaft gelöscht werden. DSGVO Art. 6(1)(a), 7, 17, 25 konform.",
     "status": {
       "pending": "Ausstehend",
       "connected": "Verbunden",
@@ -621,15 +629,15 @@
     },
     "privacyInfo": {
       "noRawData": "Ihre Rohdaten werden nie auf unseren Servern gespeichert.",
-      "onlySignals": "Nur abstrakte Persoenlichkeitssignale werden abgeleitet und gespeichert.",
-      "deleteAnytime": "Trennen Sie jederzeit, um alle abgeleiteten Daten dauerhaft zu loeschen."
+      "onlySignals": "Nur abstrakte Persönlichkeitssignale werden abgeleitet und gespeichert.",
+      "deleteAnytime": "Trennen Sie jederzeit, um alle abgeleiteten Daten dauerhaft zu löschen."
     },
     "signalsExtracted": "Extrahierte Signale",
     "portrait": {
       "title": "Ihr Digitales Portrait",
-      "subtitle": "Adaptive Persoenlichkeits-Insights aus Ihren verbundenen Accounts.",
+      "subtitle": "Adaptive Persönlichkeits-Insights aus Ihren verbundenen Accounts.",
       "curiosity": "Neugier",
-      "openness": "Offenheit fuer Erfahrungen",
+      "openness": "Offenheit für Erfahrungen",
       "communicationStyle": "Kommunikationsstil",
       "contentDepth": "Inhaltstiefe",
       "socialEnergy": "Soziale Energie",
@@ -637,7 +645,7 @@
       "values": "Werte",
       "basedOn": "Basierend auf",
       "sources": "verbundenen Quellen",
-      "transparency": "Alle Daten gehoeren Ihnen. Jederzeit widerrufbar."
+      "transparency": "Alle Daten gehören Ihnen. Jederzeit widerrufbar."
     }
   },
   "about": {
@@ -646,62 +654,62 @@
       "label": "Ursprung",
       "title": "Warum wir PRAGMA gebaut haben.",
       "p1": "Wir haben es um uns herum beobachtet. In unseren Familien. Bei unseren engsten Freunden. Brillante, nachdenkliche Menschen, die Partnerschaften eingingen, die von Anfang an zum Scheitern verurteilt waren. Nicht weil ihnen Liebe fehlte, sondern weil sie nie die richtigen Fragen gestellt haben, bevor sie sich gebunden haben.",
-      "p2": "Wir leben im Zeitalter der Praezision. Wir recherchieren monatelang Autos. Wir vergleichen Handys Eigenschaft fuer Eigenschaft. Wir pruefen Wohnungen bis zum Wasserdruck. Wir lesen Bewertungen, analysieren Spezifikationen, kalkulieren Gesamtkosten.",
-      "p3": "Aber wenn es darum geht, den Menschen zu waehlen, mit dem wir unser Leben teilen? Da spielen wir. Wir swipen. Wir hoffen. Wir ueberlassen die folgenreichste Entscheidung unseres Lebens dem Zufall, der Chemie und ein paar kuratierten Fotos.",
-      "p4": "Die bestehenden Plattformen sind nicht darauf ausgelegt, das zu aendern. Ihr Geschaeftsmodell haengt davon ab, dass Sie Single bleiben. Jede erfolgreiche Beziehung ist ein verlorener Abonnent. Also optimieren sie fuer Verweildauer, nicht fuer Verbindung. Fuer Zeit auf der App, nicht fuer sinnvoll verbrachte Zeit.",
+      "p2": "Wir leben im Zeitalter der Präzision. Wir recherchieren monatelang Autos. Wir vergleichen Handys Eigenschaft für Eigenschaft. Wir prüfen Wohnungen bis zum Wasserdruck. Wir lesen Bewertungen, analysieren Spezifikationen, kalkulieren Gesamtkosten.",
+      "p3": "Aber wenn es darum geht, den Menschen zu wählen, mit dem wir unser Leben teilen? Da spielen wir. Wir swipen. Wir hoffen. Wir überlassen die folgenreichste Entscheidung unseres Lebens dem Zufall, der Chemie und ein paar kuratierten Fotos.",
+      "p4": "Die bestehenden Plattformen sind nicht darauf ausgelegt, das zu ändern. Ihr Geschäftsmodell hängt davon ab, dass Sie Single bleiben. Jede erfolgreiche Beziehung ist ein verlorener Abonnent. Also optimieren sie für Verweildauer, nicht für Verbindung. Für Zeit auf der App, nicht für sinnvoll verbrachte Zeit.",
       "quote": "Nichts im Leben wird so sorglos verglichen wie der Mensch, mit dem man eine Zukunft aufbauen will.",
-      "p5": "PRAGMA entstand aus der Ueberzeugung, dass Partnerschaft dieselbe Sorgfalt verdient, die wir auf jede andere bedeutende Entscheidung anwenden. Keine kalte Berechnung, sondern strukturierte Selbstkenntnis: Wer bin ich wirklich? Was brauche ich? Was kann ich bieten? Wo sind meine unverhandelbaren Grenzen?",
+      "p5": "PRAGMA entstand aus der Überzeugung, dass Partnerschaft dieselbe Sorgfalt verdient, die wir auf jede andere bedeutende Entscheidung anwenden. Keine kalte Berechnung, sondern strukturierte Selbstkenntnis: Wer bin ich wirklich? Was brauche ich? Was kann ich bieten? Wo sind meine unverhandelbaren Grenzen?",
       "p6": "Der Name sagt alles. Pragmatisch. Durchdacht. Bewusst. Denn Liebe verdient mehr als einen Algorithmus, der darauf ausgelegt ist, Sie am Swipen zu halten."
     },
     "problem": {
       "label": "Die Branche",
       "title": "Eine kaputte Branche.",
-      "subtitle": "Jede grosse Dating-Plattform teilt dasselbe Trustpilot-Rating: katastrophal. Dieselben Beschwerden, quer durch alle Anbieter, Jahr fuer Jahr. Das sind keine Einzelfaelle. Das sind Funktionen eines Systems, das gegen seine Nutzer designt wurde.",
-      "source": "Quelle: Trustpilot-Bewertungen, April 2026. Tinder 1.2/5, Bumble 1.3/5, Hinge 1.2/5, OkCupid 1.2/5, Parship 2.1/5, ElitePartner 2.0/5.",
+      "subtitle": "Jede große Dating-Plattform teilt dasselbe Trustpilot-Rating: katastrophal. Dieselben Beschwerden, quer durch alle Anbieter, Jahr für Jahr. Das sind keine Einzelfälle. Das sind Funktionen eines Systems, das gegen seine Nutzer designt wurde.",
+      "source": "Quelle: Trustpilot Gesamtbewertungen, April 2026. Basierend auf sechs führenden Plattformen aller großen Kategorien.",
       "failures": {
         "fakeProfiles": {
           "title": "Fake-Profile",
-          "description": "80-99% Fake-Profile gemeldet. Plattformen tolerieren sie, um Nutzerzahlen aufzublaehen."
+          "description": "80-99% Fake-Profile gemeldet. Plattformen tolerieren sie, um Nutzerzahlen aufzublähen."
         },
         "payToPlay": {
           "title": "Pay-to-Play-Fallen",
-          "description": "Verschwommene Likes, kuenstliche Verknappung, absichtlich herbeiigefuehrte Versehenskauefe."
+          "description": "Verschwommene Likes, künstliche Verknappung, absichtlich herbeigeführte Versehenskäufe."
         },
         "noBans": {
-          "title": "Willkuerliche Sperrungen",
-          "description": "Konten ohne Erklaerung deaktiviert, oft direkt nach Zahlung. Keine Erstattung."
+          "title": "Willkürliche Sperrungen",
+          "description": "Konten ohne Erklärung deaktiviert, oft direkt nach Zahlung. Keine Erstattung."
         },
         "noSupport": {
           "title": "Null Support",
-          "description": "Nur automatische Antworten. E-Mails wochenlang ignoriert. Kein menschlicher Kontakt moeglich."
+          "description": "Nur automatische Antworten. E-Mails wochenlang ignoriert. Kein menschlicher Kontakt möglich."
         },
         "algorithmManipulation": {
           "title": "Algorithmus-Manipulation",
-          "description": "Likes ueberfluten, wenn Abos auslaufen. Premium-Nutzer erhalten weniger Sichtbarkeit. Shadow-Bans."
+          "description": "Likes überfluten, wenn Abos auslaufen. Premium-Nutzer erhalten weniger Sichtbarkeit. Shadow-Bans."
         },
         "subscriptionTraps": {
           "title": "Abo-Fallen",
-          "description": "Automatische Verlaengerung ohne Warnung. 2-Jahres-Vertraege im Kleingedruckten. Kuendigung nahezu unmoeglich."
+          "description": "Automatische Verlängerung ohne Warnung. 2-Jahres-Verträge im Kleingedruckten. Kündigung nahezu unmöglich."
         },
         "safetyFailures": {
-          "title": "Sicherheitsmaengel",
-          "description": "Keine sinnvolle Verifizierung. Betrueger sammeln persoenliche Daten. Keine Rechenschaftspflicht."
+          "title": "Sicherheitsmängel",
+          "description": "Keine sinnvolle Verifizierung. Betrüger sammeln persönliche Daten. Keine Rechenschaftspflicht."
         },
         "noRealMatching": {
           "title": "Kein echtes Matching",
-          "description": "Praeferenzen fuer Alter, Entfernung und Lebensstil werden systematisch ignoriert."
+          "description": "Präferenzen für Alter, Entfernung und Lebensstil werden systematisch ignoriert."
         },
         "ghosting": {
           "title": "Ghosting normalisiert",
-          "description": "Inaktive Profile werden als aktiv angezeigt. Matches antworten nie. Muehe bleibt unbelohnt."
+          "description": "Inaktive Profile werden als aktiv angezeigt. Matches antworten nie. Mühe bleibt unbelohnt."
         },
         "engagementOverConnection": {
           "title": "Engagement statt Verbindung",
-          "description": "Das Geschaeftsmodell erfordert, dass Nutzer Single bleiben. Erfolgreiche Beziehungen bedeuten Umsatzverlust."
+          "description": "Das Geschäftsmodell erfordert, dass Nutzer Single bleiben. Erfolgreiche Beziehungen bedeuten Umsatzverlust."
         },
         "superficiality": {
           "title": "Sekundenentscheidungen",
-          "description": "Swipe-basierte Entscheidungen in Millisekunden. Kein Raum fuer Persoenlichkeit oder Tiefe."
+          "description": "Swipe-basierte Entscheidungen in Millisekunden. Kein Raum für Persönlichkeit oder Tiefe."
         },
         "dataExploitation": {
           "title": "Daten-Ausbeutung",
@@ -719,34 +727,34 @@
         },
         "depth": {
           "title": "Strukturierte Selbstentdeckung",
-          "description": "Fuenf progressive Ebenen der Selbstbeschreibung, von Kernwerten bis zu Verhaltensnuancen. Wissenschaftlich fundierte Persoenlichkeitserfassung, kein Fotowettbewerb."
+          "description": "Fünf progressive Ebenen der Selbstbeschreibung, von Kernwerten bis zu Verhaltensnuancen. Wissenschaftlich fundierte Persönlichkeitserfassung, kein Fotowettbewerb."
         },
         "transparency": {
           "title": "Transparentes Matching",
-          "description": "Sie sehen genau, warum jemand vorgeschlagen wurde und wie Ihr Kompatibilitaets-Score berechnet wurde. Keine Black-Box-Algorithmen. Keine Manipulation."
+          "description": "Sie sehen genau, warum jemand vorgeschlagen wurde und wie Ihr Kompatibilitäts-Score berechnet wurde. Keine Black-Box-Algorithmen. Keine Manipulation."
         },
         "fairness": {
           "title": "Faire Preise",
-          "description": "Monatliche Abrechnung. Ein-Klick-Kuendigung. Keine Auto-Renewal-Fallen. Keine Pay-to-See-Likes-Modelle. Sie bekommen, wofuer Sie bezahlen."
+          "description": "Monatliche Abrechnung. Ein-Klick-Kündigung. Keine Auto-Renewal-Fallen. Keine Pay-to-See-Likes-Modelle. Sie bekommen, wofür Sie bezahlen."
         },
         "privacy": {
           "title": "Privacy by Design",
-          "description": "DSGVO-first-Architektur. Minimale Datenerhebung. Volle Transparenz ueber gespeicherte Daten und deren Zweck. Ihre Daten gehoeren Ihnen."
+          "description": "DSGVO-first-Architektur. Minimale Datenerhebung. Volle Transparenz über gespeicherte Daten und deren Zweck. Ihre Daten gehören Ihnen."
         },
         "success": {
-          "title": "Gebaut zum Geloeschtwerden",
-          "description": "Unsere Erfolgskennzahl: Menschen verlassen die Plattform in einer gluecklichen Beziehung. Anders als andere meinen wir das ernst. Wenn PRAGMA funktioniert, brauchen Sie PRAGMA nicht mehr."
+          "title": "Gebaut, um gelöscht zu werden",
+          "description": "Unsere Erfolgskennzahl: Menschen verlassen die Plattform in einer glücklichen Beziehung. Anders als andere meinen wir das ernst. Wenn PRAGMA funktioniert, brauchen Sie PRAGMA nicht mehr."
         }
       }
     },
     "name": {
       "label": "Der Name",
       "title": "PRAGMA.",
-      "description": "In der antiken griechischen Philosophie bezeichnet Pragma die praktische, rationale Form der Liebe. Nicht blinde Leidenschaft, sondern bewusste Partnerschaft. Eine Entscheidung mit offenen Augen. PRAGMA ist die Ueberzeugung, dass dauerhafte Beziehungen nicht durch Zufall gefunden werden. Sie werden durch Selbstkenntnis, Ehrlichkeit und den Mut aufgebaut, die richtigen Fragen zu stellen, bevor man Ja sagt."
+      "description": "In der antiken griechischen Philosophie bezeichnet Pragma die praktische, rationale Form der Liebe. Nicht blinde Leidenschaft, sondern bewusste Partnerschaft. Eine Entscheidung mit offenen Augen. PRAGMA ist die Überzeugung, dass dauerhafte Beziehungen nicht durch Zufall gefunden werden. Sie werden durch Selbstkenntnis, Ehrlichkeit und den Mut aufgebaut, die richtigen Fragen zu stellen, bevor man Ja sagt."
     },
     "cta": {
-      "title": "Bereit fuer etwas Echtes?",
-      "subtitle": "Partnerschaft ist zu wichtig, um sie dem Zufall zu ueberlassen. Beginnen Sie damit, sich selbst zu kennen."
+      "title": "Bereit, PRAGMAtisch an die Liebe heranzugehen?",
+      "subtitle": "Die wichtigste Partnerschaft Ihres Lebens verdient mehr als Zufall. Sie verdient Methode."
     }
   }
 }

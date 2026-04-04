@@ -52,7 +52,15 @@
       "label": "The Reality",
       "title": "Every major dating platform. The same verdict.",
       "subtitle": "Trustpilot ratings across the industry paint a consistent picture. These are not outliers.",
-      "source": "Source: Trustpilot, April 2026"
+      "source": "Source: Trustpilot, April 2026",
+      "categories": {
+        "swipe": "Swipe-Based",
+        "social": "Social-First",
+        "algorithm": "Algorithm-Driven",
+        "legacy": "Legacy Platforms",
+        "premium": "Premium Segment",
+        "exclusive": "Exclusive Clubs"
+      }
     },
     "process": {
       "label": "How It Works",
