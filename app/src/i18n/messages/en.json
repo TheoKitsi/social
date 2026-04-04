@@ -437,6 +437,7 @@
       "priceAnnual": "39.99"
     },
     "choosePlan": "Choose Plan",
+    "manageBilling": "Manage Billing",
     "currentPlanBadge": "Current",
     "featureValues": {
       "essentialsMatches": "5",

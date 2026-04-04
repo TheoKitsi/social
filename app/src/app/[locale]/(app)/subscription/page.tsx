@@ -1,16 +1,61 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Card, CardContent, Button } from "@/components/ui";
+import { createClient } from "@/lib/supabase/client";
 
 type PlanKey = "essentials" | "premium" | "elite";
 
 export default function SubscriptionPage() {
   const t = useTranslations();
   const locale = useLocale();
-  const [currentPlan] = useState<PlanKey | null>(null);
+  const [currentPlan, setCurrentPlan] = useState<PlanKey | null>(null);
+  const [subStatus, setSubStatus] = useState<string | null>(null);
   const [billing, setBilling] = useState<"monthly" | "annually">("monthly");
+  const [portalLoading, setPortalLoading] = useState(false);
+
+  useEffect(() => {
+    async function loadSubscription() {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { data: sub } = await supabase
+        .from("user_subscriptions")
+        .select("*, plans(tier)")
+        .eq("user_id", user.id)
+        .single();
+
+      if (sub) {
+        setCurrentPlan((sub.plans as { tier: PlanKey })?.tier || null);
+        setSubStatus(sub.status);
+        setBilling(sub.billing_interval || "monthly");
+      }
+    }
+    loadSubscription();
+  }, []);
+
+  async function handleManageBilling() {
+    setPortalLoading(true);
+    try {
+      const res = await fetch("/api/payments/portal", { method: "POST" });
+      const data = await res.json();
+      if (data.url) window.location.href = data.url;
+    } finally {
+      setPortalLoading(false);
+    }
+  }
+
+  async function handleSelectPlan(tier: string) {
+    const res = await fetch("/api/payments/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tier, billing }),
+    });
+    const data = await res.json();
+    if (data.url) window.location.href = data.url;
+  }
 
   function formatPrice(value: string) {
     const num = parseFloat(value);
@@ -122,6 +167,7 @@ export default function SubscriptionPage() {
                   variant={isCurrent ? "outline" : plan.popular ? "primary" : "outline"}
                   className="w-full"
                   disabled={isCurrent}
+                  onClick={() => !isCurrent && handleSelectPlan(plan.key)}
                 >
                   {isCurrent ? t("subscription.currentPlanBadge") : t("subscription.choosePlan")}
                 </Button>
@@ -153,6 +199,19 @@ export default function SubscriptionPage() {
           );
         })}
       </div>
+
+      {/* Manage Billing */}
+      {currentPlan && (
+        <div className="text-center">
+          <Button
+            variant="outline"
+            onClick={handleManageBilling}
+            disabled={portalLoading}
+          >
+            {portalLoading ? "..." : t("subscription.manageBilling")}
+          </Button>
+        </div>
+      )}
 
       {/* Success Commission */}
       <Card variant="outlined" className="border-primary/20">

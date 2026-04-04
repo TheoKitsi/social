@@ -1,10 +1,13 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Button, Input } from "@/components/ui";
 import { createClient } from "@/lib/supabase/client";
+
+const RESEND_COOLDOWN = 60; // seconds
+const OTP_EXPIRY = 300; // 5 minutes
 
 export default function VerifyPhonePage() {
   const t = useTranslations("auth");
@@ -14,7 +17,25 @@ export default function VerifyPhonePage() {
   const [step, setStep] = useState<"phone" | "code">("phone");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [resendCooldown, setResendCooldown] = useState(0);
+  const [otpExpiry, setOtpExpiry] = useState(0);
+  const [attempts, setAttempts] = useState(0);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  // Countdown timers
+  useEffect(() => {
+    if (resendCooldown <= 0 && otpExpiry <= 0) return;
+    const id = setInterval(() => {
+      setResendCooldown((v) => Math.max(0, v - 1));
+      setOtpExpiry((v) => Math.max(0, v - 1));
+    }, 1000);
+    return () => clearInterval(id);
+  }, [resendCooldown > 0 || otpExpiry > 0]);
+
+  const startTimers = useCallback(() => {
+    setResendCooldown(RESEND_COOLDOWN);
+    setOtpExpiry(OTP_EXPIRY);
+  }, []);
 
   async function handleSendCode(e: React.FormEvent) {
     e.preventDefault();
@@ -39,6 +60,7 @@ export default function VerifyPhonePage() {
       return;
     }
 
+    startTimers();
     setStep("code");
   }
 
@@ -63,6 +85,14 @@ export default function VerifyPhonePage() {
 
     if (verifyError) {
       setLoading(false);
+      setAttempts((a) => a + 1);
+      if (attempts >= 4) {
+        setError("Too many failed attempts. Please request a new code.");
+        setStep("phone");
+        setCode(["", "", "", "", "", ""]);
+        setAttempts(0);
+        return;
+      }
       setError(verifyError.message);
       return;
     }
@@ -114,6 +144,7 @@ export default function VerifyPhonePage() {
   }
 
   async function handleResend() {
+    if (resendCooldown > 0) return;
     setError("");
     setLoading(true);
     const supabase = createClient();
@@ -125,6 +156,10 @@ export default function VerifyPhonePage() {
     setLoading(false);
     if (otpError) {
       setError(otpError.message);
+    } else {
+      startTimers();
+      setAttempts(0);
+      setCode(["", "", "", "", "", ""]);
     }
   }
 
@@ -215,12 +250,25 @@ export default function VerifyPhonePage() {
             {t("verifySms")}
           </Button>
 
+          {otpExpiry > 0 && (
+            <p className="text-center text-xs text-on-surface-muted">
+              Code expires in {Math.floor(otpExpiry / 60)}:{String(otpExpiry % 60).padStart(2, "0")}
+            </p>
+          )}
+
           <button
             type="button"
             onClick={handleResend}
-            className="w-full text-sm text-primary hover:underline"
+            disabled={resendCooldown > 0}
+            className={`w-full text-sm ${
+              resendCooldown > 0
+                ? "text-on-surface-muted cursor-not-allowed"
+                : "text-primary hover:underline"
+            }`}
           >
-            {t("resendCode")}
+            {resendCooldown > 0
+              ? `${t("resendCode")} (${resendCooldown}s)`
+              : t("resendCode")}
           </button>
         </form>
       )}
