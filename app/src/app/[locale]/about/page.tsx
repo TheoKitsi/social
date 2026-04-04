@@ -186,6 +186,9 @@ export default function AboutPage() {
             <Link href="/legal/datenschutz" className="hover:text-primary transition-colors">
               {t("legal.privacy.title")}
             </Link>
+            <Link href="/legal/agb" className="hover:text-primary transition-colors">
+              {t("legal.terms.title")}
+            </Link>
           </nav>
         </div>
       </footer>
