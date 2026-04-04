@@ -586,5 +586,114 @@
       "sources": "verbundenen Quellen",
       "transparency": "Alle Daten gehoeren Ihnen. Jederzeit widerrufbar."
     }
+  },
+  "about": {
+    "link": "Warum PRAGMA",
+    "origin": {
+      "label": "Ursprung",
+      "title": "Warum wir PRAGMA gebaut haben.",
+      "p1": "Wir haben es um uns herum beobachtet. In unseren Familien. Bei unseren engsten Freunden. Brillante, nachdenkliche Menschen, die Partnerschaften eingingen, die von Anfang an zum Scheitern verurteilt waren. Nicht weil ihnen Liebe fehlte, sondern weil sie nie die richtigen Fragen gestellt haben, bevor sie sich gebunden haben.",
+      "p2": "Wir leben im Zeitalter der Praezision. Wir recherchieren monatelang Autos. Wir vergleichen Handys Eigenschaft fuer Eigenschaft. Wir pruefen Wohnungen bis zum Wasserdruck. Wir lesen Bewertungen, analysieren Spezifikationen, kalkulieren Gesamtkosten.",
+      "p3": "Aber wenn es darum geht, den Menschen zu waehlen, mit dem wir unser Leben teilen? Da spielen wir. Wir swipen. Wir hoffen. Wir ueberlassen die folgenreichste Entscheidung unseres Lebens dem Zufall, der Chemie und ein paar kuratierten Fotos.",
+      "p4": "Die bestehenden Plattformen sind nicht darauf ausgelegt, das zu aendern. Ihr Geschaeftsmodell haengt davon ab, dass Sie Single bleiben. Jede erfolgreiche Beziehung ist ein verlorener Abonnent. Also optimieren sie fuer Verweildauer, nicht fuer Verbindung. Fuer Zeit auf der App, nicht fuer sinnvoll verbrachte Zeit.",
+      "quote": "Nichts im Leben wird so sorglos verglichen wie der Mensch, mit dem man eine Zukunft aufbauen will.",
+      "p5": "PRAGMA entstand aus der Ueberzeugung, dass Partnerschaft dieselbe Sorgfalt verdient, die wir auf jede andere bedeutende Entscheidung anwenden. Keine kalte Berechnung, sondern strukturierte Selbstkenntnis: Wer bin ich wirklich? Was brauche ich? Was kann ich bieten? Wo sind meine unverhandelbaren Grenzen?",
+      "p6": "Der Name sagt alles. Pragmatisch. Durchdacht. Bewusst. Denn Liebe verdient mehr als einen Algorithmus, der darauf ausgelegt ist, Sie am Swipen zu halten."
+    },
+    "problem": {
+      "label": "Die Branche",
+      "title": "Eine kaputte Branche.",
+      "subtitle": "Jede grosse Dating-Plattform teilt dasselbe Trustpilot-Rating: katastrophal. Dieselben Beschwerden, quer durch alle Anbieter, Jahr fuer Jahr. Das sind keine Einzelfaelle. Das sind Funktionen eines Systems, das gegen seine Nutzer designt wurde.",
+      "source": "Quelle: Trustpilot-Bewertungen, April 2026. Tinder 1.2/5, Bumble 1.3/5, Hinge 1.2/5, OkCupid 1.2/5, Parship 2.1/5, ElitePartner 2.0/5.",
+      "failures": {
+        "fakeProfiles": {
+          "title": "Fake-Profile",
+          "description": "80-99% Fake-Profile gemeldet. Plattformen tolerieren sie, um Nutzerzahlen aufzublaehen."
+        },
+        "payToPlay": {
+          "title": "Pay-to-Play-Fallen",
+          "description": "Verschwommene Likes, kuenstliche Verknappung, absichtlich herbeiigefuehrte Versehenskauefe."
+        },
+        "noBans": {
+          "title": "Willkuerliche Sperrungen",
+          "description": "Konten ohne Erklaerung deaktiviert, oft direkt nach Zahlung. Keine Erstattung."
+        },
+        "noSupport": {
+          "title": "Null Support",
+          "description": "Nur automatische Antworten. E-Mails wochenlang ignoriert. Kein menschlicher Kontakt moeglich."
+        },
+        "algorithmManipulation": {
+          "title": "Algorithmus-Manipulation",
+          "description": "Likes ueberfluten, wenn Abos auslaufen. Premium-Nutzer erhalten weniger Sichtbarkeit. Shadow-Bans."
+        },
+        "subscriptionTraps": {
+          "title": "Abo-Fallen",
+          "description": "Automatische Verlaengerung ohne Warnung. 2-Jahres-Vertraege im Kleingedruckten. Kuendigung nahezu unmoeglich."
+        },
+        "safetyFailures": {
+          "title": "Sicherheitsmaengel",
+          "description": "Keine sinnvolle Verifizierung. Betrueger sammeln persoenliche Daten. Keine Rechenschaftspflicht."
+        },
+        "noRealMatching": {
+          "title": "Kein echtes Matching",
+          "description": "Praeferenzen fuer Alter, Entfernung und Lebensstil werden systematisch ignoriert."
+        },
+        "ghosting": {
+          "title": "Ghosting normalisiert",
+          "description": "Inaktive Profile werden als aktiv angezeigt. Matches antworten nie. Muehe bleibt unbelohnt."
+        },
+        "engagementOverConnection": {
+          "title": "Engagement statt Verbindung",
+          "description": "Das Geschaeftsmodell erfordert, dass Nutzer Single bleiben. Erfolgreiche Beziehungen bedeuten Umsatzverlust."
+        },
+        "superficiality": {
+          "title": "Sekundenentscheidungen",
+          "description": "Swipe-basierte Entscheidungen in Millisekunden. Kein Raum fuer Persoenlichkeit oder Tiefe."
+        },
+        "dataExploitation": {
+          "title": "Daten-Ausbeutung",
+          "description": "Telefonnummern abgegriffen. Fotos ohne Einwilligung verwendet. Erzwungene Datenerhebung."
+        }
+      }
+    },
+    "approach": {
+      "label": "Unser Ansatz",
+      "title": "Was PRAGMA anders macht.",
+      "principles": {
+        "verification": {
+          "title": "Mehrstufige Verifizierung",
+          "description": "Jedes Profil wird durch SMS, E-Mail und Fotoanalyse verifiziert. Keine Bots. Keine Fakes. Echte Menschen mit ernsthafter Absicht."
+        },
+        "depth": {
+          "title": "Strukturierte Selbstentdeckung",
+          "description": "Fuenf progressive Ebenen der Selbstbeschreibung, von Kernwerten bis zu Verhaltensnuancen. Wissenschaftlich fundierte Persoenlichkeitserfassung, kein Fotowettbewerb."
+        },
+        "transparency": {
+          "title": "Transparentes Matching",
+          "description": "Sie sehen genau, warum jemand vorgeschlagen wurde und wie Ihr Kompatibilitaets-Score berechnet wurde. Keine Black-Box-Algorithmen. Keine Manipulation."
+        },
+        "fairness": {
+          "title": "Faire Preise",
+          "description": "Monatliche Abrechnung. Ein-Klick-Kuendigung. Keine Auto-Renewal-Fallen. Keine Pay-to-See-Likes-Modelle. Sie bekommen, wofuer Sie bezahlen."
+        },
+        "privacy": {
+          "title": "Privacy by Design",
+          "description": "DSGVO-first-Architektur. Minimale Datenerhebung. Volle Transparenz ueber gespeicherte Daten und deren Zweck. Ihre Daten gehoeren Ihnen."
+        },
+        "success": {
+          "title": "Gebaut zum Geloeschtwerden",
+          "description": "Unsere Erfolgskennzahl: Menschen verlassen die Plattform in einer gluecklichen Beziehung. Anders als andere meinen wir das ernst. Wenn PRAGMA funktioniert, brauchen Sie PRAGMA nicht mehr."
+        }
+      }
+    },
+    "name": {
+      "label": "Der Name",
+      "title": "PRAGMA.",
+      "description": "In der antiken griechischen Philosophie bezeichnet Pragma die praktische, rationale Form der Liebe. Nicht blinde Leidenschaft, sondern bewusste Partnerschaft. Eine Entscheidung mit offenen Augen. PRAGMA ist die Ueberzeugung, dass dauerhafte Beziehungen nicht durch Zufall gefunden werden. Sie werden durch Selbstkenntnis, Ehrlichkeit und den Mut aufgebaut, die richtigen Fragen zu stellen, bevor man Ja sagt."
+    },
+    "cta": {
+      "title": "Bereit fuer etwas Echtes?",
+      "subtitle": "Partnerschaft ist zu wichtig, um sie dem Zufall zu ueberlassen. Beginnen Sie damit, sich selbst zu kennen."
+    }
   }
 }

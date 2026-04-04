@@ -598,5 +598,60 @@
       "sources": "connected sources",
       "transparency": "All data is yours. Revoke anytime."
     }
+  },
+  "about": {
+    "link": "Why PRAGMA",
+    "origin": {
+      "label": "Origin Story",
+      "title": "Why we built PRAGMA.",
+      "p1": "We watched it happen around us. In our families. Among our closest friends. Brilliant, thoughtful people entering partnerships that were doomed from the start. Not because they lacked love, but because they never asked the right questions before committing.",
+      "p2": "We live in an age of precision. We research cars for months. We compare phones feature by feature. We inspect apartments down to the water pressure. We read reviews, analyze specs, calculate total cost of ownership.",
+      "p3": "But when it comes to choosing the person we share our life with, we gamble. We swipe. We hope. We leave the most consequential decision of our lives to chance, chemistry, and a few curated photos.",
+      "p4": "The existing platforms are not designed to change this. Their business model depends on you staying single. Every successful relationship is a lost subscriber. So they optimize for engagement, not connection. For time spent, not time well spent.",
+      "quote": "Nothing in life is compared as carelessly as the person you choose to build a future with.",
+      "p5": "PRAGMA was born from the belief that partnership deserves the same rigor we apply to every other significant decision. Not cold calculation, but structured self-knowledge: Who am I, really? What do I need? What can I offer? Where are my non-negotiables?",
+      "p6": "The name says it all. Pragmatic. Measured. Intentional. Because love deserves better than an algorithm designed to keep you swiping."
+    },
+    "problem": {
+      "label": "The Industry",
+      "title": "A broken industry.",
+      "subtitle": "Every major dating platform shares the same Trustpilot rating: catastrophic. The same complaints, across all of them, year after year. These are not isolated incidents. They are features of a system designed against its users.",
+      "source": "Source: Trustpilot reviews, April 2026. Tinder 1.2/5, Bumble 1.3/5, Hinge 1.2/5, OkCupid 1.2/5, Parship 2.1/5, ElitePartner 2.0/5.",
+      "failures": {
+        "fakeProfiles": { "title": "Fake Profiles", "description": "80-99% fake profiles reported. Platforms tolerate them to inflate user numbers." },
+        "payToPlay": { "title": "Pay-to-Play Traps", "description": "Blurred likes, artificial scarcity, accidental purchases engineered by design." },
+        "noBans": { "title": "Arbitrary Bans", "description": "Accounts disabled without explanation, often immediately after payment. No refunds." },
+        "noSupport": { "title": "Zero Support", "description": "Automated responses only. Emails ignored for weeks. No human contact available." },
+        "algorithmManipulation": { "title": "Algorithm Manipulation", "description": "Likes flood in when subscriptions expire. Premium users get less visibility. Shadow bans." },
+        "subscriptionTraps": { "title": "Subscription Traps", "description": "Auto-renewal without warning. 2-year contracts in the fine print. Cancellation near-impossible." },
+        "safetyFailures": { "title": "Safety Failures", "description": "No meaningful verification. Scammers collect personal data. No accountability." },
+        "noRealMatching": { "title": "No Real Matching", "description": "Preferences for age, distance, lifestyle are systematically ignored." },
+        "ghosting": { "title": "Ghosting Normalized", "description": "Inactive profiles shown as active. Matches never respond. Effort goes unrewarded." },
+        "engagementOverConnection": { "title": "Engagement over Connection", "description": "Business model requires users to stay single. Successful relationships mean lost revenue." },
+        "superficiality": { "title": "Snap Judgments", "description": "Swipe-based decisions in milliseconds. No space for personality or depth." },
+        "dataExploitation": { "title": "Data Exploitation", "description": "Phone numbers harvested. Photos used without consent. Forced data collection." }
+      }
+    },
+    "approach": {
+      "label": "Our Approach",
+      "title": "What PRAGMA does differently.",
+      "principles": {
+        "verification": { "title": "Multi-Step Verification", "description": "Every profile is verified through SMS, email, and photo analysis. No bots. No fakes. Real people with serious intent." },
+        "depth": { "title": "Structured Self-Discovery", "description": "Five progressive levels of self-description, from core values to behavioral nuances. Scientifically grounded personality assessment, not a photo contest." },
+        "transparency": { "title": "Transparent Matching", "description": "You see exactly why someone was suggested and how your compatibility score was calculated. No black-box algorithms. No manipulation." },
+        "fairness": { "title": "Fair Pricing", "description": "Monthly billing. One-click cancellation. No auto-renewal traps. No pay-to-see-likes schemes. What you pay for is what you get." },
+        "privacy": { "title": "Privacy by Design", "description": "GDPR-first architecture. Minimal data collection. Full transparency on what is stored and why. Your data belongs to you." },
+        "success": { "title": "Designed for Deletion", "description": "Our success metric is people leaving the platform in a happy relationship. Unlike others, we mean it. When PRAGMA works, you do not need PRAGMA anymore." }
+      }
+    },
+    "name": {
+      "label": "The Name",
+      "title": "PRAGMA.",
+      "description": "In ancient Greek philosophy, pragma refers to the practical, rational form of love. Not reckless passion, but deliberate partnership. A choice made with open eyes. PRAGMA is the conviction that lasting relationships are not found by chance. They are built through self-knowledge, honesty, and the courage to ask the right questions before saying yes."
+    },
+    "cta": {
+      "title": "Ready for something real?",
+      "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself."
+    }
   }
 }

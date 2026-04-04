@@ -25,6 +25,9 @@ export default function LandingPage() {
           </span>
         </div>
         <nav className="flex items-center gap-3">
+          <Link href="/about" className="text-sm text-on-surface-muted hover:text-primary transition-colors">
+            {t("about.link")}
+          </Link>
           <Link href="/login">
             <Button variant="ghost" size="sm">
               {t("landing.login")}
@@ -92,6 +95,9 @@ export default function LandingPage() {
             &copy; {new Date().getFullYear()} PRAGMA &mdash; {t("common.tagline")}
           </p>
           <nav className="flex items-center gap-4">
+            <Link href="/about" className="hover:text-primary transition-colors">
+              {t("about.link")}
+            </Link>
             <Link href="/legal/impressum" className="hover:text-primary transition-colors">
               {t("legal.impressum.title")}
             </Link>
