@@ -677,7 +677,7 @@
       "label": "The Industry",
       "title": "A broken industry.",
       "subtitle": "Every major dating platform shares the same Trustpilot rating: catastrophic. The same complaints, across all of them, year after year. These are not isolated incidents. They are features of a system designed against its users.",
-      "source": "Source: Trustpilot reviews, April 2026. Tinder 1.2/5, Bumble 1.3/5, Hinge 1.2/5, OkCupid 1.2/5, Parship 2.1/5, ElitePartner 2.0/5.",
+      "source": "Source: Trustpilot aggregate ratings, April 2026. Based on six leading platforms across all major categories.",
       "failures": {
         "fakeProfiles": {
           "title": "Fake Profiles",
