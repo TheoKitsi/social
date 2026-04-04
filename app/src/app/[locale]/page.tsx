@@ -236,6 +236,9 @@ export default function LandingPage() {
             <Link href="/about" className="hover:text-primary transition-colors">
               {t("about.link")}
             </Link>
+            <Link href="/support" className="hover:text-primary transition-colors">
+              {t("support.title")}
+            </Link>
             <Link href="/legal/impressum" className="hover:text-primary transition-colors">
               {t("legal.impressum.title")}
             </Link>

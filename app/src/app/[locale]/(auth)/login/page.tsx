@@ -6,10 +6,13 @@ import { Link } from "@/i18n/navigation";
 import { useRouter } from "@/i18n/navigation";
 import { Button, Input } from "@/components/ui";
 import { createClient } from "@/lib/supabase/client";
+import { SocialLoginButtons } from "@/components/social-login-buttons";
+import { useFlags } from "@/components/flags-provider";
 
 export default function LoginPage() {
   const t = useTranslations("auth");
   const router = useRouter();
+  const { socialLogin } = useFlags();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -26,12 +29,14 @@ export default function LoginPage() {
 
     // Demo mode: accept test credentials without Supabase
     if (isDemoMode) {
-      if (email === "test@pragma.app" && password === "pragma2026") {
+      const demoEmail = process.env.NEXT_PUBLIC_DEMO_EMAIL || "test@pragma.app";
+      const demoPass = process.env.NEXT_PUBLIC_DEMO_PASSWORD || "pragma2026";
+      if (email === demoEmail && password === demoPass) {
         router.push("/onboarding");
         return;
       }
       setLoading(false);
-      setError("Invalid demo credentials. Use test@pragma.app / pragma2026");
+      setError(t("invalidCredentials"));
       return;
     }
 
@@ -95,6 +100,8 @@ export default function LoginPage() {
             {t("login")}
           </Button>
         </form>
+
+        {!isDemoMode && socialLogin && <SocialLoginButtons />}
 
         <p className="text-center text-sm text-on-surface-muted">
           {t("noAccount")}{" "}

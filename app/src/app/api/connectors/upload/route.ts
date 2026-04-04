@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB
 
@@ -13,6 +14,9 @@ const ALLOWED_TYPES: Record<string, string[]> = {
 };
 
 export async function POST(request: NextRequest) {
+  const limited = applyRateLimit(request, "connectors-upload", { limit: 5, windowMs: 60_000 });
+  if (limited) return limited;
+
   const supabase = await createClient();
   const {
     data: { user },

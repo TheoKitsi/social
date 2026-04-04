@@ -6,10 +6,13 @@ import { useSearchParams } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { Button, Input } from "@/components/ui";
 import { createClient } from "@/lib/supabase/client";
+import { SocialLoginButtons } from "@/components/social-login-buttons";
+import { useFlags } from "@/components/flags-provider";
 
 export default function RegisterPage() {
   const t = useTranslations("auth");
   const locale = useLocale();
+  const { socialLogin } = useFlags();
   const searchParams = useSearchParams();
   const selectedPlan = searchParams.get("plan");
   const selectedBilling = searchParams.get("billing");
@@ -25,12 +28,12 @@ export default function RegisterPage() {
     setError("");
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError(t("passwordMismatch"));
       return;
     }
 
     if (password.length < 8) {
-      setError("Password must be at least 8 characters");
+      setError(t("passwordMinLength"));
       return;
     }
 
@@ -131,6 +134,8 @@ export default function RegisterPage() {
             {t("register")}
           </Button>
         </form>
+
+        {socialLogin && <SocialLoginButtons />}
 
         <p className="text-center text-sm text-on-surface-muted">
           {t("hasAccount")}{" "}

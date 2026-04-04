@@ -1,6 +1,8 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { sendEmail } from "@/lib/email";
+import { MatchMutualEmail, getMatchMutualSubject } from "@/lib/emails";
 
 interface ConsentResult {
   success: boolean;
@@ -74,6 +76,67 @@ export async function expressInterest(
       entity_id: reverse.id,
       metadata: { candidateId },
     });
+
+    // Send mutual match emails to both users (fire-and-forget)
+    (async () => {
+      try {
+        // Fetch both profiles + auth emails
+        const { data: profiles } = await supabase
+          .from("profiles")
+          .select("user_id, display_name")
+          .in("user_id", [user.id, candidateId]);
+
+        const myProfile = profiles?.find((p) => p.user_id === user.id);
+        const theirProfile = profiles?.find((p) => p.user_id === candidateId);
+
+        // Fetch match score
+        const { data: score } = await supabase
+          .from("matching_scores")
+          .select("total_score")
+          .or(
+            `and(user_a.eq.${user.id},user_b.eq.${candidateId}),and(user_a.eq.${candidateId},user_b.eq.${user.id})`
+          )
+          .single();
+
+        const matchScore = Math.round((score?.total_score || 0) * 100);
+        const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://pragma.app";
+
+        // Email to current user
+        if (user.email) {
+          await sendEmail({
+            to: user.email,
+            subject: getMatchMutualSubject(),
+            react: MatchMutualEmail({
+              displayName: myProfile?.display_name || "",
+              matchName: theirProfile?.display_name || "",
+              matchScore,
+              messagesUrl: `${baseUrl}/en/messages`,
+            }),
+            tags: [{ name: "type", value: "match_mutual" }],
+          });
+        }
+
+        // Email to candidate (fetch their auth email via service role)
+        const { createServiceClient } = await import("@/lib/supabase/service");
+        const serviceClient = createServiceClient();
+        const { data: candidateAuth } = await serviceClient.auth.admin.getUserById(candidateId);
+        if (candidateAuth?.user?.email) {
+          await sendEmail({
+            to: candidateAuth.user.email,
+            subject: getMatchMutualSubject(),
+            react: MatchMutualEmail({
+              displayName: theirProfile?.display_name || "",
+              matchName: myProfile?.display_name || "",
+              matchScore,
+              messagesUrl: `${baseUrl}/en/messages`,
+            }),
+            tags: [{ name: "type", value: "match_mutual" }],
+          });
+        }
+      } catch (err) {
+        console.error("[email] Mutual match email failed:", err);
+      }
+    })();
 
     return {
       success: true,

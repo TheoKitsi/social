@@ -16,7 +16,12 @@
     "required": "Pflichtfeld",
     "optional": "Optional",
     "error": "Etwas ist schiefgelaufen",
-    "retry": "Erneut versuchen"
+    "retry": "Erneut versuchen",
+    "notFound": "Seite nicht gefunden",
+    "notFoundDescription": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "goHome": "Zur Startseite",
+    "accessDenied": "Zugriff verweigert",
+    "accessDeniedDescription": "Sie haben keine Berechtigung, auf diese Seite zuzugreifen."
   },
   "landing": {
     "hero": "Partnerschaft, methodisch.",
@@ -113,6 +118,7 @@
     "forgotPassword": "Passwort vergessen?",
     "noAccount": "Noch kein Konto?",
     "hasAccount": "Bereits ein Konto?",
+    "orContinueWith": "oder weiter mit",
     "magicLink": "Mit Magic Link anmelden",
     "verifyEmail": "E-Mail prüfen",
     "verifyEmailDescription": "Wir haben einen Bestätigungslink an {email} gesendet. Klicke darauf, um dein Konto zu verifizieren.",
@@ -125,7 +131,10 @@
     "uploadId": "Ausweis hochladen",
     "verificationPending": "Verifizierung ausstehend",
     "verificationApproved": "Verifiziert",
-    "verificationRejected": "Verifizierung fehlgeschlagen"
+    "verificationRejected": "Verifizierung fehlgeschlagen",
+    "invalidCredentials": "Ungültige Anmeldedaten",
+    "passwordMismatch": "Passwörter stimmen nicht überein",
+    "passwordMinLength": "Passwort muss mindestens 8 Zeichen lang sein"
   },
   "verification": {
     "title": "Verifizierung",
@@ -470,20 +479,33 @@
     "conversionRate": "Konversionsrate",
     "churnRate": "Abwanderungsrate",
     "avgMatchScore": "Durchschnittlicher Match-Score",
-    "monthlyRevenue": "Monatlicher Umsatz"
+    "monthlyRevenue": "Monatlicher Umsatz",
+    "userGrowth": "Nutzerwachstum (30 Tage)",
+    "dailyRegistrations": "Tägliche Registrierungen"
   },
   "legal": {
     "impressum": {
       "title": "Impressum",
       "companyInfo": "Angaben gemäß § 5 TMG",
+      "companyName": "PRAGMA GmbH (in Gründung)",
+      "companyAddress": "Adresse wird vor Launch veröffentlicht",
+      "companyCity": "München, Deutschland",
+      "email": "contact@pragma.app",
+      "phone": "Wird vor Launch veröffentlicht",
       "contact": "Kontakt",
       "register": "Handelsregister",
       "registerCourt": "Registergericht",
+      "registerCourtValue": "Amtsgericht München (Eintragung ausstehend)",
       "registerNumber": "Registernummer",
+      "registerNumberValue": "Eintragung ausstehend",
       "vatId": "Umsatzsteuer-ID",
       "vatIdLabel": "Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG",
+      "vatIdValue": "Eintragung ausstehend",
       "managingDirector": "Geschäftsführer",
+      "managingDirectorName": "Wird vor Launch veröffentlicht",
       "editorialResponsible": "Inhaltlich Verantwortlicher gemäß § 18 Abs. 2 MStV",
+      "editorialName": "Wird vor Launch veröffentlicht",
+      "editorialAddress": "München, Deutschland",
       "disputeResolution": "EU-Streitschlichtung",
       "disputeResolutionText": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:",
       "disputeResolutionNote": "Wir sind weder verpflichtet noch bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
@@ -756,5 +778,68 @@
       "title": "Bereit, PRAGMAtisch an die Liebe heranzugehen?",
       "subtitle": "Die wichtigste Partnerschaft Ihres Lebens verdient mehr als Zufall. Sie verdient Methode."
     }
+  },
+  "report": {
+    "title": "Benutzer melden",
+    "description": "Helfen Sie uns, PRAGMA sicher zu halten. Wählen Sie einen Grund für Ihre Meldung.",
+    "reasons": {
+      "fake_profile": "Gefälschtes oder nachgeahmtes Profil",
+      "harassment": "Belästigung oder missbräuchliches Verhalten",
+      "inappropriate_content": "Unangemessene oder anstößige Inhalte",
+      "spam": "Spam oder kommerzielle Werbung",
+      "underage": "Scheint minderjährig zu sein",
+      "scam": "Betrugsversuch",
+      "other": "Anderer Grund"
+    },
+    "detailsPlaceholder": "Beschreiben Sie das Problem (optional)...",
+    "reportAndBlock": "Melden & Blockieren",
+    "cancel": "Abbrechen",
+    "submitting": "Wird gesendet...",
+    "submitted": "Meldung eingereicht",
+    "submittedDescription": "Vielen Dank. Unser Team wird diese Meldung innerhalb von 24 Stunden prüfen.",
+    "submitError": "Meldung konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+    "notLoggedIn": "Sie müssen angemeldet sein, um einen Benutzer zu melden.",
+    "close": "Schließen"
+  },
+  "support": {
+    "title": "Hilfe & Support",
+    "subtitle": "Antworten auf häufige Fragen oder Kontakt zu unserem Team.",
+    "faqTitle": "Häufig gestellte Fragen",
+    "faq": {
+      "whatIsPragma": {
+        "q": "Was ist PRAGMA?",
+        "a": "PRAGMA ist eine wissenschaftsbasierte Matching-Plattform, die strukturierte Selbsterkenntnis und bidirektionale Kompatibilitätsbewertung nutzt, um bedeutungsvolle Verbindungen zu schaffen. Anders als herkömmliche Dating-Apps priorisieren wir Tiefe, Verifizierung und gegenseitiges Einverständnis."
+      },
+      "howMatching": {
+        "q": "Wie funktioniert der Matching-Algorithmus?",
+        "a": "Unser Algorithmus bewertet Kompatibilität auf fünf progressiven Ebenen -- von Grundwerten bis zu Verhaltenspräferenzen. Jedes Match wird bidirektional bewertet, d.h. die Kompatibilität wird aus beiden Perspektiven gemessen. Bewertungen sind gewichtet und Deal-Breaker werden respektiert."
+      },
+      "whyFunnel": {
+        "q": "Warum muss ich den Onboarding-Fragebogen ausfüllen?",
+        "a": "Der Fragebogen stellt sicher, dass jeder Nutzer auf PRAGMA Zeit in echte Selbstreflexion investiert hat. Dies führt zu hochwertigeren Matches und filtert Nutzer heraus, die es nicht ernst meinen."
+      },
+      "isDataSafe": {
+        "q": "Sind meine Daten sicher?",
+        "a": "Ja. Wir sind vollständig DSGVO-konform und verarbeiten besondere Datenkategorien nur mit Ihrer ausdrücklichen Einwilligung. Alle Daten sind bei Übertragung und Speicherung verschlüsselt. Wir verkaufen Ihre Daten niemals an Dritte. Sie können Ihre Daten jederzeit in den Einstellungen exportieren oder löschen."
+      },
+      "howCancel": {
+        "q": "Wie kündige ich mein Abonnement?",
+        "a": "Gehen Sie zu Einstellungen > Abonnement und klicken Sie auf 'Abonnement verwalten'. Sie können jederzeit kündigen. Ihr Abonnement bleibt bis zum Ende des aktuellen Abrechnungszeitraums aktiv."
+      },
+      "howDelete": {
+        "q": "Wie lösche ich mein Konto?",
+        "a": "Gehen Sie zu Einstellungen und scrollen Sie nach unten. Klicken Sie auf 'Konto löschen'. Diese Aktion ist unwiderruflich und entfernt dauerhaft alle Ihre Daten gemäß DSGVO Artikel 17 (Recht auf Löschung)."
+      },
+      "howVerify": {
+        "q": "Warum ist eine Identitätsverifizierung erforderlich?",
+        "a": "Die Verifizierung stellt sicher, dass jeder Nutzer auf PRAGMA eine echte Person mit ernsthafter Absicht ist. Dies schützt Sie vor gefälschten Profilen, Catfishing und Betrug -- die Nummer-eins-Beschwerde bei herkömmlichen Dating-Apps."
+      },
+      "howContact": {
+        "q": "Wie kann ich den Support kontaktieren?",
+        "a": "Senden Sie uns eine E-Mail an support@pragma.app. Wir antworten in der Regel innerhalb von 24 Stunden an Werktagen."
+      }
+    },
+    "contactTitle": "Noch Fragen?",
+    "contactDescription": "Unser Support-Team ist für Sie da. Schreiben Sie uns und wir melden uns so schnell wie möglich."
   }
 }

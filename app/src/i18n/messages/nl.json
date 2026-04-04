@@ -16,7 +16,12 @@
     "required": "Required",
     "optional": "Optional",
     "error": "Something went wrong",
-    "retry": "Try again"
+    "retry": "Try again",
+    "notFound": "Pagina niet gevonden",
+    "notFoundDescription": "De pagina die u zoekt bestaat niet of is verplaatst.",
+    "goHome": "Terug naar home",
+    "accessDenied": "Toegang geweigerd",
+    "accessDeniedDescription": "U heeft geen toestemming om deze pagina te openen."
   },
   "landing": {
     "hero": "Partnership, methodically.",
@@ -113,6 +118,7 @@
     "forgotPassword": "Forgot password?",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
+    "orContinueWith": "of ga verder met",
     "magicLink": "Sign in with magic link",
     "verifyEmail": "Check your email",
     "verifyEmailDescription": "We sent a verification link to {email}. Click it to verify your account.",
@@ -125,7 +131,10 @@
     "uploadId": "Upload ID document",
     "verificationPending": "Verification pending",
     "verificationApproved": "Verified",
-    "verificationRejected": "Verification failed"
+    "verificationRejected": "Verification failed",
+    "invalidCredentials": "Ongeldige inloggegevens",
+    "passwordMismatch": "Wachtwoorden komen niet overeen",
+    "passwordMinLength": "Wachtwoord moet minstens 8 tekens bevatten"
   },
   "verification": {
     "status": {
@@ -482,7 +491,9 @@
     "conversionRate": "Conversion Rate",
     "churnRate": "Churn Rate",
     "avgMatchScore": "Average Match Score",
-    "monthlyRevenue": "Monthly Revenue"
+    "monthlyRevenue": "Monthly Revenue",
+    "userGrowth": "Gebruikersgroei (30 dagen)",
+    "dailyRegistrations": "Dagelijkse registraties"
   },
   "legal": {
     "impressum": {
@@ -768,5 +779,68 @@
       "title": "Ready for something real?",
       "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself."
     }
+  },
+  "report": {
+    "title": "Gebruiker Melden",
+    "description": "Help ons PRAGMA veilig te houden. Selecteer een reden voor je melding.",
+    "reasons": {
+      "fake_profile": "Nep of nagemaakt profiel",
+      "harassment": "Intimidatie of beledigend gedrag",
+      "inappropriate_content": "Ongepaste of beledigende inhoud",
+      "spam": "Spam of commerciële werving",
+      "underage": "Lijkt minderjarig te zijn",
+      "scam": "Oplichting of fraudepoging",
+      "other": "Andere reden"
+    },
+    "detailsPlaceholder": "Beschrijf het probleem (optioneel)...",
+    "reportAndBlock": "Melden & Blokkeren",
+    "cancel": "Annuleren",
+    "submitting": "Verzenden...",
+    "submitted": "Melding verzonden",
+    "submittedDescription": "Bedankt. Ons team zal deze melding binnen 24 uur beoordelen.",
+    "submitError": "Melding verzenden mislukt. Probeer het opnieuw.",
+    "notLoggedIn": "Je moet ingelogd zijn om een gebruiker te melden.",
+    "close": "Sluiten"
+  },
+  "support": {
+    "title": "Hulp & Ondersteuning",
+    "subtitle": "Vind antwoorden op veelgestelde vragen of neem contact op met ons team.",
+    "faqTitle": "Veelgestelde Vragen",
+    "faq": {
+      "whatIsPragma": {
+        "q": "Wat is PRAGMA?",
+        "a": "PRAGMA is een wetenschappelijk onderbouwd matchingplatform dat gestructureerde zelfontdekking en bidirectionele compatibiliteitsbeoordeling gebruikt om betekenisvolle connecties te creëren. In tegenstelling tot traditionele dating-apps geven wij prioriteit aan diepgang, verificatie en wederzijdse toestemming."
+      },
+      "howMatching": {
+        "q": "Hoe werkt het matchingalgoritme?",
+        "a": "Ons algoritme beoordeelt compatibiliteit op vijf progressieve niveaus -- van kernwaarden tot gedragsvoorkeuren. Elke match wordt bidirectioneel beoordeeld, wat betekent dat compatibiliteit vanuit beide perspectieven wordt gemeten. Scores zijn gewogen en dealbreakers worden gerespecteerd."
+      },
+      "whyFunnel": {
+        "q": "Waarom moet ik het onboardingproces voltooien?",
+        "a": "Het proces zorgt ervoor dat elke gebruiker op PRAGMA tijd heeft geïnvesteerd in oprechte zelfreflectie. Dit levert matches van hogere kwaliteit op en filtert gebruikers uit die niet serieus op zoek zijn naar een partner."
+      },
+      "isDataSafe": {
+        "q": "Zijn mijn persoonlijke gegevens veilig?",
+        "a": "Ja. Wij voldoen volledig aan de GDPR en verwerken speciale categorieën gegevens alleen met jouw uitdrukkelijke toestemming. Alle gegevens worden versleuteld tijdens verzending en opslag. We verkopen je gegevens nooit aan derden. Je kunt je gegevens op elk moment exporteren of verwijderen via Instellingen."
+      },
+      "howCancel": {
+        "q": "Hoe annuleer ik mijn abonnement?",
+        "a": "Ga naar Instellingen > Abonnement en klik op 'Abonnement Beheren'. Je kunt op elk moment annuleren. Je abonnement blijft actief tot het einde van de huidige factureringsperiode."
+      },
+      "howDelete": {
+        "q": "Hoe verwijder ik mijn account?",
+        "a": "Ga naar Instellingen en scroll naar beneden. Klik op 'Account Verwijderen'. Deze actie is onomkeerbaar en zal al je gegevens permanent verwijderen in overeenstemming met Artikel 17 van de GDPR (Recht op Vergetelheid)."
+      },
+      "howVerify": {
+        "q": "Waarom is identiteitsverificatie vereist?",
+        "a": "Verificatie zorgt ervoor dat elke gebruiker op PRAGMA een echt persoon is met serieuze intenties. Dit beschermt je tegen nepprofielen, catfishing en oplichting -- de nummer één klacht over traditionele dating-apps."
+      },
+      "howContact": {
+        "q": "Hoe kan ik contact opnemen met de klantenservice?",
+        "a": "Stuur ons een e-mail naar support@pragma.app. We streven ernaar om binnen 24 uur te reageren op werkdagen."
+      }
+    },
+    "contactTitle": "Nog steeds hulp nodig?",
+    "contactDescription": "Ons ondersteuningsteam staat klaar om je te helpen. Neem contact met ons op en we reageren zo snel mogelijk."
   }
 }

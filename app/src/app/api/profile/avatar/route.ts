@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 const ACCEPTED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const MAX_SIZE_BYTES = 5 * 1024 * 1024; // 5 MB
 
 export async function POST(request: NextRequest) {
+  const limited = applyRateLimit(request, "avatar-upload", { limit: 10, windowMs: 60_000 });
+  if (limited) return limited;
+
   const supabase = await createClient();
   const {
     data: { user },

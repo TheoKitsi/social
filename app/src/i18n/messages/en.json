@@ -16,7 +16,12 @@
     "required": "Required",
     "optional": "Optional",
     "error": "Something went wrong",
-    "retry": "Try again"
+    "retry": "Try again",
+    "notFound": "Page not found",
+    "notFoundDescription": "The page you are looking for does not exist or has been moved.",
+    "goHome": "Back to home",
+    "accessDenied": "Access denied",
+    "accessDeniedDescription": "You do not have permission to access this page."
   },
   "landing": {
     "hero": "Partnership, methodically.",
@@ -113,6 +118,7 @@
     "forgotPassword": "Forgot password?",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
+    "orContinueWith": "or continue with",
     "magicLink": "Sign in with magic link",
     "verifyEmail": "Check your email",
     "verifyEmailDescription": "We sent a verification link to {email}. Click it to verify your account.",
@@ -125,7 +131,10 @@
     "uploadId": "Upload ID document",
     "verificationPending": "Verification pending",
     "verificationApproved": "Verified",
-    "verificationRejected": "Verification failed"
+    "verificationRejected": "Verification failed",
+    "invalidCredentials": "Invalid credentials",
+    "passwordMismatch": "Passwords do not match",
+    "passwordMinLength": "Password must be at least 8 characters"
   },
   "verification": {
     "status": {
@@ -482,20 +491,33 @@
     "conversionRate": "Conversion Rate",
     "churnRate": "Churn Rate",
     "avgMatchScore": "Average Match Score",
-    "monthlyRevenue": "Monthly Revenue"
+    "monthlyRevenue": "Monthly Revenue",
+    "userGrowth": "User Growth (30 days)",
+    "dailyRegistrations": "Daily Registrations"
   },
   "legal": {
     "impressum": {
       "title": "Imprint",
       "companyInfo": "Company Information (according to Section 5 TMG)",
+      "companyName": "PRAGMA GmbH (in formation)",
+      "companyAddress": "Address will be published before launch",
+      "companyCity": "Munich, Germany",
+      "email": "contact@pragma.app",
+      "phone": "Will be published before launch",
       "contact": "Contact",
       "register": "Commercial Register",
       "registerCourt": "Registry Court",
+      "registerCourtValue": "Amtsgericht Munich (pending registration)",
       "registerNumber": "Registration Number",
+      "registerNumberValue": "Pending registration",
       "vatId": "VAT Identification",
       "vatIdLabel": "VAT ID (Section 27a UStG)",
+      "vatIdValue": "Pending registration",
       "managingDirector": "Managing Director",
+      "managingDirectorName": "Will be published before launch",
       "editorialResponsible": "Responsible for Editorial Content (Section 18 para. 2 MStV)",
+      "editorialName": "Will be published before launch",
+      "editorialAddress": "Munich, Germany",
       "disputeResolution": "EU Dispute Resolution",
       "disputeResolutionText": "The European Commission provides a platform for online dispute resolution (OS):",
       "disputeResolutionNote": "We are neither obligated nor willing to participate in dispute resolution proceedings before a consumer arbitration board.",
@@ -768,5 +790,68 @@
       "title": "Ready for something real?",
       "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself."
     }
+  },
+  "report": {
+    "title": "Report User",
+    "description": "Help us keep PRAGMA safe. Select a reason for your report.",
+    "reasons": {
+      "fake_profile": "Fake or impersonating profile",
+      "harassment": "Harassment or abusive behavior",
+      "inappropriate_content": "Inappropriate or offensive content",
+      "spam": "Spam or commercial solicitation",
+      "underage": "Appears to be underage",
+      "scam": "Scam or fraud attempt",
+      "other": "Other reason"
+    },
+    "detailsPlaceholder": "Describe the issue (optional)...",
+    "reportAndBlock": "Report & Block",
+    "cancel": "Cancel",
+    "submitting": "Submitting...",
+    "submitted": "Report submitted",
+    "submittedDescription": "Thank you. Our team will review this report within 24 hours.",
+    "submitError": "Failed to submit report. Please try again.",
+    "notLoggedIn": "You must be logged in to report a user.",
+    "close": "Close"
+  },
+  "support": {
+    "title": "Help & Support",
+    "subtitle": "Find answers to common questions or reach out to our team.",
+    "faqTitle": "Frequently Asked Questions",
+    "faq": {
+      "whatIsPragma": {
+        "q": "What is PRAGMA?",
+        "a": "PRAGMA is a science-based matching platform that uses structured self-discovery and bidirectional compatibility scoring to create meaningful connections. Unlike traditional dating apps, we prioritize depth, verification, and mutual consent."
+      },
+      "howMatching": {
+        "q": "How does the matching algorithm work?",
+        "a": "Our algorithm evaluates compatibility across five progressive levels -- from core values to behavioral preferences. Each match is scored bidirectionally, meaning compatibility is measured from both perspectives. Scores are weighted, and deal-breakers are respected."
+      },
+      "whyFunnel": {
+        "q": "Why do I need to complete the onboarding funnel?",
+        "a": "The funnel ensures that every user on PRAGMA has invested time in genuine self-reflection. This produces higher-quality matches and filters out users who are not serious about finding a partner."
+      },
+      "isDataSafe": {
+        "q": "Is my personal data safe?",
+        "a": "Yes. We are fully GDPR-compliant and process special category data only with your explicit consent. All data is encrypted in transit and at rest. We never sell your data to third parties. You can export or delete your data at any time from Settings."
+      },
+      "howCancel": {
+        "q": "How do I cancel my subscription?",
+        "a": "Go to Settings > Subscription and click 'Manage Subscription'. You can cancel at any time. Your subscription remains active until the end of the current billing period."
+      },
+      "howDelete": {
+        "q": "How do I delete my account?",
+        "a": "Go to Settings and scroll to the bottom. Click 'Delete Account'. This action is irreversible and will permanently remove all your data in accordance with GDPR Article 17 (Right to Erasure)."
+      },
+      "howVerify": {
+        "q": "Why is identity verification required?",
+        "a": "Verification ensures that every user on PRAGMA is a real person with serious intent. This protects you from fake profiles, catfishing, and scams -- the number one complaint about traditional dating apps."
+      },
+      "howContact": {
+        "q": "How can I contact support?",
+        "a": "Send us an email at support@pragma.app. We aim to respond within 24 hours on business days."
+      }
+    },
+    "contactTitle": "Still need help?",
+    "contactDescription": "Our support team is here to assist you. Reach out and we will get back to you as soon as possible."
   }
 }

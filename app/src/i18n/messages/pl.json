@@ -16,7 +16,12 @@
     "required": "Required",
     "optional": "Optional",
     "error": "Something went wrong",
-    "retry": "Try again"
+    "retry": "Try again",
+    "notFound": "Strona nie została znaleziona",
+    "notFoundDescription": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+    "goHome": "Wróć na stronę główną",
+    "accessDenied": "Brak dostępu",
+    "accessDeniedDescription": "Nie masz uprawnień do dostępu do tej strony."
   },
   "landing": {
     "hero": "Partnership, methodically.",
@@ -113,6 +118,7 @@
     "forgotPassword": "Forgot password?",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
+    "orContinueWith": "lub kontynuuj za pomocą",
     "magicLink": "Sign in with magic link",
     "verifyEmail": "Check your email",
     "verifyEmailDescription": "We sent a verification link to {email}. Click it to verify your account.",
@@ -125,7 +131,10 @@
     "uploadId": "Upload ID document",
     "verificationPending": "Verification pending",
     "verificationApproved": "Verified",
-    "verificationRejected": "Verification failed"
+    "verificationRejected": "Verification failed",
+    "invalidCredentials": "Nieprawidłowe dane logowania",
+    "passwordMismatch": "Hasła nie są zgodne",
+    "passwordMinLength": "Hasło musi mieć co najmniej 8 znaków"
   },
   "verification": {
     "status": {
@@ -482,7 +491,9 @@
     "conversionRate": "Conversion Rate",
     "churnRate": "Churn Rate",
     "avgMatchScore": "Average Match Score",
-    "monthlyRevenue": "Monthly Revenue"
+    "monthlyRevenue": "Monthly Revenue",
+    "userGrowth": "Wzrost użytkowników (30 dni)",
+    "dailyRegistrations": "Dzienne rejestracje"
   },
   "legal": {
     "impressum": {
@@ -768,5 +779,68 @@
       "title": "Ready for something real?",
       "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself."
     }
+  },
+  "report": {
+    "title": "Zgłoś Użytkownika",
+    "description": "Pomóż nam utrzymać bezpieczeństwo PRAGMA. Wybierz powód zgłoszenia.",
+    "reasons": {
+      "fake_profile": "Fałszywy lub podszywający się profil",
+      "harassment": "Nękanie lub obraźliwe zachowanie",
+      "inappropriate_content": "Nieodpowiednie lub obraźliwe treści",
+      "spam": "Spam lub oferta handlowa",
+      "underage": "Wydaje się być osobą niepełnoletnią",
+      "scam": "Oszustwo lub próba wyłudzenia",
+      "other": "Inny powód"
+    },
+    "detailsPlaceholder": "Opisz problem (opcjonalnie)...",
+    "reportAndBlock": "Zgłoś i Zablokuj",
+    "cancel": "Anuluj",
+    "submitting": "Wysyłanie...",
+    "submitted": "Zgłoszenie wysłane",
+    "submittedDescription": "Dziękujemy. Nasz zespół przeanalizuje to zgłoszenie w ciągu 24 godzin.",
+    "submitError": "Nie udało się wysłać zgłoszenia. Spróbuj ponownie.",
+    "notLoggedIn": "Musisz być zalogowany/a, aby zgłosić użytkownika.",
+    "close": "Zamknij"
+  },
+  "support": {
+    "title": "Pomoc i Wsparcie",
+    "subtitle": "Znajdź odpowiedzi na najczęściej zadawane pytania lub skontaktuj się z naszym zespołem.",
+    "faqTitle": "Najczęściej Zadawane Pytania",
+    "faq": {
+      "whatIsPragma": {
+        "q": "Czym jest PRAGMA?",
+        "a": "PRAGMA to oparta na nauce platforma dopasowań, która wykorzystuje ustrukturyzowane samopoznanie i dwukierunkową ocenę kompatybilności do tworzenia wartościowych połączeń. W przeciwieństwie do tradycyjnych aplikacji randkowych, stawiamy na głębię, weryfikację i wzajemną zgodę."
+      },
+      "howMatching": {
+        "q": "Jak działa algorytm dopasowań?",
+        "a": "Nasz algorytm ocenia kompatybilność na pięciu progresywnych poziomach -- od kluczowych wartości po preferencje behawioralne. Każde dopasowanie jest oceniane dwukierunkowo, co oznacza, że kompatybilność jest mierzona z obu perspektyw. Wyniki są ważone, a kryteria wykluczenia są respektowane."
+      },
+      "whyFunnel": {
+        "q": "Dlaczego muszę ukończyć proces wdrożeniowy?",
+        "a": "Proces zapewnia, że każdy użytkownik PRAGMA poświęcił czas na prawdziwą autorefleksję. Prowadzi to do dopasowań wyższej jakości i odfiltrowuje użytkowników, którzy nie szukają poważnie partnera."
+      },
+      "isDataSafe": {
+        "q": "Czy moje dane osobowe są bezpieczne?",
+        "a": "Tak. Jesteśmy w pełni zgodni z GDPR i przetwarzamy dane szczególnych kategorii wyłącznie za Twoją wyraźną zgodą. Wszystkie dane są szyfrowane podczas przesyłania i przechowywania. Nigdy nie sprzedajemy Twoich danych stronom trzecim. Możesz wyeksportować lub usunąć swoje dane w dowolnym momencie w Ustawieniach."
+      },
+      "howCancel": {
+        "q": "Jak mogę anulować subskrypcję?",
+        "a": "Przejdź do Ustawienia > Subskrypcja i kliknij 'Zarządzaj Subskrypcją'. Możesz anulować w dowolnym momencie. Twoja subskrypcja pozostaje aktywna do końca bieżącego okresu rozliczeniowego."
+      },
+      "howDelete": {
+        "q": "Jak mogę usunąć swoje konto?",
+        "a": "Przejdź do Ustawień i przewiń na dół. Kliknij 'Usuń Konto'. Ta czynność jest nieodwracalna i trwale usunie wszystkie Twoje dane zgodnie z Artykułem 17 GDPR (Prawo do Usunięcia Danych)."
+      },
+      "howVerify": {
+        "q": "Dlaczego wymagana jest weryfikacja tożsamości?",
+        "a": "Weryfikacja zapewnia, że każdy użytkownik PRAGMA jest prawdziwą osobą z poważnymi zamiarami. Chroni Cię to przed fałszywymi profilami, catfishingiem i oszustwami -- najczęśtszą skargą dotyczącą tradycyjnych aplikacji randkowych."
+      },
+      "howContact": {
+        "q": "Jak mogę skontaktować się z pomocą techniczną?",
+        "a": "Wyślij nam e-mail na adres support@pragma.app. Staramy się odpowiadać w ciągu 24 godzin w dni robocze."
+      }
+    },
+    "contactTitle": "Nadal potrzebujesz pomocy?",
+    "contactDescription": "Nasz zespół wsparcia jest tutaj, aby Ci pomóc. Skontaktuj się z nami, a odpowiemy tak szybko, jak to możliwe."
   }
 }

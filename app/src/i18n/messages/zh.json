@@ -16,7 +16,12 @@
     "required": "Required",
     "optional": "Optional",
     "error": "Something went wrong",
-    "retry": "Try again"
+    "retry": "Try again",
+    "notFound": "页面未找到",
+    "notFoundDescription": "您要查找的页面不存在或已被移动。",
+    "goHome": "返回首页",
+    "accessDenied": "访问被拒绝",
+    "accessDeniedDescription": "您没有权限访问此页面。"
   },
   "landing": {
     "hero": "Partnership, methodically.",
@@ -113,6 +118,7 @@
     "forgotPassword": "Forgot password?",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
+    "orContinueWith": "或继续使用",
     "magicLink": "Sign in with magic link",
     "verifyEmail": "Check your email",
     "verifyEmailDescription": "We sent a verification link to {email}. Click it to verify your account.",
@@ -125,7 +131,10 @@
     "uploadId": "Upload ID document",
     "verificationPending": "Verification pending",
     "verificationApproved": "Verified",
-    "verificationRejected": "Verification failed"
+    "verificationRejected": "Verification failed",
+    "invalidCredentials": "凭据无效",
+    "passwordMismatch": "密码不匹配",
+    "passwordMinLength": "密码至少需要8个字符"
   },
   "verification": {
     "status": {
@@ -482,7 +491,9 @@
     "conversionRate": "Conversion Rate",
     "churnRate": "Churn Rate",
     "avgMatchScore": "Average Match Score",
-    "monthlyRevenue": "Monthly Revenue"
+    "monthlyRevenue": "Monthly Revenue",
+    "userGrowth": "用户增长（30天）",
+    "dailyRegistrations": "每日注册"
   },
   "legal": {
     "impressum": {
@@ -768,5 +779,68 @@
       "title": "Ready for something real?",
       "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself."
     }
+  },
+  "report": {
+    "title": "举报用户",
+    "description": "帮助我们保持PRAGMA的安全。请选择举报原因。",
+    "reasons": {
+      "fake_profile": "虚假或冒充他人的个人资料",
+      "harassment": "骚扰或辱骂行为",
+      "inappropriate_content": "不当或冒犯性内容",
+      "spam": "垃圾信息或商业推销",
+      "underage": "疑似未成年人",
+      "scam": "诈骗或欺诈行为",
+      "other": "其他原因"
+    },
+    "detailsPlaceholder": "描述问题（可选）...",
+    "reportAndBlock": "举报并拉黑",
+    "cancel": "取消",
+    "submitting": "提交中...",
+    "submitted": "举报已提交",
+    "submittedDescription": "感谢您的反馈。我们的团队将在24小时内审核此举报。",
+    "submitError": "举报提交失败。请重试。",
+    "notLoggedIn": "您必须登录才能举报用户。",
+    "close": "关闭"
+  },
+  "support": {
+    "title": "帮助与支持",
+    "subtitle": "查找常见问题的答案或联系我们的团队。",
+    "faqTitle": "常见问题",
+    "faq": {
+      "whatIsPragma": {
+        "q": "什么是PRAGMA？",
+        "a": "PRAGMA是一个基于科学的匹配平台，利用结构化的自我发现和双向兼容性评分来创建有意义的联系。与传统的约会应用不同，我们优先考虑深度、身份验证和双方同意。"
+      },
+      "howMatching": {
+        "q": "匹配算法是如何工作的？",
+        "a": "我们的算法在五个渐进层级上评估兼容性——从核心价值观到行为偏好。每个匹配都进行双向评分，这意味着兼容性从双方的角度进行衡量。分数经过加权处理，不可妥协的条件会被尊重。"
+      },
+      "whyFunnel": {
+        "q": "为什么我需要完成注册流程？",
+        "a": "该流程确保PRAGMA上的每位用户都投入了时间进行真正的自我反思。这会产生更高质量的匹配，并筛除那些不认真寻找伴侣的用户。"
+      },
+      "isDataSafe": {
+        "q": "我的个人数据安全吗？",
+        "a": "是的。我们完全符合GDPR规定，仅在您明确同意的情况下处理特殊类别的数据。所有数据在传输和存储过程中均经过加密。我们绝不会将您的数据出售给第三方。您可以随时在设置中导出或删除您的数据。"
+      },
+      "howCancel": {
+        "q": "如何取消订阅？",
+        "a": "前往设置 > 订阅，点击\u201c管理订阅\u201d。您可以随时取消。您的订阅在当前计费周期结束前将保持有效。"
+      },
+      "howDelete": {
+        "q": "如何删除我的账户？",
+        "a": "前往设置并滚动到底部。点击\u201c删除账户\u201d。此操作不可逆转，将根据GDPR第17条（被遗忘权）永久删除您的所有数据。"
+      },
+      "howVerify": {
+        "q": "为什么需要身份验证？",
+        "a": "身份验证确保PRAGMA上的每位用户都是具有认真意图的真实个人。这可以保护您免受虚假个人资料、网络钓鱼和诈骗的侵害——这是用户对传统约会应用的头号投诉。"
+      },
+      "howContact": {
+        "q": "如何联系客服？",
+        "a": "请发送电子邮件至support@pragma.app。我们力争在工作日内24小时内回复。"
+      }
+    },
+    "contactTitle": "仍需帮助？",
+    "contactDescription": "我们的支持团队随时为您服务。请联系我们，我们会尽快回复您。"
   }
 }

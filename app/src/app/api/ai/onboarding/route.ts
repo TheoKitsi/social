@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextRequest, NextResponse } from "next/server";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 const SYSTEM_PROMPT = `You are PRAGMA's AI onboarding assistant — a warm, professional, psychologically informed guide helping users build their relationship profile.
 
@@ -38,6 +39,9 @@ Field contexts for reference:
 You are building the "self" side first, then the "target" side. Stay on the current side until instructed otherwise.`;
 
 export async function POST(request: NextRequest) {
+  const limited = applyRateLimit(request, "ai-onboarding", { limit: 30, windowMs: 60_000 });
+  if (limited) return limited;
+
   const apiKey = process.env.GEMINI_API_KEY;
 
   if (!apiKey) {

@@ -51,11 +51,15 @@ export async function updateSession(request: NextRequest) {
   const isLegalRoute = request.nextUrl.pathname.match(
     new RegExp(`^/(${localePattern})/legal/`)
   );
+  const isPublicStaticRoute = request.nextUrl.pathname.match(
+    new RegExp(`^/(${localePattern})/(about|support)$`)
+  );
   const isPublicRoute =
     request.nextUrl.pathname === "/" ||
     request.nextUrl.pathname.match(new RegExp(`^/(${localePattern})$`)) ||
     isAuthRoute ||
-    isLegalRoute;
+    isLegalRoute ||
+    isPublicStaticRoute;
 
   if (!user && !isPublicRoute) {
     const url = request.nextUrl.clone();
@@ -74,20 +78,43 @@ export async function updateSession(request: NextRequest) {
   const isOnboardingRoute = request.nextUrl.pathname.match(
     new RegExp(`^/(${localePattern})/onboarding`)
   );
+  const isAdminRoute = request.nextUrl.pathname.match(
+    new RegExp(`^/(${localePattern})/admin`)
+  );
   const isAppRoute = user && !isPublicRoute && !isOnboardingRoute;
 
   if (isAppRoute) {
     // Check if user completed mandatory onboarding (active_funnel_level >= 3)
     const { data: profile } = await supabase
       .from("profiles")
-      .select("active_funnel_level")
+      .select("active_funnel_level, role, is_test_user, test_expires_at")
       .eq("id", user.id)
       .single();
+
+    // Block expired test accounts
+    if (
+      profile?.is_test_user &&
+      profile.test_expires_at &&
+      new Date(profile.test_expires_at) < new Date()
+    ) {
+      await supabase.auth.signOut();
+      const url = request.nextUrl.clone();
+      url.pathname = `/${locale}/login`;
+      url.searchParams.set("error", "test_expired");
+      return NextResponse.redirect(url);
+    }
 
     const funnelLevel = profile?.active_funnel_level ?? 0;
     if (funnelLevel < 3) {
       const url = request.nextUrl.clone();
       url.pathname = `/${locale}/onboarding`;
+      return NextResponse.redirect(url);
+    }
+
+    // Admin route protection — only users with role 'admin' can access
+    if (isAdminRoute && profile?.role !== "admin") {
+      const url = request.nextUrl.clone();
+      url.pathname = `/${locale}/profile`;
       return NextResponse.redirect(url);
     }
   }

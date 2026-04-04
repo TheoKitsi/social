@@ -46,9 +46,9 @@ test.describe("PRAGMA Demo Profile Creation", () => {
     await page.goto(`${BASE}/en/login`);
     await expect(page.locator('input[type="email"]')).toBeVisible({ timeout: 10000 });
 
-    // Fill demo credentials
-    await page.fill('input[type="email"]', "test@pragma.app");
-    await page.fill('input[type="password"]', "pragma2026");
+    // Fill test credentials
+    await page.fill('input[type="email"]', "tester1@pragma.app");
+    await page.fill('input[type="password"]', "PragmaTest2026!");
     await page.screenshot({ path: "e2e/screenshots/02-login-filled.png" });
 
     // Click login

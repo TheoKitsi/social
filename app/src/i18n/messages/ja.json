@@ -16,7 +16,12 @@
     "required": "Required",
     "optional": "Optional",
     "error": "Something went wrong",
-    "retry": "Try again"
+    "retry": "Try again",
+    "notFound": "ページが見つかりません",
+    "notFoundDescription": "お探しのページは存在しないか、移動されました。",
+    "goHome": "ホームに戻る",
+    "accessDenied": "アクセスが拒否されました",
+    "accessDeniedDescription": "このページにアクセスする権限がありません。"
   },
   "landing": {
     "hero": "Partnership, methodically.",
@@ -113,6 +118,7 @@
     "forgotPassword": "Forgot password?",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
+    "orContinueWith": "または次で続行",
     "magicLink": "Sign in with magic link",
     "verifyEmail": "Check your email",
     "verifyEmailDescription": "We sent a verification link to {email}. Click it to verify your account.",
@@ -125,7 +131,10 @@
     "uploadId": "Upload ID document",
     "verificationPending": "Verification pending",
     "verificationApproved": "Verified",
-    "verificationRejected": "Verification failed"
+    "verificationRejected": "Verification failed",
+    "invalidCredentials": "無効な認証情報",
+    "passwordMismatch": "パスワードが一致しません",
+    "passwordMinLength": "パスワードは8文字以上必要です"
   },
   "verification": {
     "status": {
@@ -482,7 +491,9 @@
     "conversionRate": "Conversion Rate",
     "churnRate": "Churn Rate",
     "avgMatchScore": "Average Match Score",
-    "monthlyRevenue": "Monthly Revenue"
+    "monthlyRevenue": "Monthly Revenue",
+    "userGrowth": "ユーザー成長（30日間）",
+    "dailyRegistrations": "日別登録数"
   },
   "legal": {
     "impressum": {
@@ -768,5 +779,68 @@
       "title": "Ready for something real?",
       "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself."
     }
+  },
+  "report": {
+    "title": "ユーザーを報告",
+    "description": "PRAGMAの安全性を保つためにご協力ください。報告の理由を選択してください。",
+    "reasons": {
+      "fake_profile": "偽のプロフィールまたはなりすまし",
+      "harassment": "ハラスメントまたは虐待的行為",
+      "inappropriate_content": "不適切または攻撃的なコンテンツ",
+      "spam": "スパムまたは商業的勧誘",
+      "underage": "未成年の可能性",
+      "scam": "詐欺または不正行為の試み",
+      "other": "その他の理由"
+    },
+    "detailsPlaceholder": "問題を説明してください（任意）...",
+    "reportAndBlock": "報告してブロック",
+    "cancel": "キャンセル",
+    "submitting": "送信中...",
+    "submitted": "報告が送信されました",
+    "submittedDescription": "ありがとうございます。当チームが24時間以内にこの報告を確認します。",
+    "submitError": "報告の送信に失敗しました。もう一度お試しください。",
+    "notLoggedIn": "ユーザーを報告するにはログインが必要です。",
+    "close": "閉じる"
+  },
+  "support": {
+    "title": "ヘルプとサポート",
+    "subtitle": "よくある質問への回答を見つけるか、チームにお問い合わせください。",
+    "faqTitle": "よくある質問",
+    "faq": {
+      "whatIsPragma": {
+        "q": "PRAGMAとは何ですか？",
+        "a": "PRAGMAは、構造化された自己発見と双方向の互換性スコアリングを使用して、意味のあるつながりを生み出す科学ベースのマッチングプラットフォームです。従来の出会い系アプリとは異なり、深さ、本人確認、相互同意を重視しています。"
+      },
+      "howMatching": {
+        "q": "マッチングアルゴリズムはどのように機能しますか？",
+        "a": "当社のアルゴリズムは、コアバリューから行動の好みまで、5つの段階的レベルで互換性を評価します。各マッチは双方向で評価されます。つまり、互換性は両方の視点から測定されます。スコアは加重され、譲れない条件は尊重されます。"
+      },
+      "whyFunnel": {
+        "q": "なぜオンボーディングプロセスを完了する必要がありますか？",
+        "a": "このプロセスにより、PRAGMAのすべてのユーザーが真の自己省察に時間を投資していることが保証されます。これにより、より質の高いマッチが生まれ、パートナー探しに真剣でないユーザーがフィルタリングされます。"
+      },
+      "isDataSafe": {
+        "q": "個人データは安全ですか？",
+        "a": "はい。当社はGDPRに完全に準拠しており、特別なカテゴリーのデータはお客様の明示的な同意がある場合のみ処理します。すべてのデータは転送中および保存時に暗号化されます。お客様のデータを第三者に販売することは決してありません。設定からいつでもデータのエクスポートまたは削除が可能です。"
+      },
+      "howCancel": {
+        "q": "サブスクリプションをキャンセルするにはどうすればよいですか？",
+        "a": "設定 > サブスクリプションに移動し、「サブスクリプション管理」をクリックしてください。いつでもキャンセルできます。サブスクリプションは現在の請求期間の終了まで有効です。"
+      },
+      "howDelete": {
+        "q": "アカウントを削除するにはどうすればよいですか？",
+        "a": "設定に移動し、一番下までスクロールしてください。「アカウント削除」をクリックしてください。この操作は取り消しできず、GDPR第17条（消去権）に従ってすべてのデータが完全に削除されます。"
+      },
+      "howVerify": {
+        "q": "なぜ本人確認が必要ですか？",
+        "a": "本人確認により、PRAGMAのすべてのユーザーが真剣な意図を持つ実在の人物であることが保証されます。これにより、偽のプロフィール、なりすまし、詐欺から保護されます。これらは従来の出会い系アプリに対する最大の苦情です。"
+      },
+      "howContact": {
+        "q": "サポートに連絡するにはどうすればよいですか？",
+        "a": "support@pragma.appにメールをお送りください。営業日は24時間以内に返信することを目指しています。"
+      }
+    },
+    "contactTitle": "まだお困りですか？",
+    "contactDescription": "サポートチームがお手伝いいたします。お問い合わせいただければ、できるだけ早くご返信いたします。"
   }
 }

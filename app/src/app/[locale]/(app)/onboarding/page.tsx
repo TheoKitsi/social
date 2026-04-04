@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Button, Card, CardContent, Input, Select, ProgressBar } from "@/components/ui";
@@ -11,6 +11,7 @@ import { ChatOnboarding } from "@/components/onboarding/chat-onboarding";
 import { VoiceOnboarding } from "@/components/onboarding/voice-onboarding";
 import type { FunnelLevel } from "@/types/funnel";
 import type { FunnelSide } from "@/types/database";
+import { useFlags } from "@/components/flags-provider";
 
 /** Reflection question i18n keys per level (FN-8.1.1.3) */
 const reflectionKeys: Record<number, string[]> = {
@@ -39,6 +40,7 @@ interface OnboardingStep {
 export default function OnboardingPage() {
   const t = useTranslations();
   const router = useRouter();
+  const { aiOnboarding } = useFlags();
   const [mode, setMode] = useState<OnboardingMode | null>(null);
   const [currentStep, setCurrentStep] = useState<OnboardingStep>({
     level: 1,
@@ -50,20 +52,57 @@ export default function OnboardingPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
+  const DRAFT_KEY = "pragma-onboarding-draft";
+  const STEP_KEY = "pragma-onboarding-step";
+
+  // Persist formData to localStorage on every change
+  const persistDraft = useCallback(
+    (data: Record<string, Record<string, Record<string, unknown>>>) => {
+      try {
+        localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+      } catch {
+        // Storage full or unavailable — ignore
+      }
+    },
+    []
+  );
+
   // Load existing progress on mount (FN-8.1.1.6)
   useEffect(() => {
+    // Immediately restore localStorage draft for offline-first UX
+    try {
+      const draft = localStorage.getItem(DRAFT_KEY);
+      if (draft) {
+        setFormData(JSON.parse(draft));
+      }
+      const savedStep = localStorage.getItem(STEP_KEY);
+      if (savedStep) {
+        setCurrentStep(JSON.parse(savedStep));
+      }
+    } catch {
+      // Corrupt data — ignore
+    }
+
     async function loadProgress() {
       const progress = await getFunnelProgress();
       if (!progress) return;
 
-      // Reconstruct form data from saved levels
+      // Reconstruct form data from saved levels (server is source of truth)
       const data: Record<string, Record<string, Record<string, unknown>>> = {};
       for (const level of progress.levels) {
         const key = `${level.level}`;
         if (!data[key]) data[key] = {};
         data[key][level.side] = level.data as Record<string, unknown>;
       }
-      setFormData(data);
+
+      // Merge: server-saved data takes precedence, keep unsaved drafts
+      setFormData((prev) => {
+        const merged = { ...prev };
+        for (const [lvl, sides] of Object.entries(data)) {
+          merged[lvl] = { ...merged[lvl], ...sides };
+        }
+        return merged;
+      });
 
       // Find where user left off
       const activeLvl = progress.profile?.active_funnel_level || 1;
@@ -72,11 +111,17 @@ export default function OnboardingPage() {
         (l) => l.side === "self" && l.completed
       );
 
-      setCurrentStep({
+      const step = {
         level: activeLvl as FunnelLevel,
-        side: selfDone ? "target" : "self",
+        side: (selfDone ? "target" : "self") as "self" | "target",
         fieldIndex: 0,
-      });
+      };
+      setCurrentStep(step);
+      try {
+        localStorage.setItem(STEP_KEY, JSON.stringify(step));
+      } catch {
+        // ignore
+      }
     }
     loadProgress();
   }, []);
@@ -92,29 +137,42 @@ export default function OnboardingPage() {
 
   function handleAIComplete(data: Record<string, unknown>) {
     // AI mode completed a level/side — advance to next
-    setFormData((prev) => ({
-      ...prev,
+    const updated = {
+      ...formData,
       [currentStep.level]: {
-        ...prev[currentStep.level],
+        ...formData[currentStep.level],
         [currentStep.side]: data,
       },
-    }));
+    };
+    setFormData(updated);
+    persistDraft(updated);
 
     if (currentStep.side === "self") {
-      setCurrentStep((prev) => ({ ...prev, side: "target", fieldIndex: 0 }));
+      const next = { ...currentStep, side: "target" as const, fieldIndex: 0 };
+      setCurrentStep(next);
+      try { localStorage.setItem(STEP_KEY, JSON.stringify(next)); } catch { /* ignore */ }
     } else if (currentStep.level < 3) {
-      setCurrentStep({
+      const next = {
         level: (currentStep.level + 1) as FunnelLevel,
-        side: "self",
+        side: "self" as const,
         fieldIndex: 0,
-      });
+      };
+      setCurrentStep(next);
+      try { localStorage.setItem(STEP_KEY, JSON.stringify(next)); } catch { /* ignore */ }
     } else {
+      // All done — clear drafts
+      try { localStorage.removeItem(DRAFT_KEY); localStorage.removeItem(STEP_KEY); } catch { /* ignore */ }
       router.push("/profile");
     }
   }
 
   // ── Mode selector ──
   if (!mode) {
+    if (!aiOnboarding) {
+      // AI modes disabled by feature flag — go straight to manual
+      setMode("manual");
+      return null;
+    }
     return <ModeSelector onSelect={setMode} />;
   }
 
@@ -150,16 +208,20 @@ export default function OnboardingPage() {
   // ── Manual mode (original form flow below) ──
 
   function updateField(field: string, value: unknown) {
-    setFormData((prev) => ({
-      ...prev,
-      [currentStep.level]: {
-        ...prev[currentStep.level],
-        [currentStep.side]: {
-          ...prev[currentStep.level]?.[currentStep.side],
-          [field]: value,
+    setFormData((prev) => {
+      const updated = {
+        ...prev,
+        [currentStep.level]: {
+          ...prev[currentStep.level],
+          [currentStep.side]: {
+            ...prev[currentStep.level]?.[currentStep.side],
+            [field]: value,
+          },
         },
-      },
-    }));
+      };
+      persistDraft(updated);
+      return updated;
+    });
   }
 
   async function handleSaveAndContinue() {
@@ -182,17 +244,22 @@ export default function OnboardingPage() {
 
     // Navigate to next section
     if (currentStep.side === "self") {
-      setCurrentStep((prev) => ({ ...prev, side: "target", fieldIndex: 0 }));
+      const next = { ...currentStep, side: "target" as const, fieldIndex: 0 };
+      setCurrentStep(next);
       setShowReflection(true);
+      try { localStorage.setItem(STEP_KEY, JSON.stringify(next)); } catch { /* ignore */ }
     } else if (currentStep.level < 3) {
-      setCurrentStep({
+      const next = {
         level: (currentStep.level + 1) as FunnelLevel,
-        side: "self",
+        side: "self" as const,
         fieldIndex: 0,
-      });
+      };
+      setCurrentStep(next);
       setShowReflection(true);
+      try { localStorage.setItem(STEP_KEY, JSON.stringify(next)); } catch { /* ignore */ }
     } else {
-      // Mandatory levels complete — go to profile
+      // Mandatory levels complete — clear drafts & go to profile
+      try { localStorage.removeItem(DRAFT_KEY); localStorage.removeItem(STEP_KEY); } catch { /* ignore */ }
       router.push("/profile");
     }
   }

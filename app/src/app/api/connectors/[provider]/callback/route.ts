@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import crypto from "crypto";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 const TOKEN_URLS: Record<string, string> = {
   youtube: "https://oauth2.googleapis.com/token",
@@ -37,6 +38,9 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ provider: string }> }
 ) {
+  const limited = applyRateLimit(request, "connectors-callback", { limit: 10, windowMs: 60_000 });
+  if (limited) return limited;
+
   const { provider } = await params;
   const { searchParams } = new URL(request.url);
   const code = searchParams.get("code");

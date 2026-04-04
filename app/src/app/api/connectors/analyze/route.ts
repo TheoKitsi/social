@@ -2,8 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { extractSignals } from "@/lib/connectors/signal-extractor";
 import { parseProviderData } from "@/lib/connectors/parsers";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
+  const limited = applyRateLimit(request, "connectors-analyze", { limit: 5, windowMs: 60_000 });
+  if (limited) return limited;
+
   const supabase = await createClient();
   const {
     data: { user },

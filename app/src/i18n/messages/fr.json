@@ -16,7 +16,12 @@
     "required": "Required",
     "optional": "Optional",
     "error": "Something went wrong",
-    "retry": "Try again"
+    "retry": "Try again",
+    "notFound": "Page introuvable",
+    "notFoundDescription": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "goHome": "Retour à l'accueil",
+    "accessDenied": "Accès refusé",
+    "accessDeniedDescription": "Vous n'avez pas la permission d'accéder à cette page."
   },
   "landing": {
     "hero": "Partnership, methodically.",
@@ -113,6 +118,7 @@
     "forgotPassword": "Forgot password?",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
+    "orContinueWith": "ou continuer avec",
     "magicLink": "Sign in with magic link",
     "verifyEmail": "Check your email",
     "verifyEmailDescription": "We sent a verification link to {email}. Click it to verify your account.",
@@ -125,7 +131,10 @@
     "uploadId": "Upload ID document",
     "verificationPending": "Verification pending",
     "verificationApproved": "Verified",
-    "verificationRejected": "Verification failed"
+    "verificationRejected": "Verification failed",
+    "invalidCredentials": "Identifiants invalides",
+    "passwordMismatch": "Les mots de passe ne correspondent pas",
+    "passwordMinLength": "Le mot de passe doit contenir au moins 8 caractères"
   },
   "verification": {
     "status": {
@@ -482,7 +491,9 @@
     "conversionRate": "Conversion Rate",
     "churnRate": "Churn Rate",
     "avgMatchScore": "Average Match Score",
-    "monthlyRevenue": "Monthly Revenue"
+    "monthlyRevenue": "Monthly Revenue",
+    "userGrowth": "Croissance des utilisateurs (30 jours)",
+    "dailyRegistrations": "Inscriptions quotidiennes"
   },
   "legal": {
     "impressum": {
@@ -768,5 +779,68 @@
       "title": "Ready for something real?",
       "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself."
     }
+  },
+  "report": {
+    "title": "Signaler un Utilisateur",
+    "description": "Aidez-nous à garder PRAGMA sûr. Sélectionnez un motif pour votre signalement.",
+    "reasons": {
+      "fake_profile": "Profil faux ou usurpation d'identité",
+      "harassment": "Harcèlement ou comportement abusif",
+      "inappropriate_content": "Contenu inapproprié ou offensant",
+      "spam": "Spam ou sollicitation commerciale",
+      "underage": "Semble être mineur(e)",
+      "scam": "Arnaque ou tentative de fraude",
+      "other": "Autre raison"
+    },
+    "detailsPlaceholder": "Décrivez le problème (facultatif)...",
+    "reportAndBlock": "Signaler et Bloquer",
+    "cancel": "Annuler",
+    "submitting": "Envoi en cours...",
+    "submitted": "Signalement envoyé",
+    "submittedDescription": "Merci. Notre équipe examinera ce signalement dans les 24 heures.",
+    "submitError": "Échec de l'envoi du signalement. Veuillez réessayer.",
+    "notLoggedIn": "Vous devez être connecté(e) pour signaler un utilisateur.",
+    "close": "Fermer"
+  },
+  "support": {
+    "title": "Aide et Support",
+    "subtitle": "Trouvez des réponses aux questions fréquentes ou contactez notre équipe.",
+    "faqTitle": "Questions Fréquemment Posées",
+    "faq": {
+      "whatIsPragma": {
+        "q": "Qu'est-ce que PRAGMA ?",
+        "a": "PRAGMA est une plateforme de mise en relation basée sur la science qui utilise la découverte de soi structurée et le scoring de compatibilité bidirectionnel pour créer des connexions significatives. Contrairement aux applications de rencontres traditionnelles, nous privilégions la profondeur, la vérification et le consentement mutuel."
+      },
+      "howMatching": {
+        "q": "Comment fonctionne l'algorithme de mise en relation ?",
+        "a": "Notre algorithme évalue la compatibilité sur cinq niveaux progressifs -- des valeurs fondamentales aux préférences comportementales. Chaque mise en relation est évaluée bidirectionnellement, ce qui signifie que la compatibilité est mesurée des deux perspectives. Les scores sont pondérés et les critères rédhibitoires sont respectés."
+      },
+      "whyFunnel": {
+        "q": "Pourquoi dois-je compléter le parcours d'intégration ?",
+        "a": "Le parcours garantit que chaque utilisateur sur PRAGMA a investi du temps dans une véritable introspection. Cela produit des mises en relation de meilleure qualité et filtre les utilisateurs qui ne recherchent pas sérieusement un(e) partenaire."
+      },
+      "isDataSafe": {
+        "q": "Mes données personnelles sont-elles en sécurité ?",
+        "a": "Oui. Nous sommes entièrement conformes au GDPR et ne traitons les données de catégories spéciales qu'avec votre consentement explicite. Toutes les données sont chiffrées en transit et au repos. Nous ne vendons jamais vos données à des tiers. Vous pouvez exporter ou supprimer vos données à tout moment depuis les Paramètres."
+      },
+      "howCancel": {
+        "q": "Comment annuler mon abonnement ?",
+        "a": "Allez dans Paramètres > Abonnement et cliquez sur 'Gérer l'Abonnement'. Vous pouvez annuler à tout moment. Votre abonnement reste actif jusqu'à la fin de la période de facturation en cours."
+      },
+      "howDelete": {
+        "q": "Comment supprimer mon compte ?",
+        "a": "Allez dans Paramètres et faites défiler jusqu'en bas. Cliquez sur 'Supprimer le Compte'. Cette action est irréversible et supprimera définitivement toutes vos données conformément à l'Article 17 du GDPR (Droit à l'Effacement)."
+      },
+      "howVerify": {
+        "q": "Pourquoi la vérification d'identité est-elle requise ?",
+        "a": "La vérification garantit que chaque utilisateur sur PRAGMA est une personne réelle avec une intention sérieuse. Cela vous protège des faux profils, du catfishing et des arnaques -- la plainte numéro un concernant les applications de rencontres traditionnelles."
+      },
+      "howContact": {
+        "q": "Comment puis-je contacter le support ?",
+        "a": "Envoyez-nous un e-mail à support@pragma.app. Nous visons à répondre dans les 24 heures les jours ouvrables."
+      }
+    },
+    "contactTitle": "Vous avez encore besoin d'aide ?",
+    "contactDescription": "Notre équipe de support est là pour vous aider. Contactez-nous et nous vous répondrons dès que possible."
   }
 }

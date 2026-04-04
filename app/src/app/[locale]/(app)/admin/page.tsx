@@ -4,6 +4,17 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 import { Card, CardContent, Button, Input } from "@/components/ui";
+import {
+  AreaChart,
+  Area,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 interface UserRow {
   id: string;
@@ -21,17 +32,41 @@ interface Stats {
   matchesMade: number;
 }
 
+interface DailyPoint {
+  date: string;
+  registrations: number;
+  cumulative: number;
+}
+
 export default function AdminPage() {
   const t = useTranslations();
   const [search, setSearch] = useState("");
   const [tab, setTab] = useState<"overview" | "users" | "verification">("overview");
   const [stats, setStats] = useState<Stats>({ totalUsers: 0, activeUsers: 0, verifiedUsers: 0, matchesMade: 0 });
   const [users, setUsers] = useState<UserRow[]>([]);
+  const [growthData, setGrowthData] = useState<DailyPoint[]>([]);
   const [loading, setLoading] = useState(true);
+  const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
     async function load() {
       const supabase = createClient();
+
+      // Verify admin role before loading data
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("user_id", user.id)
+        .single();
+
+      if (profile?.role !== "admin") {
+        setLoading(false);
+        return;
+      }
+      setAuthorized(true);
 
       // Fetch stats
       const [profilesRes, activeRes, verifiedRes, matchesRes] = await Promise.all([
@@ -56,6 +91,27 @@ export default function AdminPage() {
         .limit(50);
 
       setUsers((userRows as UserRow[]) || []);
+
+      // Aggregate registrations by day for growth chart (last 30 days)
+      const rows = (userRows as UserRow[]) || [];
+      const dailyMap: Record<string, number> = {};
+      const now = new Date();
+      for (let i = 29; i >= 0; i--) {
+        const d = new Date(now);
+        d.setDate(d.getDate() - i);
+        dailyMap[d.toISOString().slice(0, 10)] = 0;
+      }
+      for (const u of rows) {
+        const day = u.created_at.slice(0, 10);
+        if (day in dailyMap) dailyMap[day]++;
+      }
+      let cumulative = 0;
+      const growth: DailyPoint[] = Object.entries(dailyMap).map(([date, registrations]) => {
+        cumulative += registrations;
+        return { date: date.slice(5), registrations, cumulative };
+      });
+      setGrowthData(growth);
+
       setLoading(false);
     }
     load();
@@ -91,6 +147,26 @@ export default function AdminPage() {
     );
   }
 
+  if (!authorized) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-dvh gap-4 px-6 text-center">
+        {loading ? (
+          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+        ) : (
+          <>
+            <div className="w-12 h-12 rounded-full bg-red-500/15 flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-red-400">
+                <path d="M12 9v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <p className="text-on-surface font-semibold">{t("common.accessDenied")}</p>
+            <p className="text-sm text-on-surface-muted">{t("common.accessDeniedDescription")}</p>
+          </>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-dvh px-6 py-8 max-w-6xl mx-auto space-y-8">
       <div className="flex items-center justify-between">
@@ -121,6 +197,7 @@ export default function AdminPage() {
               <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
             </div>
           ) : (
+            <>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {statItems.map((s) => (
                 <Card key={s.label} variant="outlined" className="text-center">
@@ -131,6 +208,60 @@ export default function AdminPage() {
                 </Card>
               ))}
             </div>
+
+            {/* Charts */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* User Growth (cumulative) */}
+              <Card variant="outlined">
+                <CardContent className="py-4">
+                  <p className="text-sm font-medium text-on-surface mb-4">{t("admin.userGrowth")}</p>
+                  <div className="h-52">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart data={growthData}>
+                        <defs>
+                          <linearGradient id="gradGrowth" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#FF4081" stopOpacity={0.3} />
+                            <stop offset="100%" stopColor="#FF4081" stopOpacity={0} />
+                          </linearGradient>
+                        </defs>
+                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
+                        <XAxis dataKey="date" tick={{ fill: "#999", fontSize: 10 }} tickLine={false} axisLine={false} />
+                        <YAxis tick={{ fill: "#999", fontSize: 10 }} tickLine={false} axisLine={false} width={30} />
+                        <Tooltip
+                          contentStyle={{ background: "#1A1A2E", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, fontSize: 12 }}
+                          labelStyle={{ color: "#999" }}
+                          itemStyle={{ color: "#FF4081" }}
+                        />
+                        <Area type="monotone" dataKey="cumulative" stroke="#FF4081" fill="url(#gradGrowth)" strokeWidth={2} />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Daily Registrations */}
+              <Card variant="outlined">
+                <CardContent className="py-4">
+                  <p className="text-sm font-medium text-on-surface mb-4">{t("admin.dailyRegistrations")}</p>
+                  <div className="h-52">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={growthData}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
+                        <XAxis dataKey="date" tick={{ fill: "#999", fontSize: 10 }} tickLine={false} axisLine={false} />
+                        <YAxis tick={{ fill: "#999", fontSize: 10 }} tickLine={false} axisLine={false} width={30} allowDecimals={false} />
+                        <Tooltip
+                          contentStyle={{ background: "#1A1A2E", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, fontSize: 12 }}
+                          labelStyle={{ color: "#999" }}
+                          itemStyle={{ color: "#60a5fa" }}
+                        />
+                        <Bar dataKey="registrations" fill="#60a5fa" radius={[4, 4, 0, 0]} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            </>
           )}
         </div>
       )}

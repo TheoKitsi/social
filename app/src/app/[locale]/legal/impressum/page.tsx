@@ -36,42 +36,42 @@ export default function ImpressumPage() {
           {/* §5 TMG — Company Information */}
           <section className="space-y-2">
             <h2 className="text-lg font-semibold text-on-surface">{t("impressum.companyInfo")}</h2>
-            <p>PRAGMA GmbH <span className="text-on-surface-muted/60">[TODO: Confirm legal entity]</span></p>
-            <p>Musterstraße 1 <span className="text-on-surface-muted/60">[TODO: Real address]</span></p>
-            <p>80331 München, Deutschland</p>
+            <p>{t("impressum.companyName")}</p>
+            <p>{t("impressum.companyAddress")}</p>
+            <p>{t("impressum.companyCity")}</p>
           </section>
 
           {/* Contact */}
           <section className="space-y-2">
             <h2 className="text-lg font-semibold text-on-surface">{t("impressum.contact")}</h2>
-            <p>E-Mail: contact@pragma.app <span className="text-on-surface-muted/60">[TODO: Real email]</span></p>
-            <p>Telefon: +49 (0) xxx xxxxxxx <span className="text-on-surface-muted/60">[TODO: Real phone]</span></p>
+            <p>E-Mail: {t("impressum.email")}</p>
+            <p>Telefon: {t("impressum.phone")}</p>
           </section>
 
           {/* Commercial Register */}
           <section className="space-y-2">
             <h2 className="text-lg font-semibold text-on-surface">{t("impressum.register")}</h2>
-            <p>{t("impressum.registerCourt")}: Amtsgericht München <span className="text-on-surface-muted/60">[TODO]</span></p>
-            <p>{t("impressum.registerNumber")}: HRB XXXXXX <span className="text-on-surface-muted/60">[TODO]</span></p>
+            <p>{t("impressum.registerCourt")}: {t("impressum.registerCourtValue")}</p>
+            <p>{t("impressum.registerNumber")}: {t("impressum.registerNumberValue")}</p>
           </section>
 
           {/* VAT ID */}
           <section className="space-y-2">
             <h2 className="text-lg font-semibold text-on-surface">{t("impressum.vatId")}</h2>
-            <p>{t("impressum.vatIdLabel")}: DE XXXXXXXXX <span className="text-on-surface-muted/60">[TODO]</span></p>
+            <p>{t("impressum.vatIdLabel")}: {t("impressum.vatIdValue")}</p>
           </section>
 
           {/* Managing Director */}
           <section className="space-y-2">
             <h2 className="text-lg font-semibold text-on-surface">{t("impressum.managingDirector")}</h2>
-            <p>[TODO: Name of Managing Director]</p>
+            <p>{t("impressum.managingDirectorName")}</p>
           </section>
 
           {/* Responsible for Editorial Content — §18 Abs. 2 MStV */}
           <section className="space-y-2">
             <h2 className="text-lg font-semibold text-on-surface">{t("impressum.editorialResponsible")}</h2>
-            <p>[TODO: Name]</p>
-            <p>[TODO: Address]</p>
+            <p>{t("impressum.editorialName")}</p>
+            <p>{t("impressum.editorialAddress")}</p>
           </section>
 
           {/* EU Dispute Resolution — Art. 14 Abs. 1 ODR-VO */}

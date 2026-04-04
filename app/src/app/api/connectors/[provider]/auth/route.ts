@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import crypto from "crypto";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 // OAuth configurations per provider
 const OAUTH_CONFIGS: Record<string, {
@@ -44,6 +45,9 @@ export async function GET(
   _request: Request,
   { params }: { params: Promise<{ provider: string }> }
 ) {
+  const limited = applyRateLimit(_request, "connectors-auth", { limit: 10, windowMs: 60_000 });
+  if (limited) return limited;
+
   const { provider } = await params;
   const config = OAUTH_CONFIGS[provider];
 

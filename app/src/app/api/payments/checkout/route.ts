@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe, PLAN_PRICE_IDS } from "@/lib/stripe";
 import { createClient } from "@/lib/supabase/server";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
+  const limited = applyRateLimit(req, "payments-checkout", { limit: 5, windowMs: 60_000 });
+  if (limited) return limited;
+
   const supabase = await createClient();
   const {
     data: { user },

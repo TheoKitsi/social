@@ -16,7 +16,12 @@
     "required": "Required",
     "optional": "Optional",
     "error": "Something went wrong",
-    "retry": "Try again"
+    "retry": "Try again",
+    "notFound": "الصفحة غير موجودة",
+    "notFoundDescription": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "goHome": "العودة إلى الرئيسية",
+    "accessDenied": "تم رفض الوصول",
+    "accessDeniedDescription": "ليس لديك إذن للوصول إلى هذه الصفحة."
   },
   "landing": {
     "hero": "Partnership, methodically.",
@@ -113,6 +118,7 @@
     "forgotPassword": "Forgot password?",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
+    "orContinueWith": "أو تابع باستخدام",
     "magicLink": "Sign in with magic link",
     "verifyEmail": "Check your email",
     "verifyEmailDescription": "We sent a verification link to {email}. Click it to verify your account.",
@@ -125,7 +131,10 @@
     "uploadId": "Upload ID document",
     "verificationPending": "Verification pending",
     "verificationApproved": "Verified",
-    "verificationRejected": "Verification failed"
+    "verificationRejected": "Verification failed",
+    "invalidCredentials": "بيانات اعتماد غير صالحة",
+    "passwordMismatch": "كلمات المرور غير متطابقة",
+    "passwordMinLength": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل"
   },
   "verification": {
     "status": {
@@ -482,7 +491,9 @@
     "conversionRate": "Conversion Rate",
     "churnRate": "Churn Rate",
     "avgMatchScore": "Average Match Score",
-    "monthlyRevenue": "Monthly Revenue"
+    "monthlyRevenue": "Monthly Revenue",
+    "userGrowth": "نمو المستخدمين (30 يومًا)",
+    "dailyRegistrations": "التسجيلات اليومية"
   },
   "legal": {
     "impressum": {
@@ -768,5 +779,68 @@
       "title": "Ready for something real?",
       "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself."
     }
+  },
+  "report": {
+    "title": "الإبلاغ عن مستخدم",
+    "description": "ساعدنا في الحفاظ على أمان PRAGMA. اختر سببًا لبلاغك.",
+    "reasons": {
+      "fake_profile": "ملف شخصي مزيف أو منتحل",
+      "harassment": "تحرش أو سلوك مسيء",
+      "inappropriate_content": "محتوى غير لائق أو مسيء",
+      "spam": "رسائل مزعجة أو ترويج تجاري",
+      "underage": "يبدو أنه قاصر",
+      "scam": "احتيال أو محاولة نصب",
+      "other": "سبب آخر"
+    },
+    "detailsPlaceholder": "صف المشكلة (اختياري)...",
+    "reportAndBlock": "إبلاغ وحظر",
+    "cancel": "إلغاء",
+    "submitting": "جارٍ الإرسال...",
+    "submitted": "تم إرسال البلاغ",
+    "submittedDescription": "شكرًا لك. سيقوم فريقنا بمراجعة هذا البلاغ خلال 24 ساعة.",
+    "submitError": "فشل إرسال البلاغ. يرجى المحاولة مرة أخرى.",
+    "notLoggedIn": "يجب أن تكون مسجلاً الدخول للإبلاغ عن مستخدم.",
+    "close": "إغلاق"
+  },
+  "support": {
+    "title": "المساعدة والدعم",
+    "subtitle": "ابحث عن إجابات للأسئلة الشائعة أو تواصل مع فريقنا.",
+    "faqTitle": "الأسئلة الشائعة",
+    "faq": {
+      "whatIsPragma": {
+        "q": "ما هو PRAGMA؟",
+        "a": "PRAGMA هي منصة مطابقة قائمة على العلم تستخدم اكتشاف الذات المنظم وتقييم التوافق ثنائي الاتجاه لإنشاء روابط ذات معنى. على عكس تطبيقات المواعدة التقليدية، نحن نعطي الأولوية للعمق والتحقق والموافقة المتبادلة."
+      },
+      "howMatching": {
+        "q": "كيف يعمل خوارزمية المطابقة؟",
+        "a": "تقيّم خوارزميتنا التوافق عبر خمسة مستويات تدريجية -- من القيم الأساسية إلى التفضيلات السلوكية. يتم تقييم كل مطابقة ثنائيًا، مما يعني أن التوافق يُقاس من كلا المنظورين. الدرجات مرجحة ومعايير الاستبعاد محترمة."
+      },
+      "whyFunnel": {
+        "q": "لماذا يجب عليّ إكمال عملية التسجيل؟",
+        "a": "تضمن العملية أن كل مستخدم على PRAGMA قد استثمر وقتًا في تأمل ذاتي حقيقي. هذا ينتج مطابقات أعلى جودة ويستبعد المستخدمين غير الجادين في البحث عن شريك."
+      },
+      "isDataSafe": {
+        "q": "هل بياناتي الشخصية آمنة؟",
+        "a": "نعم. نحن متوافقون تمامًا مع GDPR ونعالج بيانات الفئات الخاصة فقط بموافقتك الصريحة. جميع البيانات مشفرة أثناء النقل وأثناء التخزين. لا نبيع بياناتك أبدًا لأطراف ثالثة. يمكنك تصدير أو حذف بياناتك في أي وقت من الإعدادات."
+      },
+      "howCancel": {
+        "q": "كيف يمكنني إلغاء اشتراكي؟",
+        "a": "انتقل إلى الإعدادات > الاشتراك وانقر على 'إدارة الاشتراك'. يمكنك الإلغاء في أي وقت. يظل اشتراكك نشطًا حتى نهاية فترة الفوترة الحالية."
+      },
+      "howDelete": {
+        "q": "كيف يمكنني حذف حسابي؟",
+        "a": "انتقل إلى الإعدادات وانتقل للأسفل. انقر على 'حذف الحساب'. هذا الإجراء لا يمكن التراجع عنه وسيزيل جميع بياناتك نهائيًا وفقًا للمادة 17 من GDPR (الحق في المحو)."
+      },
+      "howVerify": {
+        "q": "لماذا يُطلب التحقق من الهوية؟",
+        "a": "يضمن التحقق أن كل مستخدم على PRAGMA هو شخص حقيقي ذو نية جادة. هذا يحميك من الملفات الشخصية المزيفة والانتحال والاحتيال -- الشكوى الأولى حول تطبيقات المواعدة التقليدية."
+      },
+      "howContact": {
+        "q": "كيف يمكنني التواصل مع الدعم؟",
+        "a": "أرسل لنا بريدًا إلكترونيًا على support@pragma.app. نهدف للرد خلال 24 ساعة في أيام العمل."
+      }
+    },
+    "contactTitle": "هل ما زلت بحاجة إلى مساعدة؟",
+    "contactDescription": "فريق الدعم لدينا هنا لمساعدتك. تواصل معنا وسنرد عليك في أقرب وقت ممكن."
   }
 }

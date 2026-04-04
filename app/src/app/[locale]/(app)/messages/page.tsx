@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 import { Button, Input } from "@/components/ui";
+import { ReportDialog } from "@/components/report-dialog";
+import { sendMessage as sendMessageAction } from "@/app/actions/messages";
 
 interface Conversation {
   id: string;
@@ -32,6 +34,7 @@ export default function MessagesPage() {
   const [newMessage, setNewMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [reportingUserId, setReportingUserId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -81,22 +84,31 @@ export default function MessagesPage() {
         });
         setConversations(convos);
 
-        // Load last message for each
-        for (const convo of convos) {
-          const { data: lastMsg } = await supabase
+        // Load last message per conversation in a single query (avoid N+1)
+        const consentIds = convos.map((c) => c.id);
+        if (consentIds.length > 0) {
+          const { data: lastMessages } = await supabase
             .from("messages")
-            .select("content, created_at")
-            .eq("consent_id", convo.id)
-            .order("created_at", { ascending: false })
-            .limit(1)
-            .single();
+            .select("consent_id, content, created_at")
+            .in("consent_id", consentIds)
+            .order("created_at", { ascending: false });
 
-          if (lastMsg) {
-            convo.lastMessage = lastMsg.content;
-            convo.lastAt = lastMsg.created_at;
+          const lastMsgMap = new Map<string, { content: string; created_at: string }>();
+          for (const msg of lastMessages || []) {
+            if (!lastMsgMap.has(msg.consent_id)) {
+              lastMsgMap.set(msg.consent_id, msg);
+            }
           }
+
+          for (const convo of convos) {
+            const lastMsg = lastMsgMap.get(convo.id);
+            if (lastMsg) {
+              convo.lastMessage = lastMsg.content;
+              convo.lastAt = lastMsg.created_at;
+            }
+          }
+          setConversations([...convos]);
         }
-        setConversations([...convos]);
       }
       setLoading(false);
     }
@@ -157,13 +169,9 @@ export default function MessagesPage() {
 
     setSending(true);
     const content = newMessage.trim().slice(0, 2000);
-    const { error } = await supabase.from("messages").insert({
-      consent_id: activeConvo,
-      sender_id: userId,
-      content,
-    });
+    const result = await sendMessageAction(activeConvo, content);
 
-    if (!error) {
+    if (result.success) {
       setNewMessage("");
     }
     setSending(false);
@@ -263,9 +271,21 @@ export default function MessagesPage() {
                   (conversations.find((c) => c.id === activeConvo)?.otherName || "M").slice(0, 1).toUpperCase()
                 )}
               </div>
-              <p className="font-medium text-on-surface text-sm">
+              <p className="font-medium text-on-surface text-sm flex-1">
                 {conversations.find((c) => c.id === activeConvo)?.otherName || "Match"}
               </p>
+              <button
+                onClick={() => {
+                  const convo = conversations.find((c) => c.id === activeConvo);
+                  if (convo) setReportingUserId(convo.otherUserId);
+                }}
+                className="p-2 text-on-surface-muted hover:text-error transition-colors"
+                title={t("report.title")}
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2z" />
+                </svg>
+              </button>
             </div>
 
             {/* Messages */}
@@ -342,6 +362,13 @@ export default function MessagesPage() {
           </div>
         )}
       </div>
+
+      {reportingUserId && (
+        <ReportDialog
+          reportedUserId={reportingUserId}
+          onClose={() => setReportingUserId(null)}
+        />
+      )}
     </div>
   );
 }

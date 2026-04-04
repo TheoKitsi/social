@@ -1,10 +1,14 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { computeMatch } from "@/lib/matching/engine";
+import { applyRateLimit } from "@/lib/rate-limit";
 import type { Weighting, Tolerance } from "@/types/database";
 import type { ExternalSignals } from "@/types/connectors";
 
-export async function POST() {
+export async function POST(request: NextRequest) {
+  const limited = applyRateLimit(request, "matching-compute", { limit: 10, windowMs: 60_000 });
+  if (limited) return limited;
+
   const supabase = await createClient();
 
   const {

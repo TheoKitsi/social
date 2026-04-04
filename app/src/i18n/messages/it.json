@@ -16,7 +16,12 @@
     "required": "Required",
     "optional": "Optional",
     "error": "Something went wrong",
-    "retry": "Try again"
+    "retry": "Try again",
+    "notFound": "Pagina non trovata",
+    "notFoundDescription": "La pagina che stai cercando non esiste o è stata spostata.",
+    "goHome": "Torna alla home",
+    "accessDenied": "Accesso negato",
+    "accessDeniedDescription": "Non hai il permesso di accedere a questa pagina."
   },
   "landing": {
     "hero": "Partnership, methodically.",
@@ -113,6 +118,7 @@
     "forgotPassword": "Forgot password?",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
+    "orContinueWith": "o continua con",
     "magicLink": "Sign in with magic link",
     "verifyEmail": "Check your email",
     "verifyEmailDescription": "We sent a verification link to {email}. Click it to verify your account.",
@@ -125,7 +131,10 @@
     "uploadId": "Upload ID document",
     "verificationPending": "Verification pending",
     "verificationApproved": "Verified",
-    "verificationRejected": "Verification failed"
+    "verificationRejected": "Verification failed",
+    "invalidCredentials": "Credenziali non valide",
+    "passwordMismatch": "Le password non corrispondono",
+    "passwordMinLength": "La password deve contenere almeno 8 caratteri"
   },
   "verification": {
     "status": {
@@ -482,7 +491,9 @@
     "conversionRate": "Conversion Rate",
     "churnRate": "Churn Rate",
     "avgMatchScore": "Average Match Score",
-    "monthlyRevenue": "Monthly Revenue"
+    "monthlyRevenue": "Monthly Revenue",
+    "userGrowth": "Crescita utenti (30 giorni)",
+    "dailyRegistrations": "Registrazioni giornaliere"
   },
   "legal": {
     "impressum": {
@@ -768,5 +779,68 @@
       "title": "Ready for something real?",
       "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself."
     }
+  },
+  "report": {
+    "title": "Segnala Utente",
+    "description": "Aiutaci a mantenere PRAGMA sicuro. Seleziona un motivo per la tua segnalazione.",
+    "reasons": {
+      "fake_profile": "Profilo falso o impersonificazione",
+      "harassment": "Molestie o comportamento abusivo",
+      "inappropriate_content": "Contenuto inappropriato o offensivo",
+      "spam": "Spam o sollecitazione commerciale",
+      "underage": "Sembra essere minorenne",
+      "scam": "Truffa o tentativo di frode",
+      "other": "Altro motivo"
+    },
+    "detailsPlaceholder": "Descrivi il problema (facoltativo)...",
+    "reportAndBlock": "Segnala e Blocca",
+    "cancel": "Annulla",
+    "submitting": "Invio in corso...",
+    "submitted": "Segnalazione inviata",
+    "submittedDescription": "Grazie. Il nostro team esaminerà questa segnalazione entro 24 ore.",
+    "submitError": "Invio della segnalazione non riuscito. Riprova.",
+    "notLoggedIn": "Devi effettuare l'accesso per segnalare un utente.",
+    "close": "Chiudi"
+  },
+  "support": {
+    "title": "Aiuto e Supporto",
+    "subtitle": "Trova risposte alle domande frequenti o contatta il nostro team.",
+    "faqTitle": "Domande Frequenti",
+    "faq": {
+      "whatIsPragma": {
+        "q": "Cos'è PRAGMA?",
+        "a": "PRAGMA è una piattaforma di abbinamento basata sulla scienza che utilizza la scoperta di sé strutturata e il punteggio di compatibilità bidirezionale per creare connessioni significative. A differenza delle app di incontri tradizionali, diamo priorità alla profondità, alla verifica e al consenso reciproco."
+      },
+      "howMatching": {
+        "q": "Come funziona l'algoritmo di abbinamento?",
+        "a": "Il nostro algoritmo valuta la compatibilità su cinque livelli progressivi -- dai valori fondamentali alle preferenze comportamentali. Ogni abbinamento viene valutato bidirezionalmente, il che significa che la compatibilità viene misurata da entrambe le prospettive. I punteggi sono ponderati e i criteri di esclusione vengono rispettati."
+      },
+      "whyFunnel": {
+        "q": "Perché devo completare il percorso di onboarding?",
+        "a": "Il percorso garantisce che ogni utente su PRAGMA abbia investito tempo in una genuina autoriflessione. Questo produce abbinamenti di qualità superiore e filtra gli utenti che non sono seriamente alla ricerca di un partner."
+      },
+      "isDataSafe": {
+        "q": "I miei dati personali sono al sicuro?",
+        "a": "Sì. Siamo pienamente conformi al GDPR e trattiamo i dati di categorie speciali solo con il tuo consenso esplicito. Tutti i dati sono crittografati in transito e a riposo. Non vendiamo mai i tuoi dati a terzi. Puoi esportare o eliminare i tuoi dati in qualsiasi momento dalle Impostazioni."
+      },
+      "howCancel": {
+        "q": "Come posso annullare il mio abbonamento?",
+        "a": "Vai su Impostazioni > Abbonamento e clicca su 'Gestisci Abbonamento'. Puoi annullare in qualsiasi momento. Il tuo abbonamento rimane attivo fino alla fine del periodo di fatturazione corrente."
+      },
+      "howDelete": {
+        "q": "Come posso eliminare il mio account?",
+        "a": "Vai su Impostazioni e scorri fino in fondo. Clicca su 'Elimina Account'. Questa azione è irreversibile e rimuoverà permanentemente tutti i tuoi dati in conformità con l'Articolo 17 del GDPR (Diritto alla Cancellazione)."
+      },
+      "howVerify": {
+        "q": "Perché è richiesta la verifica dell'identità?",
+        "a": "La verifica garantisce che ogni utente su PRAGMA sia una persona reale con intenzioni serie. Questo ti protegge da profili falsi, catfishing e truffe -- il reclamo numero uno riguardo alle app di incontri tradizionali."
+      },
+      "howContact": {
+        "q": "Come posso contattare il supporto?",
+        "a": "Inviaci un'e-mail a support@pragma.app. Puntiamo a rispondere entro 24 ore nei giorni lavorativi."
+      }
+    },
+    "contactTitle": "Hai ancora bisogno di aiuto?",
+    "contactDescription": "Il nostro team di supporto è qui per aiutarti. Contattaci e ti risponderemo il prima possibile."
   }
 }

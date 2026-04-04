@@ -16,7 +16,12 @@
     "required": "Required",
     "optional": "Optional",
     "error": "Something went wrong",
-    "retry": "Try again"
+    "retry": "Try again",
+    "notFound": "Sayfa bulunamadı",
+    "notFoundDescription": "Aradığınız sayfa mevcut değil veya taşınmış.",
+    "goHome": "Ana sayfaya dön",
+    "accessDenied": "Erişim reddedildi",
+    "accessDeniedDescription": "Bu sayfaya erişim izniniz yok."
   },
   "landing": {
     "hero": "Partnership, methodically.",
@@ -113,6 +118,7 @@
     "forgotPassword": "Forgot password?",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
+    "orContinueWith": "veya şununla devam et",
     "magicLink": "Sign in with magic link",
     "verifyEmail": "Check your email",
     "verifyEmailDescription": "We sent a verification link to {email}. Click it to verify your account.",
@@ -125,7 +131,10 @@
     "uploadId": "Upload ID document",
     "verificationPending": "Verification pending",
     "verificationApproved": "Verified",
-    "verificationRejected": "Verification failed"
+    "verificationRejected": "Verification failed",
+    "invalidCredentials": "Geçersiz kimlik bilgileri",
+    "passwordMismatch": "Şifreler eşleşmiyor",
+    "passwordMinLength": "Şifre en az 8 karakter olmalıdır"
   },
   "verification": {
     "status": {
@@ -482,7 +491,9 @@
     "conversionRate": "Conversion Rate",
     "churnRate": "Churn Rate",
     "avgMatchScore": "Average Match Score",
-    "monthlyRevenue": "Monthly Revenue"
+    "monthlyRevenue": "Monthly Revenue",
+    "userGrowth": "Kullanıcı büyümesi (30 gün)",
+    "dailyRegistrations": "Günlük kayıtlar"
   },
   "legal": {
     "impressum": {
@@ -768,5 +779,68 @@
       "title": "Ready for something real?",
       "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself."
     }
+  },
+  "report": {
+    "title": "Kullanıcıyı Bildir",
+    "description": "PRAGMA'yı güvende tutmamıza yardımcı olun. Bildiriminiz için bir neden seçin.",
+    "reasons": {
+      "fake_profile": "Sahte veya taklit profil",
+      "harassment": "Taciz veya kötüye kullanım",
+      "inappropriate_content": "Uygunsuz veya saldırgan içerik",
+      "spam": "Spam veya ticari tanıtım",
+      "underage": "Reşit olmadığı düşünülüyor",
+      "scam": "Dolandırıcılık veya sahtecilik girişimi",
+      "other": "Diğer neden"
+    },
+    "detailsPlaceholder": "Sorunu açıklayın (isteğe bağlı)...",
+    "reportAndBlock": "Bildir ve Engelle",
+    "cancel": "İptal",
+    "submitting": "Gönderiliyor...",
+    "submitted": "Bildirim gönderildi",
+    "submittedDescription": "Teşekkürler. Ekibimiz bu bildirimi 24 saat içinde inceleyecektir.",
+    "submitError": "Bildirim gönderilemedi. Lütfen tekrar deneyin.",
+    "notLoggedIn": "Bir kullanıcıyı bildirmek için giriş yapmalısınız.",
+    "close": "Kapat"
+  },
+  "support": {
+    "title": "Yardım ve Destek",
+    "subtitle": "Sık sorulan sorulara yanıt bulun veya ekibimizle iletişime geçin.",
+    "faqTitle": "Sık Sorulan Sorular",
+    "faq": {
+      "whatIsPragma": {
+        "q": "PRAGMA nedir?",
+        "a": "PRAGMA, anlamlı bağlantılar oluşturmak için yapılandırılmış öz keşif ve çift yönlü uyumluluk puanlaması kullanan bilim tabanlı bir eşleştirme platformudur. Geleneksel flört uygulamalarından farklı olarak derinlik, doğrulama ve karşılıklı onaya öncelik veriyoruz."
+      },
+      "howMatching": {
+        "q": "Eşleştirme algoritması nasıl çalışır?",
+        "a": "Algoritmamız, temel değerlerden davranışsal tercihlere kadar beş aşamalı düzeyde uyumluluğu değerlendirir. Her eşleşme çift yönlü olarak puanlanır, yani uyumluluk her iki perspektiften ölçülür. Puanlar ağırlıklıdır ve kesin kriterler dikkate alınır."
+      },
+      "whyFunnel": {
+        "q": "Neden kayıt sürecini tamamlamam gerekiyor?",
+        "a": "Bu süreç, PRAGMA'daki her kullanıcının gerçek bir öz değerlendirmeye zaman ayırdığını garanti eder. Bu, daha yüksek kaliteli eşleşmeler üretir ve partner bulmakta ciddi olmayan kullanıcıları filtreler."
+      },
+      "isDataSafe": {
+        "q": "Kişisel verilerim güvende mi?",
+        "a": "Evet. GDPR ile tamamen uyumluyuz ve özel kategori verilerini yalnızca açık onayınızla işliyoruz. Tüm veriler aktarım sırasında ve depolamada şifrelenir. Verilerinizi asla üçüncü taraflara satmayız. Verilerinizi istediğiniz zaman Ayarlar'dan dışa aktarabilir veya silebilirsiniz."
+      },
+      "howCancel": {
+        "q": "Aboneliğimi nasıl iptal ederim?",
+        "a": "Ayarlar > Abonelik'e gidin ve 'Aboneliği Yönet'e tıklayın. İstediğiniz zaman iptal edebilirsiniz. Aboneliğiniz mevcut fatura döneminin sonuna kadar aktif kalır."
+      },
+      "howDelete": {
+        "q": "Hesabımı nasıl silerim?",
+        "a": "Ayarlar'a gidin ve en alta kaydırın. 'Hesabı Sil'e tıklayın. Bu işlem geri alınamaz ve GDPR Madde 17 (Silme Hakkı) uyarınca tüm verilerinizi kalıcı olarak kaldıracaktır."
+      },
+      "howVerify": {
+        "q": "Neden kimlik doğrulama gerekli?",
+        "a": "Doğrulama, PRAGMA'daki her kullanıcının ciddi niyetli gerçek bir kişi olduğunu garanti eder. Bu sizi sahte profillerden, catfishing'den ve dolandırıcılıktan korur -- geleneksel flört uygulamalarıyla ilgili bir numaralı şikayet."
+      },
+      "howContact": {
+        "q": "Destekle nasıl iletişime geçebilirim?",
+        "a": "Bize support@pragma.app adresinden e-posta gönderin. İş günlerinde 24 saat içinde yanıt vermeyi hedefliyoruz."
+      }
+    },
+    "contactTitle": "Hâlâ yardıma mı ihtiyacınız var?",
+    "contactDescription": "Destek ekibimiz size yardımcı olmak için burada. Bize ulaşın, en kısa sürede size geri dönelim."
   }
 }

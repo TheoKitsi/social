@@ -6,6 +6,7 @@ import { useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Button, Card, CardContent, ProgressBar, Badge } from "@/components/ui";
 import { expressInterest, declineMatch } from "@/app/actions/consent";
+import { ReportDialog } from "@/components/report-dialog";
 
 interface Match {
   candidateId: string;
@@ -27,6 +28,7 @@ export default function MatchesPage() {
   const [computing, setComputing] = useState(false);
   const [error, setError] = useState("");
   const [mutualMatch, setMutualMatch] = useState<string | null>(null);
+  const [reportingUserId, setReportingUserId] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const initialLoadDone = useRef(false);
 
@@ -235,6 +237,15 @@ export default function MatchesPage() {
                       </span>
                     </div>
                   </div>
+                  <button
+                    onClick={() => setReportingUserId(match.candidateId)}
+                    className="p-2 text-on-surface-muted hover:text-error transition-colors shrink-0"
+                    title={t("report.title")}
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2z" />
+                    </svg>
+                  </button>
                 </div>
 
                 {/* Score breakdown (FN-9.1.1.2) */}
@@ -386,6 +397,13 @@ export default function MatchesPage() {
             </CardContent>
           </Card>
         </div>
+      )}
+
+      {reportingUserId && (
+        <ReportDialog
+          reportedUserId={reportingUserId}
+          onClose={() => setReportingUserId(null)}
+        />
       )}
     </div>
   );
