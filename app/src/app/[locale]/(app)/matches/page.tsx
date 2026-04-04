@@ -9,6 +9,8 @@ import { expressInterest, declineMatch } from "@/app/actions/consent";
 
 interface Match {
   candidateId: string;
+  displayName: string | null;
+  avatarUrl: string | null;
   compositeScore: number;
   scoreToCandidate: number;
   scoreFromCandidate: number;
@@ -48,24 +50,45 @@ export default function MatchesPage() {
       .limit(10);
 
     if (data) {
+      // Collect candidate IDs to fetch profiles
+      const candidateIds = data.map((m: Record<string, unknown>) =>
+        m.user_a_id === user.id ? m.user_b_id : m.user_a_id
+      );
+
+      // Fetch candidate profiles
+      const { data: profiles } = await supabase
+        .from("profiles")
+        .select("user_id, display_name, avatar_url")
+        .in("user_id", candidateIds);
+
+      const profileMap = new Map(
+        (profiles || []).map((p: Record<string, unknown>) => [p.user_id, p])
+      );
+
       setMatches(
-        data.map((m: Record<string, unknown>) => ({
-          candidateId:
+        data.map((m: Record<string, unknown>) => {
+          const candidateId =
             m.user_a_id === user.id
               ? (m.user_b_id as string)
-              : (m.user_a_id as string),
-          compositeScore: m.composite_score as number,
-          scoreToCandidate:
-            m.user_a_id === user.id
-              ? (m.score_a_to_b as number)
-              : (m.score_b_to_a as number),
-          scoreFromCandidate:
-            m.user_a_id === user.id
-              ? (m.score_b_to_a as number)
-              : (m.score_a_to_b as number),
-          strengths: ((m.breakdown as Record<string, unknown>)?.strengths as string[]) || [],
-          differences: ((m.breakdown as Record<string, unknown>)?.differences as string[]) || [],
-        }))
+              : (m.user_a_id as string);
+          const candidateProfile = profileMap.get(candidateId) as Record<string, unknown> | undefined;
+          return {
+            candidateId,
+            displayName: (candidateProfile?.display_name as string) || null,
+            avatarUrl: (candidateProfile?.avatar_url as string) || null,
+            compositeScore: m.composite_score as number,
+            scoreToCandidate:
+              m.user_a_id === user.id
+                ? (m.score_a_to_b as number)
+                : (m.score_b_to_a as number),
+            scoreFromCandidate:
+              m.user_a_id === user.id
+                ? (m.score_b_to_a as number)
+                : (m.score_a_to_b as number),
+            strengths: ((m.breakdown as Record<string, unknown>)?.strengths as string[]) || [],
+            differences: ((m.breakdown as Record<string, unknown>)?.differences as string[]) || [],
+          };
+        })
       );
     }
     setLoading(false);
@@ -183,13 +206,17 @@ export default function MatchesPage() {
             <Card key={match.candidateId} variant="elevated" className="animate-fade-in-up" style={{ animationDelay: `${i * 75}ms` } as React.CSSProperties}>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-4">
-                  {/* Anonymous avatar (FN-9.1.1.1) */}
-                  <div className="w-12 h-12 rounded-full bg-surface-alt flex items-center justify-center text-on-surface font-bold text-lg">
-                    {i + 1}
+                  {/* Profile avatar */}
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden shrink-0 bg-primary/15 text-primary border border-primary/20 font-bold text-lg">
+                    {match.avatarUrl ? (
+                      <img src={match.avatarUrl} alt="" className="w-full h-full object-cover" />
+                    ) : (
+                      i + 1
+                    )}
                   </div>
                   <div className="flex-1">
                     <p className="font-medium text-on-surface">
-                      Match #{i + 1}
+                      {match.displayName || `Match #${i + 1}`}
                     </p>
                     <div className="flex items-center gap-2 mt-1">
                       <Badge

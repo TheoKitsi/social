@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { Button, Card, CardContent, ProgressBar, Badge } from "@/components/ui";
+import { Avatar, Button, Card, CardContent, ProgressBar, Badge, Input } from "@/components/ui";
 import { getFunnelProgress } from "@/app/actions/funnel";
 
 export default function ProfilePage() {
@@ -16,6 +16,8 @@ export default function ProfilePage() {
     profile: { active_funnel_level: number; quality_score: number } | null;
   } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [editingName, setEditingName] = useState(false);
+  const [nameValue, setNameValue] = useState("");
 
   useEffect(() => {
     async function load() {
@@ -33,6 +35,7 @@ export default function ProfilePage() {
         .single();
 
       setProfile(prof);
+      setNameValue((prof?.display_name as string) || "");
 
       const prog = await getFunnelProgress();
       setProgress(prog);
@@ -40,6 +43,31 @@ export default function ProfilePage() {
     }
     load();
   }, []);
+
+  async function handleNameSave() {
+    if (!nameValue.trim()) return;
+    const supabase = createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) return;
+
+    await supabase
+      .from("profiles")
+      .update({ display_name: nameValue.trim() })
+      .eq("user_id", user.id);
+
+    setProfile((prev) => (prev ? { ...prev, display_name: nameValue.trim() } : prev));
+    setEditingName(false);
+  }
+
+  function handleAvatarUpload(url: string) {
+    setProfile((prev) => (prev ? { ...prev, avatar_url: url } : prev));
+  }
+
+  function handleAvatarRemove() {
+    setProfile((prev) => (prev ? { ...prev, avatar_url: null } : prev));
+  }
 
   if (loading) {
     return (
@@ -58,29 +86,72 @@ export default function ProfilePage() {
         {t("nav.profile")}
       </h1>
 
-      {/* Quality Score */}
+      {/* Avatar & Name */}
       <Card variant="elevated" className="animate-fade-in-up">
-        <CardContent className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="font-semibold text-on-surface tracking-[var(--tracking-normal)]">
-              {t("profile.qualityScore")}
-            </h2>
-            <Badge
-              variant={
-                qualityScore >= 80
-                  ? "success"
-                  : qualityScore >= 50
-                    ? "primary"
-                    : "warning"
-              }
-            >
-              {qualityScore}%
-            </Badge>
+        <CardContent className="flex items-center gap-5">
+          <Avatar
+            src={profile?.avatar_url as string | null}
+            name={profile?.display_name as string | null}
+            size="xl"
+            editable
+            onUpload={handleAvatarUpload}
+            onRemove={handleAvatarRemove}
+          />
+          <div className="flex-1 space-y-1">
+            {editingName ? (
+              <div className="flex items-center gap-2">
+                <Input
+                  value={nameValue}
+                  onChange={(e) => setNameValue(e.target.value)}
+                  className="max-w-[200px]"
+                  onKeyDown={(e) => e.key === "Enter" && handleNameSave()}
+                />
+                <Button size="sm" onClick={handleNameSave}>
+                  {t("common.save")}
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    setEditingName(false);
+                    setNameValue((profile?.display_name as string) || "");
+                  }}
+                >
+                  {t("common.cancel")}
+                </Button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <p className="text-lg font-semibold text-on-surface">
+                  {(profile?.display_name as string) || t("profile.noName")}
+                </p>
+                <button
+                  onClick={() => setEditingName(true)}
+                  className="text-on-surface-muted hover:text-primary transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                  </svg>
+                </button>
+              </div>
+            )}
+            <div className="flex items-center gap-2">
+              <Badge
+                variant={
+                  qualityScore >= 80
+                    ? "success"
+                    : qualityScore >= 50
+                      ? "primary"
+                      : "warning"
+                }
+              >
+                {qualityScore}%
+              </Badge>
+              <span className="text-xs text-on-surface-muted">
+                {t("profile.qualityScore")}
+              </span>
+            </div>
           </div>
-          <ProgressBar value={qualityScore} showPercent />
-          <p className="text-sm text-on-surface-muted">
-            {qualityScore < 100 && t("profile.completeMoreLevels")}
-          </p>
         </CardContent>
       </Card>
 

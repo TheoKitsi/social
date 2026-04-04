@@ -8,6 +8,8 @@ import { Button, Input } from "@/components/ui";
 interface Conversation {
   id: string;
   otherUserId: string;
+  otherName: string | null;
+  otherAvatar: string | null;
   lastMessage: string;
   lastAt: string;
 }
@@ -48,15 +50,35 @@ export default function MessagesPage() {
         .eq("status", "accepted");
 
       if (consented) {
-        const convos: Conversation[] = consented.map((c: Record<string, unknown>) => ({
-          id: c.id as string,
-          otherUserId:
+        // Collect other user IDs for profile lookup
+        const otherIds = consented.map((c: Record<string, unknown>) =>
+          c.from_user_id === user.id ? c.to_user_id : c.from_user_id
+        );
+
+        const { data: profiles } = await supabase
+          .from("profiles")
+          .select("user_id, display_name, avatar_url")
+          .in("user_id", otherIds);
+
+        const profileMap = new Map(
+          (profiles || []).map((p: Record<string, unknown>) => [p.user_id, p])
+        );
+
+        const convos: Conversation[] = consented.map((c: Record<string, unknown>) => {
+          const otherUserId =
             c.from_user_id === user.id
               ? (c.to_user_id as string)
-              : (c.from_user_id as string),
-          lastMessage: "",
-          lastAt: (c.responded_at || c.created_at) as string,
-        }));
+              : (c.from_user_id as string);
+          const otherProfile = profileMap.get(otherUserId) as Record<string, unknown> | undefined;
+          return {
+            id: c.id as string,
+            otherUserId,
+            otherName: (otherProfile?.display_name as string) || null,
+            otherAvatar: (otherProfile?.avatar_url as string) || null,
+            lastMessage: "",
+            lastAt: (c.responded_at || c.created_at) as string,
+          };
+        });
         setConversations(convos);
 
         // Load last message for each
@@ -184,12 +206,16 @@ export default function MessagesPage() {
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-medium">
-                    M
+                  <div className="w-10 h-10 rounded-full bg-primary/15 border border-primary/20 flex items-center justify-center text-primary font-medium overflow-hidden">
+                    {convo.otherAvatar ? (
+                      <img src={convo.otherAvatar} alt="" className="w-full h-full object-cover" />
+                    ) : (
+                      (convo.otherName || "M").slice(0, 1).toUpperCase()
+                    )}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-on-surface truncate">
-                      Match
+                      {convo.otherName || "Match"}
                     </p>
                     <p className="text-xs text-on-surface-muted truncate">
                       {convo.lastMessage || t("messages.noMessagesYet")}
@@ -230,10 +256,16 @@ export default function MessagesPage() {
                   />
                 </svg>
               </button>
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm font-medium">
-                M
+              <div className="w-8 h-8 rounded-full bg-primary/15 border border-primary/20 flex items-center justify-center text-primary text-sm font-medium overflow-hidden">
+                {conversations.find((c) => c.id === activeConvo)?.otherAvatar ? (
+                  <img src={conversations.find((c) => c.id === activeConvo)!.otherAvatar!} alt="" className="w-full h-full object-cover" />
+                ) : (
+                  (conversations.find((c) => c.id === activeConvo)?.otherName || "M").slice(0, 1).toUpperCase()
+                )}
               </div>
-              <p className="font-medium text-on-surface text-sm">Match</p>
+              <p className="font-medium text-on-surface text-sm">
+                {conversations.find((c) => c.id === activeConvo)?.otherName || "Match"}
+              </p>
             </div>
 
             {/* Messages */}

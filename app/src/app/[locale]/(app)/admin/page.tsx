@@ -1,51 +1,81 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { createClient } from "@/lib/supabase/client";
 import { Card, CardContent, Button, Input } from "@/components/ui";
 
-const mockUsers = [
-  { id: "u1", name: "Elena Papadopoulos", email: "elena@example.com", status: "verified", plan: "Premium", joined: "2025-01-15", lastActive: "2025-07-10", matches: 12 },
-  { id: "u2", name: "Marcus Weber", email: "marcus@example.com", status: "verified", plan: "Elite", joined: "2025-02-03", lastActive: "2025-07-11", matches: 8 },
-  { id: "u3", name: "Sofia Müller", email: "sofia@example.com", status: "pending", plan: "Free", joined: "2025-06-28", lastActive: "2025-07-09", matches: 0 },
-  { id: "u4", name: "Nikolaos Alexiou", email: "niko@example.com", status: "verified", plan: "Premium", joined: "2025-03-12", lastActive: "2025-07-11", matches: 5 },
-  { id: "u5", name: "Anna Schmidt", email: "anna@example.com", status: "suspended", plan: "Free", joined: "2025-04-01", lastActive: "2025-05-20", matches: 2 },
-  { id: "u6", name: "Dimitris Katsaros", email: "dimitris@example.com", status: "verified", plan: "Premium", joined: "2025-01-22", lastActive: "2025-07-10", matches: 15 },
-];
+interface UserRow {
+  id: string;
+  display_name: string | null;
+  verification_status: string;
+  is_active: boolean;
+  created_at: string;
+  quality_score: number;
+}
 
-const mockStats = {
-  totalUsers: 2847,
-  activeUsers: 1923,
-  verifiedUsers: 2104,
-  matchesMade: 847,
-  revenue: 14280,
-  subscriptions: { free: 1243, premium: 1204, elite: 400 },
-};
+interface Stats {
+  totalUsers: number;
+  activeUsers: number;
+  verifiedUsers: number;
+  matchesMade: number;
+}
 
 export default function AdminPage() {
   const t = useTranslations();
   const [search, setSearch] = useState("");
-  const [tab, setTab] = useState<"overview" | "users" | "verification" | "analytics">("overview");
+  const [tab, setTab] = useState<"overview" | "users" | "verification">("overview");
+  const [stats, setStats] = useState<Stats>({ totalUsers: 0, activeUsers: 0, verifiedUsers: 0, matchesMade: 0 });
+  const [users, setUsers] = useState<UserRow[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredUsers = mockUsers.filter(
-    (u) =>
-      u.name.toLowerCase().includes(search.toLowerCase()) ||
-      u.email.toLowerCase().includes(search.toLowerCase())
+  useEffect(() => {
+    async function load() {
+      const supabase = createClient();
+
+      // Fetch stats
+      const [profilesRes, activeRes, verifiedRes, matchesRes] = await Promise.all([
+        supabase.from("profiles").select("id", { count: "exact", head: true }),
+        supabase.from("profiles").select("id", { count: "exact", head: true }).eq("is_active", true),
+        supabase.from("profiles").select("id", { count: "exact", head: true }).eq("verification_status", "verified"),
+        supabase.from("matching_scores").select("id", { count: "exact", head: true }),
+      ]);
+
+      setStats({
+        totalUsers: profilesRes.count || 0,
+        activeUsers: activeRes.count || 0,
+        verifiedUsers: verifiedRes.count || 0,
+        matchesMade: matchesRes.count || 0,
+      });
+
+      // Fetch users
+      const { data: userRows } = await supabase
+        .from("profiles")
+        .select("id, display_name, verification_status, is_active, created_at, quality_score")
+        .order("created_at", { ascending: false })
+        .limit(50);
+
+      setUsers((userRows as UserRow[]) || []);
+      setLoading(false);
+    }
+    load();
+  }, []);
+
+  const filteredUsers = users.filter(
+    (u) => (u.display_name || "").toLowerCase().includes(search.toLowerCase())
   );
 
-  const stats = [
-    { label: t("admin.totalUsers"), value: mockStats.totalUsers.toLocaleString(), color: "text-primary" },
-    { label: t("admin.activeUsers"), value: mockStats.activeUsers.toLocaleString(), color: "text-green-400" },
-    { label: t("admin.verifiedUsers"), value: mockStats.verifiedUsers.toLocaleString(), color: "text-blue-400" },
-    { label: t("admin.matchesMade"), value: mockStats.matchesMade.toLocaleString(), color: "text-amber-400" },
-    { label: t("admin.revenue"), value: `€${mockStats.revenue.toLocaleString()}`, color: "text-primary" },
+  const statItems = [
+    { label: t("admin.totalUsers"), value: stats.totalUsers.toLocaleString(), color: "text-primary" },
+    { label: t("admin.activeUsers"), value: stats.activeUsers.toLocaleString(), color: "text-green-400" },
+    { label: t("admin.verifiedUsers"), value: stats.verifiedUsers.toLocaleString(), color: "text-blue-400" },
+    { label: t("admin.matchesMade"), value: stats.matchesMade.toLocaleString(), color: "text-amber-400" },
   ];
 
   const tabs = [
     { key: "overview" as const, label: t("admin.dashboard") },
     { key: "users" as const, label: t("admin.userManagement") },
     { key: "verification" as const, label: t("admin.verificationQueue") },
-    { key: "analytics" as const, label: t("admin.analytics") },
   ];
 
   function statusBadge(status: string) {
@@ -57,19 +87,6 @@ export default function AdminPage() {
     return (
       <span className={`px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider rounded-full border ${styles[status] || "border-border text-on-surface-muted"}`}>
         {status}
-      </span>
-    );
-  }
-
-  function planBadge(plan: string) {
-    const styles: Record<string, string> = {
-      Elite: "bg-primary/15 text-primary border-primary/20",
-      Premium: "bg-blue-500/15 text-blue-400 border-blue-500/20",
-      Free: "bg-surface border-border text-on-surface-muted",
-    };
-    return (
-      <span className={`px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider rounded-full border ${styles[plan] || "border-border text-on-surface-muted"}`}>
-        {plan}
       </span>
     );
   }
@@ -99,59 +116,22 @@ export default function AdminPage() {
       {/* Overview */}
       {tab === "overview" && (
         <div className="space-y-8 animate-fade-in-up">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {stats.map((s) => (
-              <Card key={s.label} variant="outlined" className="text-center">
-                <CardContent className="py-4">
-                  <p className={`text-2xl font-bold ${s.color}`}>{s.value}</p>
-                  <p className="text-xs text-on-surface-muted mt-1">{s.label}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-4">
-            <Card variant="outlined">
-              <CardContent>
-                <h3 className="text-sm font-semibold text-on-surface mb-4">{t("admin.subscriptions")}</h3>
-                <div className="space-y-3">
-                  {Object.entries(mockStats.subscriptions).map(([plan, count]) => (
-                    <div key={plan} className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className={`w-3 h-3 rounded-full ${plan === "elite" ? "bg-primary" : plan === "premium" ? "bg-blue-400" : "bg-surface-alt border border-border"}`} />
-                        <span className="text-sm text-on-surface capitalize">{plan}</span>
-                      </div>
-                      <span className="text-sm font-mono text-on-surface-muted">{count}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card variant="outlined" className="md:col-span-2">
-              <CardContent>
-                <h3 className="text-sm font-semibold text-on-surface mb-4">{t("admin.recentActivity")}</h3>
-                <div className="space-y-3">
-                  {[
-                    { action: "New user registered", user: "K. Papadimitriou", time: "2 min ago" },
-                    { action: "Verification approved", user: "M. Weber", time: "15 min ago" },
-                    { action: "Match confirmed", user: "E. Papadopoulos & D. Katsaros", time: "1 hr ago" },
-                    { action: "Premium upgrade", user: "S. Müller", time: "3 hrs ago" },
-                    { action: "Profile flagged", user: "Anonymous report", time: "5 hrs ago" },
-                  ].map((activity, i) => (
-                    <div key={i} className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-                        <span className="text-on-surface">{activity.action}</span>
-                        <span className="text-on-surface-muted">{activity.user}</span>
-                      </div>
-                      <span className="text-xs text-on-surface-muted">{activity.time}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          {loading ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {statItems.map((s) => (
+                <Card key={s.label} variant="outlined" className="text-center">
+                  <CardContent className="py-4">
+                    <p className={`text-2xl font-bold ${s.color}`}>{s.value}</p>
+                    <p className="text-xs text-on-surface-muted mt-1">{s.label}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -168,9 +148,8 @@ export default function AdminPage() {
                   <tr className="border-b border-border text-left">
                     <th className="px-4 py-3 text-xs text-on-surface-muted font-medium uppercase tracking-wider">User</th>
                     <th className="px-4 py-3 text-xs text-on-surface-muted font-medium uppercase tracking-wider">Status</th>
-                    <th className="px-4 py-3 text-xs text-on-surface-muted font-medium uppercase tracking-wider">Plan</th>
-                    <th className="px-4 py-3 text-xs text-on-surface-muted font-medium uppercase tracking-wider">Matches</th>
-                    <th className="px-4 py-3 text-xs text-on-surface-muted font-medium uppercase tracking-wider">Last Active</th>
+                    <th className="px-4 py-3 text-xs text-on-surface-muted font-medium uppercase tracking-wider">Quality</th>
+                    <th className="px-4 py-3 text-xs text-on-surface-muted font-medium uppercase tracking-wider">Joined</th>
                     <th className="px-4 py-3 text-xs text-on-surface-muted font-medium uppercase tracking-wider">Actions</th>
                   </tr>
                 </thead>
@@ -178,19 +157,14 @@ export default function AdminPage() {
                   {filteredUsers.map((user) => (
                     <tr key={user.id} className="border-b border-border/50 hover:bg-surface-alt/50 transition-colors">
                       <td className="px-4 py-3">
-                        <div>
-                          <p className="text-on-surface font-medium">{user.name}</p>
-                          <p className="text-xs text-on-surface-muted">{user.email}</p>
-                        </div>
+                        <p className="text-on-surface font-medium">{user.display_name || "—"}</p>
                       </td>
-                      <td className="px-4 py-3">{statusBadge(user.status)}</td>
-                      <td className="px-4 py-3">{planBadge(user.plan)}</td>
-                      <td className="px-4 py-3 text-on-surface-muted font-mono">{user.matches}</td>
-                      <td className="px-4 py-3 text-on-surface-muted">{user.lastActive}</td>
+                      <td className="px-4 py-3">{statusBadge(user.verification_status)}</td>
+                      <td className="px-4 py-3 text-on-surface-muted font-mono">{user.quality_score}</td>
+                      <td className="px-4 py-3 text-on-surface-muted">{new Date(user.created_at).toLocaleDateString()}</td>
                       <td className="px-4 py-3">
                         <div className="flex gap-1">
                           <Button variant="ghost" size="sm">{t("admin.edit")}</Button>
-                          <Button variant="ghost" size="sm" className="text-red-400">{t("admin.delete")}</Button>
                         </div>
                       </td>
                     </tr>
@@ -206,17 +180,17 @@ export default function AdminPage() {
       {tab === "verification" && (
         <div className="space-y-6 animate-fade-in-up">
           <div className="grid gap-4">
-            {mockUsers.filter((u) => u.status === "pending").map((user) => (
+            {users.filter((u) => u.verification_status === "pending").map((user) => (
               <Card key={user.id} variant="outlined">
                 <CardContent>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-full bg-surface-alt border border-border flex items-center justify-center text-lg font-semibold text-on-surface-muted">
-                        {user.name.split(" ").map((n) => n[0]).join("")}
+                        {(user.display_name || "?").charAt(0).toUpperCase()}
                       </div>
                       <div>
-                        <p className="font-medium text-on-surface">{user.name}</p>
-                        <p className="text-xs text-on-surface-muted">{user.email} &middot; Joined {user.joined}</p>
+                        <p className="font-medium text-on-surface">{user.display_name || "—"}</p>
+                        <p className="text-xs text-on-surface-muted">Joined {new Date(user.created_at).toLocaleDateString()}</p>
                       </div>
                     </div>
                     <div className="flex gap-2">
@@ -227,71 +201,13 @@ export default function AdminPage() {
                 </CardContent>
               </Card>
             ))}
-            {mockUsers.filter((u) => u.status === "pending").length === 0 && (
+            {users.filter((u) => u.verification_status === "pending").length === 0 && (
               <p className="text-center text-on-surface-muted py-12">No pending verifications</p>
             )}
           </div>
         </div>
       )}
 
-      {/* Analytics */}
-      {tab === "analytics" && (
-        <div className="space-y-6 animate-fade-in-up">
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card variant="outlined">
-              <CardContent>
-                <h3 className="text-sm font-semibold text-on-surface mb-6">User Growth (Last 6 Months)</h3>
-                <div className="flex items-end gap-2 h-40">
-                  {[380, 520, 710, 980, 1450, 2847].map((val, i) => (
-                    <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                      <div className="w-full bg-primary/20 rounded-t-sm relative" style={{ height: `${(val / 2847) * 100}%` }}>
-                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[9px] text-on-surface-muted font-mono">{val}</div>
-                      </div>
-                      <span className="text-[9px] text-on-surface-muted">{["Feb", "Mar", "Apr", "May", "Jun", "Jul"][i]}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card variant="outlined">
-              <CardContent>
-                <h3 className="text-sm font-semibold text-on-surface mb-6">Revenue (Last 6 Months)</h3>
-                <div className="flex items-end gap-2 h-40">
-                  {[1200, 2800, 4500, 7200, 10800, 14280].map((val, i) => (
-                    <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                      <div className="w-full bg-primary/20 rounded-t-sm relative" style={{ height: `${(val / 14280) * 100}%` }}>
-                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[9px] text-on-surface-muted font-mono">€{(val / 1000).toFixed(1)}k</div>
-                      </div>
-                      <span className="text-[9px] text-on-surface-muted">{["Feb", "Mar", "Apr", "May", "Jun", "Jul"][i]}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card variant="outlined" className="md:col-span-2">
-              <CardContent>
-                <h3 className="text-sm font-semibold text-on-surface mb-4">Key Metrics</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                  {[
-                    { label: "Avg. Match Score", value: "78.3%", delta: "+2.1%" },
-                    { label: "Conversion Rate", value: "34.7%", delta: "+5.4%" },
-                    { label: "Success Commission", value: "€2,340", delta: "+12.8%" },
-                    { label: "Avg. Session Duration", value: "14m 23s", delta: "+1m 12s" },
-                  ].map((metric) => (
-                    <div key={metric.label}>
-                      <p className="text-xs text-on-surface-muted">{metric.label}</p>
-                      <p className="text-xl font-bold text-on-surface mt-1">{metric.value}</p>
-                      <p className="text-xs text-green-400 mt-0.5">{metric.delta}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

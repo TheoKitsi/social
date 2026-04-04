@@ -1,8 +1,15 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { createClient } from "@/lib/supabase/client";
+
+interface UserInfo {
+  display_name: string | null;
+  avatar_url: string | null;
+}
 
 const navItems = [
   { href: "/profile", icon: "profile", labelKey: "nav.profile" },
@@ -16,6 +23,22 @@ const navItems = [
 export function BottomNav() {
   const pathname = usePathname();
   const t = useTranslations();
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+
+  useEffect(() => {
+    async function load() {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+      const { data } = await supabase
+        .from("profiles")
+        .select("display_name, avatar_url")
+        .eq("user_id", user.id)
+        .single();
+      if (data) setUserInfo(data as UserInfo);
+    }
+    load();
+  }, []);
 
   return (
     <nav
@@ -39,7 +62,15 @@ export function BottomNav() {
               {isActive && (
                 <span className="absolute -top-0.5 w-6 h-0.5 rounded-full bg-primary shadow-[var(--shadow-accent-sm)]" />
               )}
-              <NavIcon name={item.icon} active={isActive} />
+              {item.icon === "profile" && userInfo?.avatar_url ? (
+                <img
+                  src={userInfo.avatar_url}
+                  alt=""
+                  className={`w-5 h-5 rounded-full object-cover ${isActive ? "ring-1 ring-primary" : ""}`}
+                />
+              ) : (
+                <NavIcon name={item.icon} active={isActive} />
+              )}
               <span className="text-[10px] font-medium">
                 {t(item.labelKey)}
               </span>
@@ -54,6 +85,22 @@ export function BottomNav() {
 export function Sidebar() {
   const pathname = usePathname();
   const t = useTranslations();
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+
+  useEffect(() => {
+    async function load() {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+      const { data } = await supabase
+        .from("profiles")
+        .select("display_name, avatar_url")
+        .eq("user_id", user.id)
+        .single();
+      if (data) setUserInfo(data as UserInfo);
+    }
+    load();
+  }, []);
 
   return (
     <aside
@@ -72,6 +119,24 @@ export function Sidebar() {
           {t("common.appName")}
         </span>
       </div>
+
+      {/* User info */}
+      {userInfo && (
+        <div className="px-4 py-4 border-b border-border">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full flex items-center justify-center font-semibold overflow-hidden bg-primary/15 text-primary border border-primary/20 text-sm shrink-0">
+              {userInfo.avatar_url ? (
+                <img src={userInfo.avatar_url} alt="" className="w-full h-full object-cover" />
+              ) : (
+                (userInfo.display_name || "?").slice(0, 2).toUpperCase()
+              )}
+            </div>
+            <p className="text-sm font-medium text-on-surface truncate">
+              {userInfo.display_name || "User"}
+            </p>
+          </div>
+        </div>
+      )}
 
       <nav className="flex-1 py-4 px-3 space-y-1">
         {navItems.map((item) => {

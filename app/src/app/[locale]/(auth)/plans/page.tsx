@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Card, CardContent, Button } from "@/components/ui";
 
@@ -9,7 +9,17 @@ type PlanKey = "essentials" | "premium" | "elite";
 
 export default function PlansPage() {
   const t = useTranslations();
+  const locale = useLocale();
   const [billing, setBilling] = useState<"monthly" | "annually">("monthly");
+
+  function formatPrice(value: string) {
+    const num = parseFloat(value);
+    return new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: "EUR",
+      minimumFractionDigits: 2,
+    }).format(num);
+  }
 
   const plans: { key: PlanKey; tierKey: string; popular?: boolean }[] = [
     { key: "essentials", tierKey: "essentialsTier" },
@@ -107,7 +117,7 @@ export default function PlansPage() {
                   </p>
                   <div className="pt-2">
                     <span className="text-3xl font-bold text-on-surface">
-                      {price}
+                      {formatPrice(price)}
                     </span>
                     <span className="text-sm text-on-surface-muted">
                       {t("subscription.perMonth")}
@@ -193,7 +203,7 @@ export default function PlansPage() {
 
       {/* Already have an account */}
       <div className="text-center text-sm text-on-surface-muted">
-        {t("auth.haveAccount")}{" "}
+        {t("auth.hasAccount")}{" "}
         <Link
           href="/login"
           className="text-primary hover:underline font-medium"

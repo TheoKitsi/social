@@ -69,7 +69,7 @@ export default function LandingPage() {
                   className="hover-lift rounded-[var(--radius-card)] border border-border bg-surface/50 p-4 md:p-5 flex flex-col items-center text-center space-y-2 animate-fade-in-up"
                   style={{ animationDelay: `${200 + i * 60}ms` }}
                 >
-                  <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/15 flex items-center justify-center">
+                  <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/15 flex items-center justify-center mb-1">
                     <FeatureIcon feature={feature} />
                   </div>
                   <h3 className="text-sm font-semibold text-on-surface">

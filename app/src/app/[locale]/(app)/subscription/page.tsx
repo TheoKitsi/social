@@ -1,15 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Card, CardContent, Button } from "@/components/ui";
 
 type PlanKey = "essentials" | "premium" | "elite";
 
 export default function SubscriptionPage() {
   const t = useTranslations();
+  const locale = useLocale();
   const [currentPlan] = useState<PlanKey | null>(null);
   const [billing, setBilling] = useState<"monthly" | "annually">("monthly");
+
+  function formatPrice(value: string) {
+    const num = parseFloat(value);
+    return new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: "EUR",
+      minimumFractionDigits: 2,
+    }).format(num);
+  }
 
   const plans: { key: PlanKey; tierKey: string; popular?: boolean }[] = [
     { key: "essentials", tierKey: "essentialsTier" },
@@ -100,7 +110,7 @@ export default function SubscriptionPage() {
                     {t(`subscription.${plan.tierKey}.description`)}
                   </p>
                   <div className="pt-2">
-                    <span className="text-3xl font-bold text-on-surface">{price}</span>
+                    <span className="text-3xl font-bold text-on-surface">{formatPrice(price)}</span>
                     <span className="text-sm text-on-surface-muted">{t("subscription.perMonth")}</span>
                   </div>
                   {billing === "annually" && (
