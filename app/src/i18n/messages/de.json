@@ -40,6 +40,58 @@
         "title": "Identität verifiziert",
         "description": "Mehrstufige Verifizierung. Echte Menschen, ernsthafte Absichten."
       }
+    },
+    "question": {
+      "label": "Die Frage",
+      "title": "Wir vergleichen alles. Ausser das Wichtigste.",
+      "p1": "Wir recherchieren monatelang Autos. Vergleichen Handys Eigenschaft fuer Eigenschaft. Pruefen Wohnungen bis zum Wasserdruck. Lesen Bewertungen, analysieren Spezifikationen, kalkulieren Gesamtkosten.",
+      "quote": "Aber wenn es darum geht, den Menschen zu waehlen, mit dem wir unser Leben teilen — swipen wir. Hoffen wir. Spielen wir Gluecksspiel.",
+      "p2": "Die Plattformen, die fuer diesen Markt gebaut wurden, sind nicht darauf ausgelegt, Ihnen beim Finden eines Partners zu helfen. Ihr Umsatz haengt davon ab, dass Sie Single bleiben. Jede erfolgreiche Beziehung ist ein verlorener Abonnent."
+    },
+    "industry": {
+      "label": "Die Realitaet",
+      "title": "Jede grosse Dating-Plattform. Dasselbe Urteil.",
+      "subtitle": "Trustpilot-Bewertungen quer durch die Branche zeichnen ein einheitliches Bild. Das sind keine Ausreisser.",
+      "source": "Quelle: Trustpilot, April 2026"
+    },
+    "process": {
+      "label": "So funktioniert es",
+      "title": "Ein Prozess, kein Spiel."
+    },
+    "different": {
+      "label": "Der Unterschied",
+      "title": "Was PRAGMA anders macht.",
+      "items": {
+        "verification": {
+          "title": "Mehrstufige Verifizierung",
+          "description": "Jedes Profil verifiziert durch SMS, E-Mail und Fotoanalyse. Keine Bots. Keine Fakes."
+        },
+        "depth": {
+          "title": "Strukturierte Selbstentdeckung",
+          "description": "Fuenf Ebenen der Selbstbeschreibung. Wissenschaftlich fundiert, kein Fotowettbewerb."
+        },
+        "transparency": {
+          "title": "Transparentes Matching",
+          "description": "Sehen Sie genau, warum jemand vorgeschlagen wurde und wie Ihr Score berechnet wurde. Keine Black Boxes."
+        },
+        "fairness": {
+          "title": "Faire Preise",
+          "description": "Monatliche Abrechnung. Ein-Klick-Kuendigung. Keine Auto-Renewal-Fallen. Kein Pay-to-See-Likes."
+        },
+        "privacy": {
+          "title": "Privacy by Design",
+          "description": "DSGVO-first. Minimale Datenerhebung. Volle Transparenz ueber gespeicherte Daten und deren Zweck."
+        },
+        "success": {
+          "title": "Gebaut zum Geloeschtwerden",
+          "description": "Unsere Erfolgskennzahl: Menschen verlassen die Plattform in einer gluecklichen Beziehung. Wenn PRAGMA funktioniert, brauchen Sie PRAGMA nicht mehr."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Bereit fuer etwas Echtes?",
+      "subtitle": "Partnerschaft ist zu wichtig, um sie dem Zufall zu ueberlassen. Beginnen Sie mit Selbsterkenntnis.",
+      "learnMore": "Unsere Geschichte lesen"
     }
   },
   "auth": {

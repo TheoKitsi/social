@@ -40,6 +40,58 @@
         "title": "Identity Verified",
         "description": "Multi-factor verification. Real people, serious intent."
       }
+    },
+    "question": {
+      "label": "The Question",
+      "title": "You compare everything. Except the one thing that matters most.",
+      "p1": "We research cars for months. Compare phones feature by feature. Inspect apartments down to the water pressure. Read reviews, analyze specs, calculate total cost of ownership.",
+      "quote": "But when it comes to choosing the person we share our life with — we swipe. We hope. We gamble.",
+      "p2": "The platforms built for this market are not designed to help you find a partner. Their revenue depends on you staying single. Every successful relationship is a lost subscriber."
+    },
+    "industry": {
+      "label": "The Reality",
+      "title": "Every major dating platform. The same verdict.",
+      "subtitle": "Trustpilot ratings across the industry paint a consistent picture. These are not outliers.",
+      "source": "Source: Trustpilot, April 2026"
+    },
+    "process": {
+      "label": "How It Works",
+      "title": "A process, not a game."
+    },
+    "different": {
+      "label": "The Difference",
+      "title": "What PRAGMA does differently.",
+      "items": {
+        "verification": {
+          "title": "Multi-Step Verification",
+          "description": "Every profile verified through SMS, email, and photo analysis. No bots. No fakes."
+        },
+        "depth": {
+          "title": "Structured Self-Discovery",
+          "description": "Five levels of self-description. Scientifically grounded personality assessment, not a photo contest."
+        },
+        "transparency": {
+          "title": "Transparent Matching",
+          "description": "See exactly why someone was suggested and how your score was calculated. No black boxes."
+        },
+        "fairness": {
+          "title": "Fair Pricing",
+          "description": "Monthly billing. One-click cancellation. No auto-renewal traps. No pay-to-see-likes."
+        },
+        "privacy": {
+          "title": "Privacy by Design",
+          "description": "GDPR-first. Minimal data collection. Full transparency on what is stored and why."
+        },
+        "success": {
+          "title": "Designed for Deletion",
+          "description": "Our success metric: people leaving in a happy relationship. When PRAGMA works, you don't need PRAGMA."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Ready for something real?",
+      "subtitle": "Partnership is too important to leave to chance. Start with knowing yourself.",
+      "learnMore": "Read our story"
     }
   },
   "auth": {
