@@ -23,9 +23,9 @@ CREATE TABLE plans (
 
 -- Seed pricing data
 INSERT INTO plans (tier, price_monthly, price_annual, matches_per_day, features) VALUES
-  ('essentials', 49.99, 39.99, 5, '{"messaging":true,"aiAssistant":false,"advancedFilters":false,"detailedReports":false,"profileBoost":false,"readReceipts":false,"priorityMatching":false,"prioritySupport":false,"profileCoaching":false}'),
-  ('premium', 89.99, 69.99, 15, '{"messaging":true,"aiAssistant":true,"advancedFilters":true,"detailedReports":true,"profileBoost":false,"readReceipts":true,"priorityMatching":false,"prioritySupport":false,"profileCoaching":false}'),
-  ('elite', 149.99, 119.99, NULL, '{"messaging":true,"aiAssistant":true,"advancedFilters":true,"detailedReports":true,"profileBoost":true,"readReceipts":true,"priorityMatching":true,"prioritySupport":true,"profileCoaching":true}');
+  ('essentials', 49.99, 39.99, 3, '{"messaging":true,"aiAssistant":false,"advancedFilters":false,"detailedReports":false,"profileBoost":false,"readReceipts":false,"priorityMatching":false,"prioritySupport":false,"profileCoaching":false}'),
+  ('premium', 89.99, 69.99, 5, '{"messaging":true,"aiAssistant":true,"advancedFilters":true,"detailedReports":true,"profileBoost":false,"readReceipts":true,"priorityMatching":false,"prioritySupport":false,"profileCoaching":false}'),
+  ('elite', 149.99, 119.99, 10, '{"messaging":true,"aiAssistant":true,"advancedFilters":true,"detailedReports":true,"profileBoost":true,"readReceipts":true,"priorityMatching":true,"prioritySupport":true,"profileCoaching":true}');
 
 -- User subscriptions
 CREATE TABLE user_subscriptions (

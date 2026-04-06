@@ -213,21 +213,6 @@ export default function SubscriptionPage() {
         </div>
       )}
 
-      {/* Success Commission */}
-      <Card variant="outlined" className="border-primary/20">
-        <CardContent className="text-center space-y-3">
-          <div className="w-12 h-12 mx-auto rounded-xl bg-primary/10 flex items-center justify-center">
-            <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-          </div>
-          <h3 className="text-lg font-semibold text-on-surface">{t("subscription.successFee")}</h3>
-          <p className="text-sm text-on-surface-muted max-w-lg mx-auto leading-relaxed">
-            {t("subscription.successFeeDesc")}
-          </p>
-          <p className="text-2xl font-bold text-primary">9.9%</p>
-        </CardContent>
-      </Card>
     </div>
   );
 }

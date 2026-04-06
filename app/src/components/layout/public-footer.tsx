@@ -17,7 +17,7 @@ export function PublicFooter({ fixed = true }: PublicFooterProps) {
         fixed ? "fixed bottom-0 left-0 right-0" : ""
       } z-40 border-t border-border bg-secondary/90 backdrop-blur-md px-6 py-2.5 text-xs text-on-surface-muted safe-bottom`}
     >
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 max-w-5xl mx-auto">
+      <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-1.5 max-w-5xl mx-auto">
         <p className="tracking-[var(--tracking-wide)]">
           &copy; {new Date().getFullYear()} PRAGMA
         </p>

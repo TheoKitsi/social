@@ -51,12 +51,12 @@ export function PublicHeader({
       </div>
       <nav className="flex items-center gap-3">
         {showAboutLink && (
-          <Link href="/about" className="text-sm text-on-surface-muted hover:text-primary transition-colors hidden sm:inline-flex">
+          <Link href="/about" className="text-sm text-on-surface-muted hover:text-primary transition-colors">
             {t("about.link")}
           </Link>
         )}
         {showPricesLink && (
-          <Link href="/plans" className="text-sm text-on-surface-muted hover:text-primary transition-colors hidden sm:inline-flex">
+          <Link href="/plans" className="text-sm text-on-surface-muted hover:text-primary transition-colors">
             {t("common.prices")}
           </Link>
         )}

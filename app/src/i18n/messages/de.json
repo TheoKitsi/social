@@ -405,7 +405,7 @@
     },
     "eliteTier": {
       "name": "Elite",
-      "description": "Unbegrenzte Matches, persönliches Coaching, Priorität in allem.",
+      "description": "10 kuratierte Matches pro Tag, KI-gestütztes Coaching, Priorität in allem.",
       "priceMonthly": "149,99",
       "priceAnnual": "119,99"
     },
@@ -413,8 +413,6 @@
     "downgrade": "Downgraden",
     "cancel": "Abo kündigen",
     "billingHistory": "Rechnungsverlauf",
-    "successFee": "Erfolgsprovision",
-    "successFeeDesc": "Eine Erfolgsprovision von 9,9% fällt an, wenn ein gegenseitiges Match zu einer verifizierten Verbindung führt.",
     "features": {
       "matches": "Match-Vorschläge pro Tag",
       "messaging": "Unbegrenztes Messaging",
@@ -425,7 +423,7 @@
       "prioritySupport": "Prioritäts-Support",
       "detailedReports": "Detaillierte Kompatibilitätsberichte",
       "priorityMatching": "Priorität im Matching",
-      "profileCoaching": "Persönliches Profil-Coaching"
+      "profileCoaching": "KI-gestütztes Profil-Coaching"
     },
     "trial": "3-Tage Elite-Testphase",
     "trialDesc": "Erlebe alle Elite-Funktionen 3 Tage kostenlos. Keine Verpflichtung.",
@@ -446,9 +444,9 @@
     "manageBilling": "Abrechnung verwalten",
     "currentPlanBadge": "Aktuell",
     "featureValues": {
-      "essentialsMatches": "5",
-      "premiumMatches": "15",
-      "eliteMatches": "Unbegrenzt"
+      "essentialsMatches": "3",
+      "premiumMatches": "5",
+      "eliteMatches": "10"
     }
   },
   "admin": {
@@ -586,7 +584,7 @@
       "s4Rule4": "Keine illegalen, gewalttätigen oder sexuell expliziten Inhalte hochzuladen",
       "s4Rule5": "Keine Sicherheitsmaßnahmen der Plattform zu umgehen oder den Matching-Algorithmus zurückzuentwickeln",
       "s5Title": "§ 5 — Abonnements und Zahlungen",
-      "s5Text": "PRAGMA bietet kostenlose und kostenpflichtige Abonnement-Stufen an. Kostenpflichtige Abonnements verlängern sich automatisch, sofern sie nicht vor dem Verlängerungsdatum gekündigt werden. Preise werden inklusive der geltenden Mehrwertsteuer angezeigt. Eine Erfolgsprovision kann anfallen, wenn ein gegenseitiges Match zu einer verifizierten Langzeitverbindung führt, wie im Abonnementplan beschrieben.",
+      "s5Text": "PRAGMA bietet kostenlose und kostenpflichtige Abonnement-Stufen an. Kostenpflichtige Abonnements verlängern sich automatisch, sofern sie nicht vor dem Verlängerungsdatum gekündigt werden. Preise werden inklusive der geltenden Mehrwertsteuer angezeigt.",
       "s6Title": "§ 6 — Widerrufsrecht",
       "s6Text": "Als Verbraucher innerhalb der EU haben Sie das Recht, den Abonnementvertrag innerhalb von 14 Tagen ohne Angabe von Gründen zu widerrufen (§ 312g BGB, Art. 9 Verbraucherrechte-Richtlinie). Zur Ausübung Ihres Widerrufsrechts müssen Sie uns mittels einer eindeutigen Erklärung (z. B. E-Mail) über Ihren Entschluss informieren. Sie können das in Ihren Kontoeinstellungen verfügbare Muster-Widerrufsformular nutzen. Bei fristgerechtem Widerruf werden alle Zahlungen innerhalb von 14 Tagen über dasselbe Zahlungsmittel erstattet.",
       "s7Title": "§ 7 — Geistiges Eigentum",

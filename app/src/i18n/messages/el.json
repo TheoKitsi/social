@@ -405,7 +405,7 @@
     },
     "eliteTier": {
       "name": "Elite",
-      "description": "Απεριόριστα matches, προσωπικό coaching, προτεραιότητα σε όλα.",
+      "description": "10 επιλεγμένα matches ημερησίως, coaching με AI, προτεραιότητα σε όλα.",
       "priceMonthly": "149,99",
       "priceAnnual": "119,99"
     },
@@ -413,8 +413,6 @@
     "downgrade": "Υποβάθμιση",
     "cancel": "Ακύρωση Συνδρομής",
     "billingHistory": "Ιστορικό Τιμολόγησης",
-    "successFee": "Προμήθεια Επιτυχίας",
-    "successFeeDesc": "Ένα τέλος επιτυχίας 9,9% ισχύει όταν ένα αμοιβαίο match οδηγεί σε επαληθευμένη σύνδεση.",
     "features": {
       "matches": "Προτάσεις match ανά ημέρα",
       "messaging": "Απεριόριστα μηνύματα",
@@ -425,7 +423,7 @@
       "prioritySupport": "Υποστήριξη προτεραιότητας",
       "detailedReports": "Λεπτομερείς αναφορές συμβατότητας",
       "priorityMatching": "Προτεραιότητα στο matching",
-      "profileCoaching": "Προσωπικό coaching προφίλ"
+      "profileCoaching": "Coaching προφίλ με AI"
     },
     "trial": "3ήμερη Δοκιμή Elite",
     "trialDesc": "Δοκίμασε όλες τις λειτουργίες Elite δωρεάν για 3 ημέρες. Χωρίς δέσμευση.",
@@ -445,8 +443,8 @@
     "choosePlan": "Επιλογή Πλάνου",
     "currentPlanBadge": "Τρέχον",
     "featureValues": {
-      "essentialsMatches": "5",
-      "premiumMatches": "15",
+      "essentialsMatches": "3",
+      "premiumMatches": "5",
       "eliteMatches": "Απεριόριστα"
     },
     "manageBilling": "Manage Billing"

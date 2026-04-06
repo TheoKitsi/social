@@ -417,7 +417,7 @@
     },
     "eliteTier": {
       "name": "Elite",
-      "description": "Unlimited matches, personal coaching, priority in everything.",
+      "description": "10 curated matches per day, AI-powered coaching, priority in everything.",
       "priceMonthly": "149.99",
       "priceAnnual": "119.99"
     },
@@ -425,8 +425,6 @@
     "downgrade": "Downgrade",
     "cancel": "Cancel Subscription",
     "billingHistory": "Billing History",
-    "successFee": "Success Commission",
-    "successFeeDesc": "A 9.9% success fee applies when a mutual match leads to a verified connection.",
     "features": {
       "matches": "Match proposals per day",
       "messaging": "Unlimited messaging",
@@ -437,7 +435,7 @@
       "prioritySupport": "Priority support",
       "detailedReports": "Detailed compatibility reports",
       "priorityMatching": "Priority in matching queue",
-      "profileCoaching": "Personal profile coaching"
+      "profileCoaching": "AI-powered profile coaching"
     },
     "trial": "3-Day Elite Trial",
     "trialDesc": "Experience all Elite features free for 3 days. No commitment.",
@@ -458,9 +456,9 @@
     "manageBilling": "Manage Billing",
     "currentPlanBadge": "Current",
     "featureValues": {
-      "essentialsMatches": "5",
-      "premiumMatches": "15",
-      "eliteMatches": "Unlimited"
+      "essentialsMatches": "3",
+      "premiumMatches": "5",
+      "eliteMatches": "10"
     }
   },
   "admin": {
@@ -598,7 +596,7 @@
       "s4Rule4": "Not upload illegal, violent, or sexually explicit content",
       "s4Rule5": "Not attempt to circumvent platform security measures or reverse-engineer the matching algorithm",
       "s5Title": "Section 5 — Subscriptions and Payments",
-      "s5Text": "PRAGMA offers free and paid subscription tiers. Paid subscriptions renew automatically unless cancelled before the renewal date. Prices are displayed inclusive of applicable VAT. A success commission may apply when a mutual match leads to a verified long-term connection, as detailed in the subscription plan.",
+      "s5Text": "PRAGMA offers free and paid subscription tiers. Paid subscriptions renew automatically unless cancelled before the renewal date. Prices are displayed inclusive of applicable VAT.",
       "s6Title": "Section 6 — Right of Withdrawal (Widerrufsrecht)",
       "s6Text": "As a consumer within the EU, you have the right to withdraw from your subscription contract within 14 days without giving any reason (Section 312g BGB, Article 9 Consumer Rights Directive). To exercise your right of withdrawal, you must inform us of your decision by an unequivocal statement (e.g., email). You may use the model withdrawal form available in your account settings. Upon timely withdrawal, all payments will be refunded within 14 days using the same payment method.",
       "s7Title": "Section 7 — Intellectual Property",

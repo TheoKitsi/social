@@ -59,16 +59,7 @@ export default function LoginPage() {
   return (
     <div className="w-full max-w-md animate-fade-in-up">
       <div className="rounded-[var(--radius-lg)] border border-border bg-surface/60 backdrop-blur-sm shadow-[var(--shadow-lg)] p-8 space-y-8">
-        <div className="text-center space-y-3">
-          <div className="w-14 h-14 mx-auto rounded-xl bg-primary/10 border border-primary/20 shadow-[var(--shadow-accent-sm)] flex items-center justify-center">
-            <svg width="28" height="28" viewBox="0 0 512 512" className="text-primary">
-              <g fill="none" stroke="currentColor" strokeWidth="28" strokeLinejoin="round">
-                <polyline points="100,120 200,256 100,392" />
-                <polyline points="412,120 312,256 412,392" />
-                <rect x="236" y="236" width="40" height="40" transform="rotate(45 256 256)" fill="currentColor" stroke="none" />
-              </g>
-            </svg>
-          </div>
+        <div className="text-center">
           <h1 className="text-2xl font-bold text-on-surface tracking-[var(--tracking-tight)]">{t("login")}</h1>
         </div>
 
