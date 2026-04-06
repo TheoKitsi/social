@@ -21,7 +21,8 @@
     "notFoundDescription": "La pagina che stai cercando non esiste o è stata spostata.",
     "goHome": "Torna alla home",
     "accessDenied": "Accesso negato",
-    "accessDeniedDescription": "Non hai il permesso di accedere a questa pagina."
+    "accessDeniedDescription": "Non hai il permesso di accedere a questa pagina.",
+    "prices": "Prezzi"
   },
   "landing": {
     "hero": "Partnership, methodically.",

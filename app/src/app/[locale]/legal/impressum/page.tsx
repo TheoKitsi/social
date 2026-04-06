@@ -1,32 +1,18 @@
+"use client";
+
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { PublicHeader } from "@/components/layout/public-header";
+import { PublicFooter } from "@/components/layout/public-footer";
 
 export default function ImpressumPage() {
   const t = useTranslations("legal");
 
   return (
     <div className="min-h-dvh bg-secondary bg-grid">
-      {/* Header */}
-      <header className="sticky top-0 z-50 flex items-center justify-between px-6 py-3 border-b border-border bg-secondary/80 backdrop-blur-md">
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-on-surface hover:text-primary transition-colors"
-        >
-          <svg width="24" height="24" viewBox="0 0 512 512" className="text-primary shrink-0">
-            <g fill="none" stroke="currentColor" strokeWidth="32" strokeLinejoin="round">
-              <polyline points="100,120 200,256 100,392" />
-              <polyline points="412,120 312,256 412,392" />
-              <rect x="236" y="236" width="40" height="40" transform="rotate(45 256 256)" fill="currentColor" stroke="none" />
-            </g>
-          </svg>
-          <span className="text-lg font-semibold tracking-[var(--tracking-tight)]">
-            PRAGMA
-          </span>
-        </Link>
-      </header>
+      <PublicHeader showBack />
 
       {/* Content */}
-      <main className="max-w-3xl mx-auto px-6 py-12 animate-fade-in-up">
+      <main className="max-w-3xl mx-auto px-6 pt-20 pb-16 animate-fade-in-up">
         <h1 className="text-3xl font-bold text-on-surface mb-8 tracking-[var(--tracking-tight)]">
           {t("impressum.title")}
         </h1>
@@ -111,17 +97,7 @@ export default function ImpressumPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-secondary/80 backdrop-blur-md px-6 py-4">
-        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-on-surface-muted">
-          <p>&copy; {new Date().getFullYear()} PRAGMA</p>
-          <nav className="flex items-center gap-4">
-            <Link href="/legal/impressum" className="hover:text-primary transition-colors font-medium text-on-surface">{t("impressum.title")}</Link>
-            <Link href="/legal/datenschutz" className="hover:text-primary transition-colors">{t("privacy.title")}</Link>
-            <Link href="/legal/agb" className="hover:text-primary transition-colors">{t("terms.title")}</Link>
-          </nav>
-        </div>
-      </footer>
+      <PublicFooter />
     </div>
   );
 }

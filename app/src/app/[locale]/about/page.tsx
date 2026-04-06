@@ -3,6 +3,8 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui";
+import { PublicHeader } from "@/components/layout/public-header";
+import { PublicFooter } from "@/components/layout/public-footer";
 
 export default function AboutPage() {
   const t = useTranslations();
@@ -24,33 +26,9 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-dvh bg-secondary">
-      {/* ── Header ── */}
-      <header className="sticky top-0 z-50 flex items-center justify-between px-6 py-3 border-b border-border bg-secondary/80 backdrop-blur-md">
-        <Link href="/" className="flex items-center gap-2">
-          <svg width="24" height="24" viewBox="0 0 512 512" className="text-primary shrink-0">
-            <g fill="none" stroke="currentColor" strokeWidth="32" strokeLinejoin="round">
-              <polyline points="100,120 200,256 100,392" />
-              <polyline points="412,120 312,256 412,392" />
-              <rect x="236" y="236" width="40" height="40" transform="rotate(45 256 256)" fill="currentColor" stroke="none" />
-            </g>
-          </svg>
-          <span className="text-lg font-semibold text-on-surface tracking-[var(--tracking-tight)]">
-            {t("common.appName")}
-          </span>
-        </Link>
-        <nav className="flex items-center gap-3">
-          <Link href="/login">
-            <Button variant="ghost" size="sm">
-              {t("landing.login")}
-            </Button>
-          </Link>
-          <Link href="/plans">
-            <Button size="sm">{t("landing.cta")}</Button>
-          </Link>
-        </nav>
-      </header>
+      <PublicHeader showBack showPricesLink />
 
-      <main className="max-w-3xl mx-auto px-6 py-16 md:py-24">
+      <main className="max-w-3xl mx-auto px-6 pt-20 pb-16 md:pt-24 md:pb-20">
         {/* ── Origin Story ── */}
         <section className="mb-20">
           <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4">
@@ -173,25 +151,7 @@ export default function AboutPage() {
         </section>
       </main>
 
-      {/* ── Footer ── */}
-      <footer className="border-t border-border bg-secondary/80 px-6 py-3 text-xs text-on-surface-muted">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 max-w-3xl mx-auto">
-          <p className="tracking-[var(--tracking-wide)]">
-            &copy; {new Date().getFullYear()} PRAGMA &mdash; {t("common.tagline")}
-          </p>
-          <nav className="flex items-center gap-4">
-            <Link href="/legal/impressum" className="hover:text-primary transition-colors">
-              {t("legal.impressum.title")}
-            </Link>
-            <Link href="/legal/datenschutz" className="hover:text-primary transition-colors">
-              {t("legal.privacy.title")}
-            </Link>
-            <Link href="/legal/agb" className="hover:text-primary transition-colors">
-              {t("legal.terms.title")}
-            </Link>
-          </nav>
-        </div>
-      </footer>
+      <PublicFooter />
     </div>
   );
 }

@@ -21,7 +21,8 @@
     "notFoundDescription": "De pagina die u zoekt bestaat niet of is verplaatst.",
     "goHome": "Terug naar home",
     "accessDenied": "Toegang geweigerd",
-    "accessDeniedDescription": "U heeft geen toestemming om deze pagina te openen."
+    "accessDeniedDescription": "U heeft geen toestemming om deze pagina te openen.",
+    "prices": "Prijzen"
   },
   "landing": {
     "hero": "Partnership, methodically.",

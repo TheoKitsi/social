@@ -21,7 +21,8 @@
     "notFoundDescription": "Aradığınız sayfa mevcut değil veya taşınmış.",
     "goHome": "Ana sayfaya dön",
     "accessDenied": "Erişim reddedildi",
-    "accessDeniedDescription": "Bu sayfaya erişim izniniz yok."
+    "accessDeniedDescription": "Bu sayfaya erişim izniniz yok.",
+    "prices": "Fiyatlar"
   },
   "landing": {
     "hero": "Partnership, methodically.",

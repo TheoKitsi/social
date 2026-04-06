@@ -1,8 +1,12 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui";
 import { HeroVisual } from "@/components/hero-visual";
 import { ScrollSection } from "@/components/scroll-section";
+import { PublicHeader } from "@/components/layout/public-header";
+import { PublicFooter } from "@/components/layout/public-footer";
 
 export default function LandingPage() {
   const t = useTranslations();
@@ -26,38 +30,12 @@ export default function LandingPage() {
   ] as const;
 
   return (
-    <div className="h-dvh flex flex-col bg-secondary overflow-y-auto snap-y snap-mandatory scroll-smooth">
+    <div className="min-h-dvh flex flex-col bg-secondary overflow-y-auto md:h-dvh md:snap-y md:snap-mandatory scroll-smooth">
       {/* ── Header ── */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 border-b border-border bg-secondary/80 backdrop-blur-md">
-        <div className="flex items-center gap-2">
-          <svg width="24" height="24" viewBox="0 0 512 512" className="text-primary shrink-0">
-            <g fill="none" stroke="currentColor" strokeWidth="32" strokeLinejoin="round">
-              <polyline points="100,120 200,256 100,392" />
-              <polyline points="412,120 312,256 412,392" />
-              <rect x="236" y="236" width="40" height="40" transform="rotate(45 256 256)" fill="currentColor" stroke="none" />
-            </g>
-          </svg>
-          <span className="text-lg font-semibold text-on-surface tracking-[var(--tracking-tight)]">
-            {t("common.appName")}
-          </span>
-        </div>
-        <nav className="flex items-center gap-3">
-          <Link href="/about" className="text-sm text-on-surface-muted hover:text-primary transition-colors hidden sm:inline-flex">
-            {t("about.link")}
-          </Link>
-          <Link href="/login">
-            <Button variant="ghost" size="sm">
-              {t("landing.login")}
-            </Button>
-          </Link>
-          <Link href="/plans">
-            <Button size="sm">{t("landing.cta")}</Button>
-          </Link>
-        </nav>
-      </header>
+      <PublicHeader showAboutLink showPricesLink />
 
       {/* ── Section 1: Hero ── */}
-      <section className="relative min-h-dvh flex flex-col items-center justify-center px-6 bg-grid overflow-hidden snap-start snap-always pt-14">
+      <section className="relative min-h-dvh flex flex-col items-center justify-center px-6 bg-grid overflow-hidden md:snap-start md:snap-always pt-14">
         <HeroVisual />
         <ScrollSection className="relative z-10 flex flex-col items-center justify-center max-w-3xl text-center">
           <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-3">
@@ -91,7 +69,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Section 2: The Question ── */}
-      <section className="min-h-dvh flex items-center justify-center px-6 snap-start snap-always">
+      <section className="min-h-dvh flex items-center justify-center px-6 pt-14 md:pt-0 md:snap-start md:snap-always">
         <ScrollSection className="max-w-3xl mx-auto text-center py-20">
           <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4">
             {t("landing.question.label")}
@@ -112,7 +90,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Section 3: Industry Reality ── */}
-      <section className="min-h-dvh flex items-center justify-center px-6 snap-start snap-always bg-surface/30">
+      <section className="min-h-dvh flex items-center justify-center px-6 pt-14 md:pt-0 md:snap-start md:snap-always bg-surface/30">
         <ScrollSection className="max-w-4xl mx-auto py-20">
           <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4 text-center">
             {t("landing.industry.label")}
@@ -143,7 +121,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Section 4: How It Works ── */}
-      <section className="min-h-dvh flex items-center justify-center px-6 snap-start snap-always">
+      <section className="min-h-dvh flex items-center justify-center px-6 pt-14 md:pt-0 md:snap-start md:snap-always">
         <ScrollSection className="max-w-4xl mx-auto py-20">
           <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4 text-center">
             {t("landing.process.label")}
@@ -176,7 +154,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Section 5: The Difference ── */}
-      <section className="min-h-dvh flex items-center justify-center px-6 snap-start snap-always bg-surface/30">
+      <section className="min-h-dvh flex items-center justify-center px-6 pt-14 md:pt-0 md:snap-start md:snap-always bg-surface/30">
         <ScrollSection className="max-w-5xl mx-auto py-20">
           <p className="text-xs font-medium text-primary tracking-[var(--tracking-widest)] uppercase mb-4 text-center">
             {t("landing.different.label")}
@@ -207,7 +185,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Section 6: Final CTA ── */}
-      <section className="min-h-dvh flex items-center justify-center px-6 snap-start snap-always">
+      <section className="min-h-dvh flex items-center justify-center px-6 pt-14 pb-12 md:pt-0 md:pb-0 md:snap-start md:snap-always">
         <ScrollSection className="max-w-2xl mx-auto text-center py-20">
           <h2 className="text-2xl md:text-4xl font-bold text-on-surface leading-tight tracking-[var(--tracking-tight)]">
             {t("landing.finalCta.title")}
@@ -226,31 +204,8 @@ export default function LandingPage() {
         </ScrollSection>
       </section>
 
-      {/* ── Footer (within last snap section) ── */}
-      <footer className="border-t border-border bg-secondary/80 backdrop-blur-md px-6 py-3 text-xs text-on-surface-muted snap-end">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="tracking-[var(--tracking-wide)]">
-            &copy; {new Date().getFullYear()} PRAGMA &mdash; {t("common.tagline")}
-          </p>
-          <nav className="flex items-center gap-4">
-            <Link href="/about" className="hover:text-primary transition-colors">
-              {t("about.link")}
-            </Link>
-            <Link href="/support" className="hover:text-primary transition-colors">
-              {t("support.title")}
-            </Link>
-            <Link href="/legal/impressum" className="hover:text-primary transition-colors">
-              {t("legal.impressum.title")}
-            </Link>
-            <Link href="/legal/datenschutz" className="hover:text-primary transition-colors">
-              {t("legal.privacy.title")}
-            </Link>
-            <Link href="/legal/agb" className="hover:text-primary transition-colors">
-              {t("legal.terms.title")}
-            </Link>
-          </nav>
-        </div>
-      </footer>
+      {/* ── Footer ── */}
+      <PublicFooter />
     </div>
   );
 }

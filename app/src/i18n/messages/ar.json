@@ -21,7 +21,8 @@
     "notFoundDescription": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
     "goHome": "العودة إلى الرئيسية",
     "accessDenied": "تم رفض الوصول",
-    "accessDeniedDescription": "ليس لديك إذن للوصول إلى هذه الصفحة."
+    "accessDeniedDescription": "ليس لديك إذن للوصول إلى هذه الصفحة.",
+    "prices": "الأسعار"
   },
   "landing": {
     "hero": "Partnership, methodically.",

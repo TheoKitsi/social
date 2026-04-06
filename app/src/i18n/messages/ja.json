@@ -21,7 +21,8 @@
     "notFoundDescription": "お探しのページは存在しないか、移動されました。",
     "goHome": "ホームに戻る",
     "accessDenied": "アクセスが拒否されました",
-    "accessDeniedDescription": "このページにアクセスする権限がありません。"
+    "accessDeniedDescription": "このページにアクセスする権限がありません。",
+    "prices": "料金"
   },
   "landing": {
     "hero": "Partnership, methodically.",

@@ -21,7 +21,8 @@
     "notFoundDescription": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
     "goHome": "Wróć na stronę główną",
     "accessDenied": "Brak dostępu",
-    "accessDeniedDescription": "Nie masz uprawnień do dostępu do tej strony."
+    "accessDeniedDescription": "Nie masz uprawnień do dostępu do tej strony.",
+    "prices": "Cennik"
   },
   "landing": {
     "hero": "Partnership, methodically.",

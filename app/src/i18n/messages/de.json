@@ -21,7 +21,8 @@
     "notFoundDescription": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
     "goHome": "Zur Startseite",
     "accessDenied": "Zugriff verweigert",
-    "accessDeniedDescription": "Sie haben keine Berechtigung, auf diese Seite zuzugreifen."
+    "accessDeniedDescription": "Sie haben keine Berechtigung, auf diese Seite zuzugreifen.",
+    "prices": "Preise"
   },
   "landing": {
     "hero": "Partnerschaft, methodisch.",
@@ -103,7 +104,7 @@
     },
     "finalCta": {
       "title": "Bereit, PRAGMAtisch an die Liebe heranzugehen?",
-      "subtitle": "Die wichtigste Partnerschaft Ihres Lebens verdient mehr als Zufall. Sie verdient Methode.",
+      "subtitle": "Die wichtigste Partnerschaft Ihres Lebens verdient mehr als Zufall. Sie verdient Methodik.",
       "learnMore": "Unsere Geschichte"
     }
   },
@@ -680,7 +681,7 @@
       "p3": "Aber wenn es darum geht, den Menschen zu wählen, mit dem wir unser Leben teilen? Da spielen wir. Wir swipen. Wir hoffen. Wir überlassen die folgenreichste Entscheidung unseres Lebens dem Zufall, der Chemie und ein paar kuratierten Fotos.",
       "p4": "Die bestehenden Plattformen sind nicht darauf ausgelegt, das zu ändern. Ihr Geschäftsmodell hängt davon ab, dass Sie Single bleiben. Jede erfolgreiche Beziehung ist ein verlorener Abonnent. Also optimieren sie für Verweildauer, nicht für Verbindung. Für Zeit auf der App, nicht für sinnvoll verbrachte Zeit.",
       "quote": "Nichts im Leben wird so sorglos verglichen wie der Mensch, mit dem man eine Zukunft aufbauen will.",
-      "p5": "PRAGMA entstand aus der Überzeugung, dass Partnerschaft dieselbe Sorgfalt verdient, die wir auf jede andere bedeutende Entscheidung anwenden. Keine kalte Berechnung, sondern strukturierte Selbstkenntnis: Wer bin ich wirklich? Was brauche ich? Was kann ich bieten? Wo sind meine unverhandelbaren Grenzen?",
+      "p5": "PRAGMA entstand aus der Überzeugung, dass Partnerschaft dieselbe Sorgfalt verdient, die wir auf jede andere bedeutende Entscheidung anwenden. Keine kalte Berechnung, sondern strukturierte Selbsterkenntnis: Wer bin ich wirklich? Was brauche ich? Was kann ich bieten? Wo sind meine unverhandelbaren Grenzen?",
       "p6": "Der Name sagt alles. Pragmatisch. Durchdacht. Bewusst. Denn Liebe verdient mehr als einen Algorithmus, der darauf ausgelegt ist, Sie am Swipen zu halten."
     },
     "problem": {
@@ -772,11 +773,11 @@
     "name": {
       "label": "Der Name",
       "title": "PRAGMA.",
-      "description": "In der antiken griechischen Philosophie bezeichnet Pragma die praktische, rationale Form der Liebe. Nicht blinde Leidenschaft, sondern bewusste Partnerschaft. Eine Entscheidung mit offenen Augen. PRAGMA ist die Überzeugung, dass dauerhafte Beziehungen nicht durch Zufall gefunden werden. Sie werden durch Selbstkenntnis, Ehrlichkeit und den Mut aufgebaut, die richtigen Fragen zu stellen, bevor man Ja sagt."
+      "description": "In der antiken griechischen Philosophie bezeichnet Pragma die praktische, rationale Form der Liebe. Nicht blinde Leidenschaft, sondern bewusste Partnerschaft. Eine Entscheidung mit offenen Augen. PRAGMA ist die Überzeugung, dass dauerhafte Beziehungen nicht durch Zufall gefunden werden. Sie werden durch Selbsterkenntnis, Ehrlichkeit und den Mut aufgebaut, die richtigen Fragen zu stellen, bevor man Ja sagt."
     },
     "cta": {
       "title": "Bereit, PRAGMAtisch an die Liebe heranzugehen?",
-      "subtitle": "Die wichtigste Partnerschaft Ihres Lebens verdient mehr als Zufall. Sie verdient Methode."
+      "subtitle": "Die wichtigste Partnerschaft Ihres Lebens verdient mehr als Zufall. Sie verdient Methodik."
     }
   },
   "report": {

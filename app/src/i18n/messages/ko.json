@@ -21,7 +21,8 @@
     "notFoundDescription": "찾고 있는 페이지가 존재하지 않거나 이동되었습니다.",
     "goHome": "홈으로 돌아가기",
     "accessDenied": "접근이 거부되었습니다",
-    "accessDeniedDescription": "이 페이지에 접근할 권한이 없습니다."
+    "accessDeniedDescription": "이 페이지에 접근할 권한이 없습니다.",
+    "prices": "요금"
   },
   "landing": {
     "hero": "Partnership, methodically.",
