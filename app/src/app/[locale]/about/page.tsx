@@ -25,7 +25,7 @@ export default function AboutPage() {
   ] as const;
 
   return (
-    <div className="min-h-dvh bg-secondary">
+    <div className="min-h-dvh bg-secondary select-none">
       <PublicHeader showBack showPricesLink />
 
       <main className="max-w-3xl mx-auto px-6 pt-20 pb-16 md:pt-24 md:pb-20">

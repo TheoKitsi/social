@@ -30,7 +30,7 @@ export default function LandingPage() {
   ] as const;
 
   return (
-    <div className="min-h-dvh flex flex-col bg-secondary overflow-y-auto md:h-dvh md:snap-y md:snap-mandatory scroll-smooth">
+    <div className="min-h-dvh flex flex-col bg-secondary overflow-y-auto md:h-dvh md:snap-y md:snap-mandatory scroll-smooth select-none">
       {/* ── Header ── */}
       <PublicHeader showAboutLink showPricesLink />
 

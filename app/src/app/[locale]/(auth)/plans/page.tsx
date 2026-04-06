@@ -75,7 +75,7 @@ export default function PlansPage() {
   ];
 
   return (
-    <div className="w-full max-w-5xl animate-fade-in-up space-y-8">
+    <div className="w-full max-w-5xl animate-fade-in-up space-y-8 select-none">
       <div className="text-center space-y-3">
         <h1 className="text-2xl font-bold text-on-surface tracking-[var(--tracking-tight)]">
           {t("subscription.choosePlan")}

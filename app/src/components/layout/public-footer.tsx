@@ -22,9 +22,6 @@ export function PublicFooter({ fixed = true }: PublicFooterProps) {
           &copy; {new Date().getFullYear()} PRAGMA
         </p>
         <nav className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
-          <Link href="/plans" className="hover:text-primary transition-colors">
-            {t("common.prices")}
-          </Link>
           <Link href="/support" className="hover:text-primary transition-colors">
             {t("support.title")}
           </Link>
